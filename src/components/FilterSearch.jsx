@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, ChevronDown, ChevronUp } from 'lucide-react';
 
-export function FilterSearch({ films, onFilterChange, onToggleView }) {
+export function FilterSearch({ films, onSearchChange, onToggleView }) {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [selectedYear, setSelectedYear] = useState('');
 	const [selectedCountry, setSelectedCountry] = useState('');
@@ -22,7 +22,7 @@ export function FilterSearch({ films, onFilterChange, onToggleView }) {
 		const term = e.target.value;
 		setSearchTerm(term);
 
-		onFilterChange({ searchTerm: term, selectedYear, selectedCountry });
+		onSearchChange({ searchTerm: term, selectedYear, selectedCountry });
 	};
 
 	const handleYearClick = year => {
@@ -30,7 +30,7 @@ export function FilterSearch({ films, onFilterChange, onToggleView }) {
 		setSelectedYear(newYear);
 		setIsYearOpen(false);
 
-		onFilterChange({ searchTerm, selectedYear: newYear, selectedCountry });
+		onSearchChange({ searchTerm, selectedYear: newYear, selectedCountry });
 	};
 
 	const handleCountryClick = country => {
@@ -38,7 +38,7 @@ export function FilterSearch({ films, onFilterChange, onToggleView }) {
 		setSelectedCountry(newCountry);
 		setIsCountryOpen(false);
 
-		onFilterChange({ searchTerm, selectedYear, selectedCountry: newCountry });
+		onSearchChange({ searchTerm, selectedYear, selectedCountry: newCountry });
 	};
 
 	return (

@@ -7,7 +7,6 @@ import { FilterSearch } from '../components/FilterSearch.jsx';
 export function Arquivo() {
 	const [films, setFilms] = useState([]);
 	const [filteredFilms, setFilteredFilms] = useState([]);
-	const [iso, setIso] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -30,21 +29,29 @@ export function Arquivo() {
 		fetchFilms();
 	}, []);
 
-	const handleFilterChange = ({ searchTerm, selectedYear, selectedCountry }) => {
-		let results = films;
-
-		if (searchTerm) {
-			const lowerTerm = searchTerm.toLowerCase();
-			results = results.filter(film => (film.nome && film.nome.toLowerCase().includes(lowerTerm)) || (film.realizador && film.realizador.toLowerCase().includes(lowerTerm)));
-		}
-
-		if (selectedYear) {
-			results = results.filter(film => film.ano === parseInt(selectedYear));
-		}
-
-		if (selectedCountry) {
-			results = results.filter(film => film.pais === selectedCountry);
-		}
+	const handleSearchChange = async ({ searchTerm, selectedYear, selectedCountry }) => {
+		const results = await sanityClient.fetch(`
+		*[
+  _type == "filme" 
+  && !(_id in path("drafts.**"))
+  && _score > 0
+  ${selectedYear ? `&& ano == ${selectedYear}` : ''}
+${selectedCountry ? `&& ano == ${selectedCountry}` : ''}
+] | score(
+boost(nome match "*${searchTerm}*", 5),
+  realizador match "*${searchTerm}*",
+  autorEntrevista match "*${searchTerm}*",
+  sinopse match "*${searchTerm}*",
+  pt::text(entrevista) match "*${searchTerm}*",
+  creditos[].conteudo match "*${searchTerm}*"
+) | order(_score desc) {
+  _score,
+  nome,
+  realizador,
+  ano,
+  pais,
+  minutos
+}`);
 
 		setFilteredFilms(results);
 	};
@@ -53,9 +60,9 @@ export function Arquivo() {
 
 	return (
 		<div className='margin-general pt-6'>
-			<FilterSearch films={films} onFilterChange={handleFilterChange} />
+			<FilterSearch films={films} onSearchChange={handleSearchChange} />
 
-			<Masonry columns={{ xs: 1, sm: 3 }} spacing={{ xs: 3, sm: 5}}>
+			<Masonry columns={{ xs: 1, sm: 3 }} spacing={{ xs: 3, sm: 5 }}>
 				{filteredFilms.length > 0 ? (
 					filteredFilms.map((film, index) => (
 						<article key={index}>
