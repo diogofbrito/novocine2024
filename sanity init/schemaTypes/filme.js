@@ -2,11 +2,23 @@ export default {
   name: 'filme',
   title: 'Filme',
   type: 'document',
+  groups: [
+    {
+      name: 'eng',
+      title: 'VERSÃO ENG',
+    },
+  ],
   fields: [
     {
       name: 'nome',
       title: 'Nome do Filme',
       type: 'string',
+    },
+    {
+      name: 'nomeENG',
+      title: 'Nome do Filme_ENG',
+      type: 'string',
+      group: 'eng',
     },
     {
       name: 'realizador',
@@ -48,6 +60,15 @@ export default {
       name: 'sinopse',
       title: 'Sinopse',
       type: 'text',
+      options: {
+        formatting: true,
+      },
+    },
+    {
+      name: 'sinopseENG',
+      title: 'Sinopse_ENG',
+      type: 'text',
+      group: 'eng',
       options: {
         formatting: true,
       },
@@ -100,11 +121,63 @@ export default {
         },
       ],
     },
+
+    {
+      name: 'entrevista_ENG',
+      title: 'Entrevista ao Realizador_ENG',
+      group: 'eng',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            {title: 'Normal', value: 'normal'},
+            {title: 'Negrito', value: 'bold'},
+            {title: 'Itálico', value: 'italic'},
+          ],
+          lists: [],
+          marks: {
+            decorators: [
+              {title: 'Negrito', value: 'bold'},
+              {title: 'Itálico', value: 'italic'},
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'URL',
+                  },
+                ],
+              },
+              {
+                name: 'media',
+                type: 'object',
+                title: 'Mídia',
+                fields: [
+                  {
+                    name: 'src',
+                    type: 'url',
+                    title: 'URL da Mídia',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
+
     {
       name: 'autorEntrevista',
-      title: 'Autor da Entrevista',
+      title: 'Nome do autor da Entrevista',
       type: 'string',
     },
+
     {
       name: 'creditos',
       title: 'Créditos',
@@ -119,6 +192,11 @@ export default {
               type: 'string',
             },
             {
+              name: 'tipo_ENG',
+              title: 'Tipo de Crédito_ENG',
+              type: 'string',
+            },
+            {
               name: 'conteudo',
               title: 'Conteúdo do Crédito',
               type: 'text',
@@ -127,9 +205,11 @@ export default {
         },
       ],
     },
+
     {
       name: 'dataExibicao',
       title: 'Data de Exibição',
+      group: 'eng',
       type: 'object',
       fields: [
         {
@@ -151,6 +231,6 @@ export default {
           },
         },
       ],
-    },
+    }
   ],
 }

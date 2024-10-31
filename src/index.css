@@ -6,58 +6,50 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	width: 100%;
-  font-family: 'PPTelegraf-Regular';
-  background-color: var(--background-color-light);
+	font-family: 'PPTelegraf-Regular';
+	background-color: var(--background-color-light);
 	transition: background-color 0.3s, color 0.3s;
-  padding:0;
-  margin:0;
-}
-body, a, p{
-  color: white;
+	padding: 0;
+	margin: 0;
 }
 
-.navbar{
-    background-color: var(--background-color-light-opacity);
-
+.navbar {
+	background-color: var(--background-color-light-opacity);
 }
 
 @font-face {
-  font-family: 'Cine-Display';
-  src: url('./assets/font/Cine-Display.woff2') format('woff2'),
-       url('./assets/font/Cine-Display.woff') format('woff');
-  font-style: normal;
+	font-family: 'Cine-Display';
+	src: url('./assets/font/Cine-Display.woff2') format('woff2'), url('./assets/font/Cine-Display.woff') format('woff');
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'PPTelegraf-Regular';
-  src: url('./assets/font/PPTelegraf-Regular.woff2') format('woff2'),
-       url('./assets/font/PPTelegraf-Regular.woff') format('woff');
-  font-weight: 400;
+	font-family: 'PPTelegraf-Regular';
+	src: url('./assets/font/PPTelegraf-Regular.woff2') format('woff2'), url('./assets/font/PPTelegraf-Regular.woff') format('woff');
+	font-weight: 400;
 }
 
 @font-face {
-  font-family: 'PPTelegraf-Bold';
-  src: url('./assets/font/PPTelegraf-Bold.woff2') format('woff2'),
-       url('./assets/font/PPTelegraf-Bold.woff') format('woff');
-  font-weight: 700;
+	font-family: 'PPTelegraf-Bold';
+	src: url('./assets/font/PPTelegraf-Bold.woff2') format('woff2'), url('./assets/font/PPTelegraf-Bold.woff') format('woff');
+	font-weight: 700;
 }
 
 @font-face {
-  font-family: 'PPTelegraf-Oblique';
-  src: url('./assets/font/PPTelegraf-RegularOblique.woff2') format('woff2'),
-       url('./assets/font/PPTelegraf-RegularOblique.woff') format('woff');
-  font-weight: 400;
+	font-family: 'PPTelegraf-Oblique';
+	src: url('./assets/font/PPTelegraf-RegularOblique.woff2') format('woff2'), url('./assets/font/PPTelegraf-RegularOblique.woff') format('woff');
+	font-weight: 400;
 }
 
 :root {
-	--background-color-light: #FD6CB4;
-  	--background-color-light-opacity: #fd6cb4ac;
+	--background-color-light: #fd6cb4;
+	--background-color-light-opacity: #fd6cb4ac;
 	--background-trans-light: rgba(255, 255, 255, 0.95);
-	--text-color-light: #333;
+	--text-color-light: white;
 
-	--background-color-dark: #1a1a1a;
+	--background-color-dark: #1a1a1d;
 	--background-trans-dark: rgba(51, 51, 51, 0.95);
-	--text-color-dark: #FD6CB4;
+	--text-color-dark: #eaebde;
 }
 
 body.dark-mode {
@@ -65,24 +57,26 @@ body.dark-mode {
 }
 
 body.dark-mode .navbar {
-	background-color: rgba(50, 50, 50, 0.649);
-  border: #FD6CB4;
+	background-color: var(--background-trans-dark);
+	border: #fd6cb4;
 }
 
 body.dark-mode a {
 	color: var(--text-color-dark);
-  
 }
 
-body.dark-mode h1  {
+body {
+	color: var(--text-color-light);
+}
+
+body.dark-mode h1 {
 	color: var(--text-color-dark);
-  
 }
 
-.dark-mode {
+.dark-mode div {
 	color: var(--text-color-dark);
 }
 
 .margin-general {
-	margin: 3.5rem;
+	margin: 4.5rem;
 }
