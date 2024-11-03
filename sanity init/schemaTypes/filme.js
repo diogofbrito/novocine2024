@@ -45,11 +45,7 @@ export default {
       title: 'ID do Vídeo do Vimeo',
       type: 'string',
     },
-    {
-      name: 'imagem',
-      title: 'Imagem Placeholder (formato .webp, com máximo 150 Kb)',
-      type: 'image',
-    },
+   
     {
       name: 'stills',
       title: 'Imagens Stills (até 6 imagens, formato .webp, com máximo 150 Kb)',
@@ -75,7 +71,7 @@ export default {
     },
     {
       name: 'entrevista',
-      title: 'Entrevista ao Realizador',
+      title: 'Corpo de texto para o filme (Ex: Entrevista, Textos sobre o filme, etc...)',
       type: 'array',
       of: [
         {
@@ -124,7 +120,7 @@ export default {
 
     {
       name: 'entrevista_ENG',
-      title: 'Entrevista ao Realizador_ENG',
+      title: 'Corpo de texto para o filme_ENG ',
       group: 'eng',
       type: 'array',
       of: [
@@ -174,7 +170,13 @@ export default {
 
     {
       name: 'autorEntrevista',
-      title: 'Nome do autor da Entrevista',
+      title: 'Autores do Corpo de Texto (Ex: texto por Daniel Pizsmiglio, Entrevista com Camila Vale,...)',
+      type: 'string',
+    },
+
+    {
+      name: 'autorEntrevistaENG',
+      title: 'Autores do Corpo de Texto_ENG',
       type: 'string',
     },
 
@@ -231,6 +233,6 @@ export default {
           },
         },
       ],
-    }
+    },
   ],
 }

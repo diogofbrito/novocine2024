@@ -7,14 +7,8 @@ body {
 	-webkit-font-smoothing: antialiased;
 	width: 100%;
 	font-family: 'PPTelegraf-Regular';
-	background-color: var(--background-color-light);
-	transition: background-color 0.3s, color 0.3s;
 	padding: 0;
 	margin: 0;
-}
-
-.navbar {
-	background-color: var(--background-color-light-opacity);
 }
 
 @font-face {
@@ -43,37 +37,65 @@ body {
 
 :root {
 	--background-color-light: #fd6cb4;
-	--background-color-light-opacity: #fd6cb4ac;
-	--background-trans-light: rgba(255, 255, 255, 0.95);
 	--text-color-light: white;
-
 	--background-color-dark: #1a1a1d;
-	--background-trans-dark: rgba(51, 51, 51, 0.95);
 	--text-color-dark: #eaebde;
 }
 
-body.dark-mode {
+html[data-theme="light"] {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+		transition: background-color 0.3s, color 0.3s;
+
+}
+
+
+html[data-theme="light"] body,
+html[data-theme="light"] h1,
+html[data-theme="light"] p,
+html[data-theme="light"] a,
+html[data-theme="light"] .border,
+html[data-theme="light"] .navbar {
+    color: var(--text-color-light);
+    border-color: var(--text-color-light);
+	
+}
+
+
+html[data-theme="light"] ul {
+	background-color: var(--background-color-light);
+}
+
+html[data-theme="dark"] {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+	transition: background-color 0.3s, color 0.3s;
+
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] h1,
+html[data-theme="dark"] p,
+html[data-theme="dark"] a,
+html[data-theme="dark"] .border,
+html[data-theme="dark"] .navbar {
+    color: var(--text-color-dark);
+    border-color: var(--text-color-dark);
+}
+
+html[data-theme="dark"] ul {
 	background-color: var(--background-color-dark);
 }
 
-body.dark-mode .navbar {
-	background-color: var(--background-trans-dark);
-	border: #fd6cb4;
-}
-
-body.dark-mode a {
+html[data-theme="dark"] .filter {
+	background-color: var(--background-color-dark);
 	color: var(--text-color-dark);
 }
 
-body {
+.input-placeholder::placeholder {
 	color: var(--text-color-light);
 }
-
-body.dark-mode h1 {
-	color: var(--text-color-dark);
-}
-
-.dark-mode div {
+.dark-mode .input-placeholder::placeholder {
 	color: var(--text-color-dark);
 }
 

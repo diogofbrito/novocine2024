@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import sanityClient from '../SanityClient.js';
-import { ContentBlock } from '../components/ContentBlock';
-import { Dates } from '../components/Dates.jsx';
 import XIcon from '@mui/icons-material/X';
 import Facebook from '@mui/icons-material/Facebook';
 import LinkIcon from '@mui/icons-material/Link';
@@ -10,6 +8,7 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import Collapse from '@mui/material/Collapse';
+import { urlFor } from '../utils/imageUrlBuilder.js';
 
 export function Home() {
 	const [latestFilm, setLatestFilm] = useState(null);
@@ -30,7 +29,8 @@ export function Home() {
           entrevista,
           autorEntrevista,
           creditos,
-		  dataExibicao
+		  dataExibicao,
+		  	stills[0]
         }
       `);
 			if (filmData) {
@@ -49,9 +49,14 @@ export function Home() {
 
 	return (
 		<>
-			{/* {latestFilm.dataExibicao ? <Dates dataInicio={latestFilm.dataExibicao.dataInicio} dataFim={latestFilm.dataExibicao.dataFim} /> : <div>Datas não disponíveis</div>} */}
-
-			<article className='mx-[4.5rem] my-[4.5rem] rounded-[50px] bg-cover bg-hero-home h-[calc(100vh-9rem)]'>
+			<div
+				className='mx-[4.5rem] my-[4.5rem] rounded-[50px] h-[calc(100vh-9rem)]'
+				style={{
+					backgroundImage: `url(${latestFilm.stills ? urlFor(latestFilm.stills).url() : 'imgs/placeholder.webp'})`,
+					backgroundSize: 'cover',
+					backgroundPosition: 'center',
+				}}
+			>
 				<div className='w-full inset-0 flex h-full flex-col gap-6 justify-center items-center -z-10 px-20 '>
 					<div>
 						<h1 className='text-9xl font-cine text-white text-center'>{latestFilm.nome}</h1>
@@ -61,7 +66,7 @@ export function Home() {
 					</div>
 					<button
 						onClick={() => window.open(`https://vimeo.com/${latestFilm.vimeoId}`, '_blank')}
-						className='flex items-center justify-center space-x-2 border border-white rounded-full pl-3 pr-2 py-1 text-white hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out '
+						className='flex items-center justify-center space-x-2 border  rounded-full pl-3 pr-2 py-1  hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out '
 					>
 						<span className='font-bold'>PLAY</span>
 						<span className='w-5 h-5'>
@@ -76,10 +81,10 @@ export function Home() {
 						</span>
 					</button>
 				</div>
-			</article>
+			</div>
 
 			<article className='mx-[4.5rem] mb-[4.5rem]'>
-				<ContentBlock text='text-white'>
+				<div className='rounded-[50px] border  p-10 '>
 					<div className='flex'>
 						<div className='flex flex-col w-1/2 '>
 							<div className='text-8xl font-["Cine-Display"] '>{latestFilm.nome}</div>
@@ -89,7 +94,7 @@ export function Home() {
 								{latestFilm.ano} &bull; {latestFilm.pais} &bull; {latestFilm.minutos} minutos
 							</p>
 							<div className='flex pt-4 -mx-2 -my-2'>
-								<IconButton onClick={() => setShowShareOptions(!showShareOptions)} sx={{ color: 'white' }}>
+								<IconButton onClick={() => setShowShareOptions(!showShareOptions)} sx={{ color: 'inherit' }}>
 									<Tooltip title='Partilhar'>
 										<ShareIcon />
 									</Tooltip>
@@ -97,7 +102,7 @@ export function Home() {
 
 								<Collapse in={showShareOptions} timeout='auto'>
 									<div className='flex'>
-										<IconButton onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')} sx={{ color: 'white' }}>
+										<IconButton onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')} sx={{ color: 'inherit' }}>
 											<Tooltip title='Facebook'>
 												<Facebook />
 											</Tooltip>
@@ -105,14 +110,14 @@ export function Home() {
 
 										<IconButton
 											onClick={() => window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=NOVOCINE: ${latestFilm.nome}`, '_blank')}
-											sx={{ color: 'white' }}
+											sx={{ color: 'inherit' }}
 										>
 											<Tooltip title='X'>
 												<XIcon />
 											</Tooltip>
 										</IconButton>
 
-										<IconButton onClick={handleCopyLink} sx={{ color: 'white' }}>
+										<IconButton onClick={handleCopyLink} sx={{ color: 'inherit' }}>
 											<Tooltip title='Copiar Link'>
 												<LinkIcon />
 											</Tooltip>
@@ -128,12 +133,12 @@ export function Home() {
 							</div>
 						</div>
 					</div>
-				</ContentBlock>
+				</div>
 
 				<div className='pt-14'>
 					<div className='flex justify-center pb-12'>
 						<div className='w-2/3 font-regular'>
-							<div className='pb-2 font-oblique'>texto de {latestFilm.autorEntrevista}</div>
+							<div className='pb-2 font-oblique'>{latestFilm.autorEntrevista}</div>
 							{latestFilm.entrevista && latestFilm.entrevista.length > 0 ? (
 								latestFilm.entrevista.map((paragrafo, index) => (
 									<p key={index} className='pb-2 text-lg'>

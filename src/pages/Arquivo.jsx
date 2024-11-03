@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom';
 import sanityClient from '../SanityClient.js';
 import React, { useEffect, useState } from 'react';
-import { Masonry } from '@mui/lab';
-import { FilterSearch } from '../components/FilterSearch.jsx';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { FilterSearch } from '../components/ArquivoComponentes/FilterSearch.jsx';
+import { FilmItem } from '../components/ArquivoComponentes/FilmItem.jsx';
+import { createSlug } from '../utils/slug.js';
+import { ArchiveList } from '../components/ArquivoComponentes/ArchiveList.jsx';
+import { motion, AnimatePresence } from 'framer-motion'; 
+
 
 export function Arquivo() {
-	const [films, setFilms] = useState([]);
 	const [filteredFilms, setFilteredFilms] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [isListView, setIsListView] = useState(false);
 
 	useEffect(() => {
 		async function fetchFilms() {
@@ -21,7 +26,6 @@ export function Arquivo() {
                     stills[0..4] 
                 }
             `);
-			setFilms(data);
 			setIsLoading(false);
 			setFilteredFilms(data);
 		}
@@ -32,58 +36,68 @@ export function Arquivo() {
 	const handleSearchChange = async ({ searchTerm, selectedYear, selectedCountry }) => {
 		const results = await sanityClient.fetch(`
 		*[
-  _type == "filme" 
-  && !(_id in path("drafts.**"))
-  && _score > 0
-  ${selectedYear ? `&& ano == ${selectedYear}` : ''}
-${selectedCountry ? `&& ano == ${selectedCountry}` : ''}
-] | score(
-boost(nome match "*${searchTerm}*", 5),
-  realizador match "*${searchTerm}*",
-  autorEntrevista match "*${searchTerm}*",
-  sinopse match "*${searchTerm}*",
-  pt::text(entrevista) match "*${searchTerm}*",
-  creditos[].conteudo match "*${searchTerm}*"
-) | order(_score desc) {
-  _score,
-  nome,
-  realizador,
-  ano,
-  pais,
-  minutos
-}`);
+			_type == "filme" 
+			&& !(_id in path("drafts.**"))
+			&& _score > 0
+			${selectedYear ? `&& ano == ${selectedYear}` : ''}
+			${selectedCountry ? `&& pais == "${selectedCountry}"` : ''}
+		] | score(
+			boost(nome match "*${searchTerm}*", 5),
+			realizador match "*${searchTerm}*",
+			autorEntrevista match "*${searchTerm}*",
+			sinopse match "*${searchTerm}*",
+			pt::text(entrevista) match "*${searchTerm}*",
+			creditos[].conteudo match "*${searchTerm}*"
+			) | order(_score desc) {
+				_score,
+				nome,
+				realizador,
+				ano,
+				pais,
+				minutos,
+				stills[0..4]
+			}`);
 
 		setFilteredFilms(results);
+	};
+
+	const onToggleView = () => {
+		setIsListView(!isListView);
 	};
 
 	if (isLoading) return <div className='w-screen h-screen fixed flex justify-center items-center'>A Carregar...</div>;
 
 	return (
-		<div className='margin-general pt-6'>
-			<FilterSearch films={films} onSearchChange={handleSearchChange} />
+		<>
+			<div className='margin-general pt-[2rem] '>
+				<FilterSearch films={filteredFilms} onSearchChange={handleSearchChange} onToggleView={onToggleView} isListView={isListView} />
 
-			<Masonry columns={{ xs: 1, sm: 3 }} spacing={{ xs: 3, sm: 5 }}>
-				{filteredFilms.length > 0 ? (
-					filteredFilms.map((film, index) => (
-						<article key={index}>
-							<Link to=''>
-								<div>
-									<h1 className='font-cine text-5xl pl-2 '>{film.nome}</h1>
-									<img src='/imgs/1.png' className='rounded-[25px] mt-4'></img>
-									<div className='flex flex-row justify-between mt-4 pl-2'>
-										de António Macedo 68 29min
-										<button className='flex items-center justify-center space-x-2 border border-white rounded-full px-3 py-1 text-white hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out '>
-											<span className='font-bold'>MAIS INFO</span>
-										</button>
-									</div>
-								</div>
-							</Link>
-						</article>
-					))
-				) : (
-					<div>Filme não encontrado</div>
-				)}
-			</Masonry>
-		</div>
+				<div className='pt-8'>
+					<AnimatePresence mode='wait'>
+						{isListView ? (
+							<motion.div key='list' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+								<ArchiveList films={filteredFilms} />
+							</motion.div>
+						) : (
+							<motion.div key='gallery' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+								<ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }} className='w-full'>
+									<Masonry gutter='2rem'>
+										{filteredFilms.length > 0 ? (
+											filteredFilms.map(film => (
+												<Link to={`/Arquivo/${createSlug(film.nome)}`} key={film.nome}>
+													<FilmItem film={film} />
+												</Link>
+											))
+										) : (
+											<div>Filme não encontrado</div>
+										)}
+									</Masonry>
+								</ResponsiveMasonry>
+							</motion.div>
+						)}
+					</AnimatePresence>
+				</div>
+			</div>
+		</>
 	);
 }
