@@ -9,6 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import Collapse from '@mui/material/Collapse';
 import { urlFor } from '../utils/imageUrlBuilder.js';
+import { DateRangeSharp } from '@mui/icons-material';
+import { Dates } from '../components/Dates';
 
 export function Home() {
 	const [latestFilm, setLatestFilm] = useState(null);
@@ -49,6 +51,7 @@ export function Home() {
 
 	return (
 		<>
+			<Dates />
 			<div
 				className='mx-[4.5rem] my-[4.5rem] rounded-[50px] h-[calc(100vh-9rem)]'
 				style={{
@@ -162,7 +165,7 @@ export function Home() {
 					</div>
 				</div>
 
-				<div className='flex justify-center text-white'>
+				<div className='flex justify-center '>
 					<div className='w-2/3 '>
 						<div className='text-center pb-2 font-oblique'>créditos</div>
 

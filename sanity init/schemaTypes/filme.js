@@ -11,12 +11,12 @@ export default {
   fields: [
     {
       name: 'nome',
-      title: 'Nome do Filme',
+      title: 'Nome do Filme em maíusculas',
       type: 'string',
     },
     {
       name: 'nomeENG',
-      title: 'Nome do Filme_ENG',
+      title: 'Nome do Filme em maíusculas_ENG',
       type: 'string',
       group: 'eng',
     },
@@ -45,7 +45,7 @@ export default {
       title: 'ID do Vídeo do Vimeo',
       type: 'string',
     },
-   
+
     {
       name: 'stills',
       title: 'Imagens Stills (até 6 imagens, formato .webp, com máximo 150 Kb)',
@@ -119,7 +119,7 @@ export default {
     },
 
     {
-      name: 'entrevista_ENG',
+      name: 'entrevistaENG',
       title: 'Corpo de texto para o filme_ENG ',
       group: 'eng',
       type: 'array',
@@ -170,7 +170,8 @@ export default {
 
     {
       name: 'autorEntrevista',
-      title: 'Autores do Corpo de Texto (Ex: texto por Daniel Pizsmiglio, Entrevista com Camila Vale,...)',
+      title:
+        'Autores do Corpo de Texto (Ex: texto por Daniel Pizsmiglio, Entrevista com Camila Vale,...)',
       type: 'string',
     },
 
@@ -204,6 +205,104 @@ export default {
               type: 'text',
             },
           ],
+        },
+      ],
+    },
+
+    {
+      name: 'extras',
+      title: 'Extras (Ex: Agradecimentos do Novocine, adicionar logos...)',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            {title: 'Normal', value: 'normal'},
+            {title: 'Negrito', value: 'bold'},
+            {title: 'Itálico', value: 'italic'},
+          ],
+          lists: [],
+          marks: {
+            decorators: [
+              {title: 'Negrito', value: 'bold'},
+              {title: 'Itálico', value: 'italic'},
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'URL',
+                  },
+                ],
+              },
+              {
+                name: 'media',
+                type: 'object',
+                title: 'Mídia',
+                fields: [
+                  {
+                    name: 'src',
+                    type: 'url',
+                    title: 'URL da Mídia',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
+
+    {
+      name: 'extrasENG',
+      title: 'Extras_ENG ',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            {title: 'Normal', value: 'normal'},
+            {title: 'Negrito', value: 'bold'},
+            {title: 'Itálico', value: 'italic'},
+          ],
+          lists: [],
+          marks: {
+            decorators: [
+              {title: 'Negrito', value: 'bold'},
+              {title: 'Itálico', value: 'italic'},
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'URL',
+                  },
+                ],
+              },
+              {
+                name: 'media',
+                type: 'object',
+                title: 'Mídia',
+                fields: [
+                  {
+                    name: 'src',
+                    type: 'url',
+                    title: 'URL da Mídia',
+                  },
+                ],
+              },
+            ],
+          },
         },
       ],
     },
