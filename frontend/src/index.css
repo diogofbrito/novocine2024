@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	width: 100%;
+	font-family: 'PPTelegraf-Regular';
+	padding: 0;
+	margin: 0;
+}
+
+@font-face {
+	font-family: 'Cine-Display';
+	src: url('./assets/font/Cine-Display.woff2') format('woff2'), url('./assets/font/Cine-Display.woff') format('woff');
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'PPTelegraf-Regular';
+	src: url('./assets/font/PPTelegraf-Regular.woff2') format('woff2'), url('./assets/font/PPTelegraf-Regular.woff') format('woff');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'PPTelegraf-Bold';
+	src: url('./assets/font/PPTelegraf-Bold.woff2') format('woff2'), url('./assets/font/PPTelegraf-Bold.woff') format('woff');
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'PPTelegraf-Oblique';
+	src: url('./assets/font/PPTelegraf-RegularOblique.woff2') format('woff2'), url('./assets/font/PPTelegraf-RegularOblique.woff') format('woff');
+	font-weight: 400;
+}
+
+:root {
+	--background-color-light: #fd6cb4;
+	--text-color-light: white;
+	--background-color-dark: #1a1a1d;
+	--text-color-dark: #eaebde;
+}
+
+html[data-theme="light"] {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+		transition: background-color 0.3s, color 0.3s;
+
+}
+
+
+html[data-theme="light"] body,
+html[data-theme="light"] h1,
+html[data-theme="light"] p,
+html[data-theme="light"] a,
+html[data-theme="light"] .border,
+html[data-theme="light"] .navbar {
+    color: var(--text-color-light);
+    border-color: var(--text-color-light);
+	
+}
+
+
+html[data-theme="light"] ul {
+	background-color: var(--background-color-light);
+}
+
+html[data-theme="dark"] {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+	transition: background-color 0.3s, color 0.3s;
+
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] h1,
+html[data-theme="dark"] p,
+html[data-theme="dark"] a,
+html[data-theme="dark"] .border,
+html[data-theme="dark"] .navbar {
+    color: var(--text-color-dark);
+    border-color: var(--text-color-dark);
+}
+
+html[data-theme="dark"] ul {
+	background-color: var(--background-color-dark);
+}
+
+html[data-theme="dark"] .filter {
+	background-color: var(--background-color-dark);
+	color: var(--text-color-dark);
+}
+
+.input-placeholder::placeholder {
+	color: var(--text-color-light);
+}
+.dark-mode .input-placeholder::placeholder {
+	color: var(--text-color-dark);
+}
+
+.margin-general {
+	margin: 4.5rem;
+}
+
+
