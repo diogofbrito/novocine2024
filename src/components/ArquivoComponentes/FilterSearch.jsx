@@ -1,10 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Search, ChevronDown, ChevronUp } from "lucide-react";
 import sanityClient from "../../SanityClient";
-
-const handleClickOutside = (el) => (e) => {
-    return e.target.contains(el);
-};
 
 export function FilterSearch({
     searchTerm,
@@ -87,31 +83,6 @@ export function FilterSearch({
         setSearchTerm("");
     };
 
-    const yearMenuRef = useRef(null);
-    const countryMenuRef = useRef(null);
-    useEffect(() => {
-        if (!window) return;
-        document.addEventListener(
-            "click",
-            handleClickOutside(yearMenuRef.current)
-        );
-        document.addEventListener(
-            "click",
-            handleClickOutside(countryMenuRef.current)
-        );
-
-        return () => {
-            document.removeEventListener(
-                "click",
-                handleClickOutside(yearMenuRef.current)
-            );
-            document.removeEventListener(
-                "click",
-                handleClickOutside(countryMenuRef.current)
-            );
-        };
-    }, [yearMenuRef.current, countryMenuRef.current]);
-
     return (
         <div className="z-50 flex  w-full justify-between items-center ">
             <div className="flex gap-4 ">
@@ -140,10 +111,7 @@ export function FilterSearch({
                     </button>
 
                     {isYearOpen && (
-                        <ul
-                            ref={yearMenuRef}
-                            className="list-none  mt-2 rounded-3xl border max-h-48 overflow-y-auto absolute w-full z-10 "
-                        >
+                        <ul className="list-none  mt-2 rounded-3xl border max-h-48 overflow-y-auto absolute w-full z-10 ">
                             <li
                                 onClick={() => handleYearClick("")}
                                 className="
@@ -192,10 +160,7 @@ export function FilterSearch({
                     </button>
 
                     {isCountryOpen && (
-                        <ul
-                            ref={countryMenuRef}
-                            className="list-none pt-0 mt-2 rounded-3xl  max-h-48 overflow-y-auto absolute w-full z-10 border "
-                        >
+                        <ul className="list-none pt-0 mt-2 rounded-3xl  max-h-48 overflow-y-auto absolute w-full z-10 border ">
                             <li
                                 onClick={() => handleCountryClick("")}
                                 className="py-1 px-4 hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] cursor-pointer"
