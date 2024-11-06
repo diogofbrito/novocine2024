@@ -8,8 +8,6 @@ import { createSlug } from '../utils/slug.js';
 import { ArchiveList } from '../components/ArquivoComponentes/ArchiveList.jsx';
 import { motion, AnimatePresence } from 'framer-motion';
 
-
-
 const search = ({ searchTerm, selectedYear, selectedCountry }) =>
 	sanityClient.fetch(`
 	*[
@@ -73,7 +71,7 @@ export function Arquivo() {
 		setIsListView(!isListView);
 	};
 
-	if (isLoading) return <div className='w-screen h-screen fixed flex justify-center items-center'>A Carregar...</div>;
+	if (isLoading) return <div className='w-screen h-screen fixed flex justify-center items-center bg-transparent'>A Carregar...</div>;
 
 	const breakpointColumnsObj = {
 		default: 3,

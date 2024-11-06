@@ -61,6 +61,10 @@ html[data-theme="light"] .navbar {
 	
 }
 
+html[data-theme="light"] .newsletter{
+	background-color: rgb(253, 108, 180, 0.5);
+}
+
 
 html[data-theme="light"] ul {
 	background-color: var(--background-color-light);
@@ -81,6 +85,10 @@ html[data-theme="dark"] .border,
 html[data-theme="dark"] .navbar {
     color: var(--text-color-dark);
     border-color: var(--text-color-dark);
+}
+
+html[data-theme="dark"] .newsletter{
+	background-color: rgb(26, 26, 29, 0.5);
 }
 
 html[data-theme="dark"] ul {
