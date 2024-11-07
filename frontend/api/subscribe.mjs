@@ -63,6 +63,4 @@ export async function GET(req) {
     }
 }
 
-export const config = {
-    runtime: "nodejs",
-};
+
