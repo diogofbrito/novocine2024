@@ -1,4 +1,4 @@
-export async function GET(req) {
+export async function POST(req) {
     const { firstName, lastName, email } = req.body;
     const data = {
         email_address: email,
