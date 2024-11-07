@@ -53,7 +53,7 @@ export function NavBar() {
 		}
 
 		try {
-			const response = await axios.post('http://localhost:5001/api/subscribe', {
+			const response = await axios.post('/api/subscribe', {
 				firstName,
 				lastName,
 				email,
