@@ -1,70 +1,57 @@
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import sanityClient from '../SanityClient.js';
+import { useEffect, useState } from 'react';
+import sanityClient from '../SanityClient';
 
 export function Filme() {
 	const { slug } = useParams(); 
-	const [film, setFilm] = useState(null);
+	const [filme, setFilme] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		console.log('Fetching film for slug:', slug); 
 		sanityClient
 			.fetch(
 				`
-            *[_type == "filme" && nome == $name][0] {
-                nome,
-                realizador,
-                pais,
-                ano,
-                minutos,
-                sinopse,
-                entrevista,
-                autorEntrevista,
-                creditos,
-                stills
+        *[_type == "filme" && slug.current == "${slug}"] {
+          nome,
+          realizador,
+          pais,
+          ano,
+          minutos,
+          sinopse,
+          entrevista,
+          autorEntrevista,
+          creditos,
+          stills[0..6]
         }
-    `,
-				{ name: slug.replace(/-/g, ' ') },
+      `,
 			)
 			.then(data => {
-				console.log('Film data:', data);
-				setFilm(data);
+				setFilme(data[0]);
 				setIsLoading(false);
 			})
-			.catch(error => {
-				console.error('Error fetching film:', error);
+			.catch(err => {
+				console.error('Erro ao carregar o filme', err);
 				setIsLoading(false);
 			});
 	}, [slug]);
 
-	if (isLoading) return <div>Carregando...</div>;
-	if (!film) return <div>Filme não encontrado</div>;
+	if (isLoading) {
+		return <div>Carregando...</div>;
+	}
+
+	if (!filme) {
+		return <div>Filme não encontrado!</div>;
+	}
 
 	return (
 		<div>
-			<h1>{film.nome}</h1>
-			<p>Realizador: {film.realizador}</p>
-			<p>País: {film.pais}</p>
-			<p>Ano: {film.ano}</p>
-			<p>Duração: {film.minutos} minutos</p>
-			<p>Sinopse: {film.sinopse}</p>
-			<h2>Entrevista</h2>
-			<p>{film.entrevista.map(block => block.children.map(child => child.text).join(' ')).join('\n')}</p>
-			<h3>Autor da Entrevista: {film.autorEntrevista}</h3>
-			<h4>Créditos:</h4>
-			<ul>
-				{film.creditos.map(credito => (
-					<li key={credito.conteudo}>
-						{credito.tipo}: {credito.conteudo}
-					</li>
-				))}
-			</ul>
-			<div>
-				{film.stills.map((still, index) => (
-					<img key={index} src={still.asset.url} alt={`Still ${index + 1}`} />
-				))}
-			</div>
+			<h1>{filme.nome}</h1>
+			<p>{filme.realizador}</p>
+			<p>{filme.ano}</p>
+			<p>{filme.pais}</p>
+			<p>{filme.minutos} minutos</p>
+			<p>{filme.sinopse}</p>
+			{/* Exibir imagens ou outros dados */}
 		</div>
 	);
 }

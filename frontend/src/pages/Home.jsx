@@ -11,6 +11,7 @@ import Collapse from '@mui/material/Collapse';
 import { urlFor } from '../utils/imageUrlBuilder.js';
 import { DateRangeSharp } from '@mui/icons-material';
 import { Dates } from '../components/Dates.jsx';
+import { SkeletonHome } from '../components/Skeleton/SkeletonHome';
 
 export function Home() {
 	const [latestFilm, setLatestFilm] = useState(null);
@@ -46,7 +47,7 @@ export function Home() {
 		navigator.clipboard.writeText(window.location.href).catch(err => console.error('Erro ao copiar o link: ', err));
 	};
 
-	if (!latestFilm) return <div>Carregando...</div>;
+	if (!latestFilm) return <SkeletonHome />;
 
 	return (
 		<>

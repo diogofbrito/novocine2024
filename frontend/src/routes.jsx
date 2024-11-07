@@ -16,15 +16,15 @@ export const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: '/Sobre',
+				path: '/sobre',
 				element: <Sobre />,
 			},
 			{
-				path: '/Arquivo',
+				path: '/arquivo',
 				element: <Arquivo />,
 			},
 			{
-				path: '/Arquivo/:slug',
+				path: '/arquivo/:slug',
 				element: <Filme />,
 			},
 

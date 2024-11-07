@@ -2,30 +2,31 @@ export default {
   name: 'filme',
   title: 'Filme',
   type: 'document',
-  groups: [
-    {
-      name: 'eng',
-      title: 'VERSÃO ENG',
-    },
-    {
-      name: 'details',
-      title: 'Detalhes do Filme',
-    },
-    {
-      name: 'content',
-      title: 'Conteúdo e Extras',
-    },
-  ],
-  fieldsets: [
-    {name: 'display', title: 'Detalhes de Exibição'},
-    {name: 'credits', title: 'Créditos e Autores'},
-  ],
+
   fields: [
     {
       name: 'nome',
       title: 'Nome do Filme em Maiúsculas',
       type: 'string',
       validation: (Rule) => Rule.required().min(2).max(100),
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'nome',
+        maxLength: 96,
+        slugify: (input) =>
+          input
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '') 
+            .replace(/\s+/g, '-') /
+            .replace(/[^\w\-]+/g, '') 
+            .slice(0, 96),
+      },
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'nomeENG',
@@ -59,7 +60,6 @@ export default {
       name: 'vimeoId',
       title: 'ID do Vídeo no Vimeo',
       type: 'string',
-      validation: (Rule) => Rule.required().regex(/^[0-9]+$/, {name: 'ID numérico'}),
     },
     {
       name: 'stills',
@@ -96,7 +96,6 @@ export default {
       of: [{type: 'block'}],
     },
 
-
     {
       name: 'autorEntrevista',
       title: 'Autores do Texto (Ex: Daniel Pizsmiglio)',
@@ -107,9 +106,6 @@ export default {
       title: 'Autores do Texto (ENG)',
       type: 'string',
     },
-
-
-
 
     {
       name: 'creditos',
@@ -125,7 +121,6 @@ export default {
           ],
         },
       ],
-      fieldset: 'credits',
     },
     {
       name: 'extras',
@@ -157,7 +152,6 @@ export default {
           options: {dateFormat: 'YYYY-MM-DD'},
         },
       ],
-      fieldset: 'display',
     },
   ],
 }

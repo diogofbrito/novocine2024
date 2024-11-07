@@ -86,10 +86,10 @@ export function NavBar() {
 			<div className='fixed z-50 top-0 px-[4.5rem] flex w-screen h-[4.5rem] items-center ' ref={navbarRef}>
 				<div className='grid grid-cols-3 w-full '>
 					<div className='font-bold text-md flex flex-row gap-4 items-center '>
-						<NavLink to='/Arquivo' className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
+						<NavLink to='/arquivo' className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
 							ARQUIVO
 						</NavLink>
-						<NavLink to='/Sobre' className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
+						<NavLink to='/sobre' className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
 							SOBRE
 						</NavLink>
 						<button

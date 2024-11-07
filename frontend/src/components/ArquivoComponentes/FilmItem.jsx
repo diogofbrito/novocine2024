@@ -2,6 +2,7 @@ import React from 'react';
 import { urlFor } from '../../utils/imageUrlBuilder';
 import LazyLoad from 'react-lazyload';
 
+
 export function FilmItem({ film }) {
 	return (
 		<div className='relative pb-6'>

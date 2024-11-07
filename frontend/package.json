@@ -23,7 +23,6 @@
     "date-fns": "^4.1.0",
     "framer-motion": "^11.11.11",
     "gsap": "^3.12.5",
-    "locomotive-scroll": "^4.1.4",
     "lucide-react": "^0.453.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

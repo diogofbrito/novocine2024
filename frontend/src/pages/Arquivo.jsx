@@ -4,9 +4,10 @@ import React, { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
 import { FilterSearch } from '../components/ArquivoComponentes/FilterSearch.jsx';
 import { FilmItem } from '../components/ArquivoComponentes/FilmItem.jsx';
-import { createSlug } from '../utils/slug.js';
+import { SkeletonArchive } from '../components/Skeleton/SkeletonArchive.jsx';
 import { ArchiveList } from '../components/ArquivoComponentes/ArchiveList.jsx';
 import { motion, AnimatePresence } from 'framer-motion';
+
 
 const search = ({ searchTerm, selectedYear, selectedCountry }) =>
 	sanityClient.fetch(`
@@ -39,11 +40,14 @@ const fetchAll = () =>
 		nome,
 		realizador,
 		ano,
+		slug,
 		pais,
 		minutos,
 		stills[0..4] 
 	}
 `);
+
+
 
 export function Arquivo() {
 	const [allFilms, setAllFilms] = useState([]);
@@ -54,6 +58,7 @@ export function Arquivo() {
 	const [selectedCountry, setSelectedCountry] = useState('');
 
 	useEffect(() => {
+
 		if (searchTerm.trim() === '' && selectedYear === '' && selectedCountry === '') {
 			fetchAll().then(data => {
 				setAllFilms(data);
@@ -67,11 +72,17 @@ export function Arquivo() {
 		}
 	}, [searchTerm, selectedYear, selectedCountry]);
 
+	
+
 	const onToggleView = () => {
 		setIsListView(!isListView);
 	};
 
-	if (isLoading) return <div className='w-screen h-screen fixed flex justify-center items-center bg-transparent'>A Carregar...</div>;
+	if (isLoading) {
+		return (
+				<SkeletonArchive />
+		);
+	}
 
 	const breakpointColumnsObj = {
 		default: 3,
@@ -103,9 +114,11 @@ export function Arquivo() {
 						) : (
 							<motion.div key='gallery' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
 								<Masonry breakpointCols={breakpointColumnsObj} className='flex gap-6' >
-									{allFilms.length > 0 ? (
-										allFilms.map(film => (
-											<Link to={`/Arquivo/${createSlug(film.nome)}`} key={film.nome}>
+										{allFilms.length > 0 ? (
+
+											allFilms.map(film => (
+
+											<Link to={`/arquivo/${film.slug?.current}`} key={film.slug?.current}>
 												<FilmItem film={film} />
 											</Link>
 										))
