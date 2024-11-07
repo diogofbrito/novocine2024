@@ -1,5 +1,5 @@
 export async function POST(req) {
-	const { firstName, lastName, email } = req.body;
+	const { firstName, lastName, email } = await req.json();
 	const data = {
 		email_address: email,
 		status: 'subscribed',
@@ -12,19 +12,19 @@ export async function POST(req) {
     
     try {
         
-		const result = await fetch(`https://${process.env.MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members`, {
+		 await fetch(`https://${process.env.MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members`, {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: {
 				Authorization: `apikey ${process.env.MAILCHIMP_API_KEY}`,
 			},
 		});
-		return result /* Response.json(
+		return  Response.json(
 			{ message: 'Inscrição realizada com sucesso!' },
 			{
 				status: 200,
 			},
-		); */
+		); 
 	} catch (error) {
 		if (error.response) {
 			console.error('Error response from Mailchimp:', error.response.data);

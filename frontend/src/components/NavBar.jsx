@@ -67,7 +67,7 @@ export function NavBar() {
 			if (error.response) {
 				setMessage(error.response.data.message);
 			} else {
-				setMessage('Erro ao se inscrever. Tente novamente mais tarde, bgd');
+				setMessage('Erro ao se inscrever. Tente novamente mais tarde.bgd');
 			}
 		}
 	};
