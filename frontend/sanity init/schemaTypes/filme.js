@@ -86,14 +86,12 @@ export default {
     {
       name: 'entrevista',
       title: 'Corpo de Texto para o Filme',
-      type: 'array',
-      of: [{type: 'block'}],
+      type: 'entrevista',
     },
     {
       name: 'entrevistaENG',
       title: 'Corpo de Texto para o Filme (ENG)',
-      type: 'array',
-      of: [{type: 'block'}],
+      type: 'entrevista',
     },
 
     {
