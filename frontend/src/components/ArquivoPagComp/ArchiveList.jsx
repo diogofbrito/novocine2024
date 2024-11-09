@@ -15,10 +15,7 @@ export function ArchiveList({ films }) {
 			</div>
 			{films.length > 0 ? (
 				films.map(film => (
-					<Link
-						
-						
-						className='grid grid-cols-4 items-center w-full p-4 border rounded-3xl hover:bg-[var(--text-color-light)] dark:hover:bg-[var(--text-color-dark)]'
+					<Link to={`/arquivo/${film.slug?.current}`} key={film.slug?.current} className='grid grid-cols-4 items-center w-full p-4 border rounded-3xl hover:bg-[var(--text-color-light)] dark:hover:bg-[var(--text-color-dark)]'
 					>
 						<p className='col-span-2 text-5xl font-cine max-md:text-base  '>{film.nome}</p>
 

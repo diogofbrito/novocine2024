@@ -10,7 +10,6 @@ import { TerceiraSecCreditos } from '../components/FilmeComp/TerceiraSecCreditos
 export function Filme() {
 	const { slug } = useParams();
 	const [film, setFilm] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		sanityClient
@@ -32,20 +31,16 @@ export function Filme() {
 			)
 			.then(data => {
 				setFilm(data[0]);
-				setIsLoading(false);
 			})
 			.catch(err => {
 				console.error('Erro ao carregar o filme', err);
-				setIsLoading(false);
 			});
 	}, [slug]);
 
-	if (isLoading) {
-		return <div>Carregando...</div>;
-	}
+	
 
 	if (!film) {
-		return <div>Filme não encontrado!</div>;
+		return null
 	}
 
 	const stillsUrls = film.stills?.map(image => urlFor(image).url()) || [];

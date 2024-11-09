@@ -28,6 +28,7 @@ const search = ({ searchTerm, selectedYear, selectedCountry }) =>
 			nome,
 			realizador,
 			ano,
+			slug,
 			pais,
 			minutos,
 			stills[0..4]
