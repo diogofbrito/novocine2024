@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 export function ArchiveList({ films }) {
 	return (
-		<div className='w-full flex flex-col justify-center items-center gap-4'>
-			<div className='grid grid-cols-4 items-center w-full px-4 '>
+		<div className='w-full flex flex-col justify-center gap-4 '>
+			<div className='grid grid-cols-4  w-full px-4 '>
 				<p className='col-span-2 '>título</p>
 				<p className='col-span-1 '>realizador</p>
 				<div className='col-span-1 grid grid-cols-4 w-full'>

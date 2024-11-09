@@ -1,13 +1,12 @@
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import sanityClient from '../SanityClient.js';
-import React, { useEffect, useState } from 'react';
 import Masonry from 'react-masonry-css';
-import { FilterSearch } from '../components/ArquivoComponentes/FilterSearch.jsx';
-import { FilmItem } from '../components/ArquivoComponentes/FilmItem.jsx';
-import { SkeletonArchive } from '../components/Skeleton/SkeletonArchive.jsx';
-import { ArchiveList } from '../components/ArquivoComponentes/ArchiveList.jsx';
+import { FilterSearch } from '../components/ArquivoPagComp/FilterSearch.jsx';
+import { FilmItem } from '../components/ArquivoPagComp/FilmItem.jsx';
+import { SkeletonArchiveMasonry } from '../components/Skeleton/SkeletonArchiveMasonry.jsx';
+import { ArchiveList } from '../components/ArquivoPagComp/ArchiveList.jsx';
 import { motion, AnimatePresence } from 'framer-motion';
-
 
 const search = ({ searchTerm, selectedYear, selectedCountry }) =>
 	sanityClient.fetch(`
@@ -47,8 +46,6 @@ const fetchAll = () =>
 	}
 `);
 
-
-
 export function Arquivo() {
 	const [allFilms, setAllFilms] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -58,7 +55,6 @@ export function Arquivo() {
 	const [selectedCountry, setSelectedCountry] = useState('');
 
 	useEffect(() => {
-
 		if (searchTerm.trim() === '' && selectedYear === '' && selectedCountry === '') {
 			fetchAll().then(data => {
 				setAllFilms(data);
@@ -72,17 +68,9 @@ export function Arquivo() {
 		}
 	}, [searchTerm, selectedYear, selectedCountry]);
 
-	
-
 	const onToggleView = () => {
 		setIsListView(!isListView);
 	};
-
-	if (isLoading) {
-		return (
-				<SkeletonArchive />
-		);
-	}
 
 	const breakpointColumnsObj = {
 		default: 3,
@@ -105,26 +93,27 @@ export function Arquivo() {
 					isListView={isListView}
 				/>
 
-				<div className='pt-8'>
+				<div className='pt-6'>
 					<AnimatePresence mode='wait'>
-						{isListView ? (
-							<motion.div key='list' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-								<ArchiveList films={allFilms} />
-							</motion.div>
+						{isLoading ? (
+							<SkeletonArchiveMasonry />
 						) : (
-							<motion.div key='gallery' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-								<Masonry breakpointCols={breakpointColumnsObj} className='flex gap-6' >
+							<motion.div key={isListView ? 'list' : 'gallery'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+								{isListView ? (
+									<ArchiveList films={allFilms} />
+								) : (
+									<Masonry breakpointCols={breakpointColumnsObj} className='flex gap-6'>
 										{allFilms.length > 0 ? (
 											allFilms.map(film => (
-
-											<Link to={`/arquivo/${film.slug?.current}`} key={film.slug?.current}>
-												<FilmItem film={film} />
-											</Link>
-										))
-									) : (
-										<div>Filme não encontrado</div>
-									)}
-								</Masonry>
+												<Link to={`/arquivo/${film.slug?.current}`} key={film.slug?.current}>
+													<FilmItem film={film} />
+												</Link>
+											))
+										) : (
+											<div>Filme não encontrado</div>
+										)}
+									</Masonry>
+								)}
 							</motion.div>
 						)}
 					</AnimatePresence>

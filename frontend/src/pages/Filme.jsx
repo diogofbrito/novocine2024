@@ -1,10 +1,15 @@
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import sanityClient from '../SanityClient';
+import { urlFor } from '../utils/imageUrlBuilder';
+import { Carrossel } from '../components/FilmeDinamicaPagComp/Carrossel';
+import { PrimeiraSecDetalhes } from '../components/FilmeComp/PrimeiraSecDetalhes';
+import { SegundaSecEntrevista } from '../components/FilmeComp/SegundaSecEntrevista';
+import { TerceiraSecCreditos } from '../components/FilmeComp/TerceiraSecCreditos';
 
 export function Filme() {
-	const { slug } = useParams(); 
-	const [filme, setFilme] = useState(null);
+	const { slug } = useParams();
+	const [film, setFilm] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -21,12 +26,12 @@ export function Filme() {
           entrevista,
           autorEntrevista,
           creditos,
-          stills[0..6]
+          stills
         }
       `,
 			)
 			.then(data => {
-				setFilme(data[0]);
+				setFilm(data[0]);
 				setIsLoading(false);
 			})
 			.catch(err => {
@@ -39,19 +44,29 @@ export function Filme() {
 		return <div>Carregando...</div>;
 	}
 
-	if (!filme) {
+	if (!film) {
 		return <div>Filme não encontrado!</div>;
 	}
 
+	const stillsUrls = film.stills?.map(image => urlFor(image).url()) || [];
+
 	return (
-		<div>
-			<h1>{filme.nome}</h1>
-			<p>{filme.realizador}</p>
-			<p>{filme.ano}</p>
-			<p>{filme.pais}</p>
-			<p>{filme.minutos} minutos</p>
-			<p>{filme.sinopse}</p>
-			{/* Exibir imagens ou outros dados */}
+		<div className='margin-general'>
+			<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 '>
+				<div className='flex flex-col text-center'>
+					<h1 className='text-9xl font-cine text-white '>{film.nome}</h1>
+					<p>
+						um filme de <strong>{film.realizador}</strong>
+					</p>
+				</div>
+				<div className='flex-grow '>{stillsUrls.length > 0 && <Carrossel images={stillsUrls} />}</div>
+			</div>
+
+			<div className='pt-[4.5rem]'>
+				<PrimeiraSecDetalhes film={film} />
+				<SegundaSecEntrevista film={film} />
+				<TerceiraSecCreditos film={film} />
+			</div>
 		</div>
 	);
 }
