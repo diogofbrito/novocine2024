@@ -3,14 +3,11 @@ import sanityClient from '../SanityClient.js';
 import XIcon from '@mui/icons-material/X';
 import Facebook from '@mui/icons-material/Facebook';
 import LinkIcon from '@mui/icons-material/Link';
-import CloseIcon from '@mui/icons-material/Close';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import ShareIcon from '@mui/icons-material/Share';
 import Collapse from '@mui/material/Collapse';
 import { urlFor } from '../utils/imageUrlBuilder.js';
-import { DateRangeSharp } from '@mui/icons-material';
-import { Dates } from '../components/Dates.jsx';
 import { SkeletonHome } from '../components/Skeleton/SkeletonHome';
 
 export function Home() {
@@ -51,7 +48,7 @@ export function Home() {
 
 	return (
 		<>
-			<Dates />
+			
 			<div
 				className='mx-[4.5rem] my-[4.5rem] rounded-[50px] h-[calc(100vh-9rem)]'
 				style={{

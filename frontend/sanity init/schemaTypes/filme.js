@@ -21,9 +21,9 @@ export default {
           input
             .toLowerCase()
             .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '') 
-            .replace(/\s+/g, '-') /
-            .replace(/[^\w\-]+/g, '') 
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/[^\w\-]+/g, '')
             .slice(0, 96),
       },
       validation: (Rule) => Rule.required(),
