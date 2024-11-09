@@ -11,8 +11,7 @@ export function NavBar() {
 	const [showNewsletter, setShowNewsletter] = useState(false);
 	const location = useLocation();
 	const currentPath = location.pathname;
-
-	const isFilmDetailPage = currentPath.startsWith('/arquivo/') && currentPath.split('/').length === 3;
+	const isFilmDetailPage = currentPath.startsWith('/arquivo/') && !["/arquivo", "/arquivo/"].includes(currentPath)
 
 	useEffect(() => {
 		const navbar = navbarRef.current;
