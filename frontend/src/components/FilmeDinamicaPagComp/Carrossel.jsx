@@ -15,7 +15,7 @@ export function Carrossel({ images }) {
 	return (
 		<div className='flex gap-4  h-full'>
 			{images.map((image, index) => (
-				<div className='relative overflow-hidden h-full min-w-[100px] bg-slate-400 rounded-xl flex justify-center'>
+				<div className='relative overflow-hidden h-full min-w-[100px] bg-slate-400 rounded-xl flex justify-center' key={index}>
 					<img src={image} alt={image} style={{objectFit: "cover"}} />
 				</div>
 			))}

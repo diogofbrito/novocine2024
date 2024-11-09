@@ -1,6 +1,6 @@
 import React from 'react';
 import { PortableText } from '@portabletext/react';
-
+import { ImagemEntrevista } from './ImagemEntrevista';
 
 export function SegundaSecEntrevista({ film }) {
 	return (
@@ -9,8 +9,7 @@ export function SegundaSecEntrevista({ film }) {
 				<div className='w-2/3 font-regular'>
 					<div className='pb-2 font-oblique'>{film.autorEntrevista}</div>
 					{film.entrevista && film.entrevista.length > 0 ? (
-						
-						<PortableText value={film.entrevista} />
+						<PortableText value={film.entrevista} components={{ types: { image: ImagemEntrevista } }} />
 					) : (
 						<div className='text-center'>Nenhuma entrevista disponível</div>
 					)}

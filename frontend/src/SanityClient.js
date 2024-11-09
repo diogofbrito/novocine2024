@@ -1,5 +1,6 @@
 import { createClient } from '@sanity/client';
 
+
 const sanityClient = createClient({
 	projectId: '3b3ndxr9', 
 	dataset: 'novocine', 
@@ -8,3 +9,4 @@ const sanityClient = createClient({
 });
 
 export default sanityClient;
+
