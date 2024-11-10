@@ -12,7 +12,7 @@ export function TerceiraSecCreditos({ film }) {
 	if (!film.creditos || film.creditos.length === 0) return null;
 
 	return (
-		<div className='flex justify-center text-xl '>
+		<div className='flex justify-center text-lg '>
 			<div className='w-full'>
 				<div className='text-center pb-2 font-oblique'>{translation[lang].creditos}</div>
 				<div className='flex flex-col gap-2 pt-2 '>
@@ -25,7 +25,7 @@ export function TerceiraSecCreditos({ film }) {
 				</div>
 
 				{extras && extras.length > 0 && (
-					<div className='text-center text-xl pt-14'>
+					<div className='text-center text-lg pt-14'>
 						<PortableText value={extras} components={{ types: { image: Imagem } }} />
 					</div>
 				)}

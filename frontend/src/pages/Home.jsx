@@ -27,6 +27,7 @@ export function Home() {
 					entrevista,
 					entrevistaENG,
 					autorEntrevista, 
+					autorEntrevistaENG,
 					creditos, 
 					extras,
 					extrasENG,
@@ -65,8 +66,8 @@ export function Home() {
 						onClick={() => window.open(`https://vimeo.com/${film.vimeoId}`, '_blank')}
 						className='flex items-center justify-center space-x-2 border  rounded-full pl-3 pr-2 py-1  hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out '
 					>
-						<span className='font-bold'>PLAY</span>
-						<span className='w-5 h-5'>
+						<span className='font-bold text-xl'>PLAY</span>
+						<span className='w-6 h-6'>
 							<svg width='100%' height='100%' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
 								<path
 									fillRule='evenodd'

@@ -7,15 +7,15 @@ export function SegundaSecEntrevista({ film }) {
 	const { lang } = useLang();
 
 	const entrevista = lang === 'PT' ? film.entrevista : film.entrevistaENG;
+	const autorEntrevista = lang === 'PT' ? film.autorEntrevista : film.autorEntrevistaENG;
 
 	if (!entrevista || entrevista.length === 0) return null;
 
 	return (
 		<div className='my-14 '>
 			<div className='flex justify-center '>
-				<div className='w-3/5 font-regular text-xl leading-[1.5]'>
-					<div className='pb-4 font-oblique text-center'>{film.autorEntrevista}</div>
-
+				<div className='w-3/5 font-regular text-lg leading-[1.4]'>
+					{autorEntrevista && <div className='pb-4 font-oblique text-center'>{autorEntrevista}</div>}
 					<PortableText value={entrevista} components={{ types: { image: Imagem } }} />
 				</div>
 			</div>

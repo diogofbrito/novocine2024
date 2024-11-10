@@ -22,15 +22,15 @@ export function PrimeiraSecDetalhes({ film }) {
 
 	return (
 		<div className='rounded-[50px] border p-10 '>
-			<div className='flex gap-6'>
+			<div className='flex gap-6 items-center'>
 				<div className='flex flex-col w-1/2 '>
-					<div className='text-7xl font-["Cine-Display"] '>{film.nome}</div>
-					<p className='text-xl'>
+					<div className='text-8xl font-["Cine-Display"] '>{film.nome}</div>
+					<p className='text-lg'>
 						{translation[lang].de} <strong>{film.realizador}</strong>
 						<br />
 						{film.ano} &bull; {film.pais} &bull; {film.minutos} {translation[lang].minutos}
 					</p>
-					<div className='flex pt-4 -mx-2 -my-2'>
+					<div className='flex pt-2 -mx-2 -my-2'>
 						<IconButton onClick={() => setShowShareOptions(!showShareOptions)} sx={{ color: 'inherit' }}>
 							<Tooltip title='Partilhar'>
 								<ShareIcon />
@@ -63,7 +63,7 @@ export function PrimeiraSecDetalhes({ film }) {
 						</Collapse>
 					</div>
 				</div>
-				<div className='w-1/2 text-xl leading-[1.5] font-regular '>
+				<div className='w-1/2 text-lg leading-[1.4] font-regular '>
 					<div>
 						<p dangerouslySetInnerHTML={{ __html: sinopse }} className='whitespace-pre-line' />
 					</div>
