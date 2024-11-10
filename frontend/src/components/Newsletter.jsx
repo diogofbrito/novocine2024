@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { ArrowRight, X } from 'lucide-react';
-import { translation } from '../translation';
+import { translation } from '../Lang/translation';
 import { useLang } from '../components/LangProvider';
 
 export function Newsletter({ showNewsletter, setShowNewsletter }) {

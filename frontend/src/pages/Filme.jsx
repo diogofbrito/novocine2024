@@ -7,12 +7,12 @@ import { PrimeiraSecDetalhes } from '../components/FilmeComp/PrimeiraSecDetalhes
 import { SegundaSecEntrevista } from '../components/FilmeComp/SegundaSecEntrevista';
 import { TerceiraSecCreditos } from '../components/FilmeComp/TerceiraSecCreditos';
 import { useLang } from '../components/LangProvider';
-import { translation } from '../translation';
+import { translation } from '../Lang/translation';
 
 export function Filme() {
 	const { slug } = useParams();
 	const [film, setFilm] = useState(null);
-	const { lang  } = useLang();
+	const { lang } = useLang();
 
 	useEffect(() => {
 		sanityClient

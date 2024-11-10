@@ -1,9 +1,8 @@
-import React , { useState } from 'react';
+import React, { useState } from 'react';
 import { urlFor } from '../../utils/imageUrlBuilder';
 import { Skeleton } from '@mui/material';
 import { useLang } from '../LangProvider';
-import { translation } from '../../translation.js';
-
+import { translation } from '../../Lang/translation.js';
 
 export function FilmItem({ film }) {
 	const [imageLoaded, setImageLoaded] = useState(false);

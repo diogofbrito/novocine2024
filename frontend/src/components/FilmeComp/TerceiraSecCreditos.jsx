@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLang } from '../LangProvider';
-import { translation } from '../../translation.js';
+import { translation } from '../../Lang/translation.js';
 
 export function TerceiraSecCreditos({ film }) {
-		const { lang } = useLang();
+	const { lang } = useLang();
 
 	return (
 		<div className='flex justify-center '>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../LangProvider';
-import { translation } from '../../translation.js';
+import { translation } from '../../Lang/translation.js';
 
 export function ArchiveList({ films }) {
 	const { lang } = useLang();
@@ -26,7 +26,7 @@ export function ArchiveList({ films }) {
 						<p className='col-span-2 text-5xl font-cine max-md:text-base  '>{film.nome}</p>
 
 						<p className='col-span-1  '>
-							 <span className='font-bold'>{film.realizador}</span>
+							<span className='font-bold'>{film.realizador}</span>
 						</p>
 
 						<div className='col-span-1 grid grid-cols-4 w-full'>

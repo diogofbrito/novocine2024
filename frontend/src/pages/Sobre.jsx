@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { translation } from '../translation';
+import { translation } from '../Lang/translation';
 import { useLang } from '../components/LangProvider';
 
 export function Sobre() {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { Search } from 'lucide-react';
 import { useLang } from '../LangProvider';
-import { translation } from '../../translation.js';
+import { translation } from '../../Lang/translation.js';
 
 export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelectedYear, selectedCountry, setSelectedCountry, films, onToggleView, isListView }) {
 	const [years, setYears] = useState([]);

@@ -6,7 +6,7 @@ import { TerceiraSecCreditos } from '../components/FilmeComp/TerceiraSecCreditos
 import { urlFor } from '../utils/imageUrlBuilder.js';
 import { SkeletonHome } from '../components/Skeleton/SkeletonHome';
 import { useLang } from '../components/LangProvider';
-import { translation } from '../translation';
+import { translation } from '../Lang/translation.js';
 
 export function Home() {
 	const [film, setFilm] = useState(null);
