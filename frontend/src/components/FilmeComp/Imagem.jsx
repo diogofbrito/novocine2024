@@ -1,12 +1,12 @@
 import React from 'react';
 import { urlFor } from '../../utils/imageUrlBuilder';
 
-export function ImagemEntrevista({ value }) {
+export function Imagem({ value }) {
     return (
         
-		<figure className='w-full h-[300px]'>
+		<figure className='w-full '>
             <img src={urlFor(value.asset).url()} alt={value.caption} className='w-full h-full object-cover' />
-            <figcaption className='text-right pb-7'>{value.caption}</figcaption>
+            <figcaption className='text-right pb-7 text-base'>{value.caption}</figcaption>
 		</figure>
 	);
 }

@@ -123,14 +123,12 @@ export default {
     {
       name: 'extras',
       title: 'Extras (Agradecimentos, Logos)',
-      type: 'array',
-      of: [{type: 'block'}],
+      type: 'extras',
     },
     {
       name: 'extrasENG',
       title: 'Extras (ENG)',
-      type: 'array',
-      of: [{type: 'block'}],
+      type: 'extras',
     },
     {
       name: 'dataExibicao',

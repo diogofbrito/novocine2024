@@ -28,6 +28,8 @@ export function Home() {
 					entrevistaENG,
 					autorEntrevista, 
 					creditos, 
+					extras,
+					extrasENG,
 					dataExibicao, 
 					stills[0]
 				}
