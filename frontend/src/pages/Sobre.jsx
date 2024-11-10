@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { translation } from '../translation';
 
 export function Sobre() {
 	const [isThermsView, setIsThermsView] = useState(true);
+	const { lang, toggleLang } = useLang();
 
 	const onToggleView = () => {
 		setIsThermsView(!isThermsView);
