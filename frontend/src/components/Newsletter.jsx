@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { ArrowRight } from 'lucide-react';
-import { X } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
+import { translation } from '../translation';
+import { useLang } from '../components/LangProvider';
 
 export function Newsletter({ showNewsletter, setShowNewsletter }) {
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
+	const { lang } = useLang();
 
 	const handleSubscribe = async () => {
 		if (!email) {
-			setMessage('Email é obrigatório!');
+			setMessage(translation[lang].emailObrigatorio);
 			return;
 		}
 
 		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailPattern.test(email)) {
-			setMessage('Por favor, forneça um email válido.');
+			setMessage(translation[lang].emailInvalido);
 			return;
 		}
 
@@ -28,7 +30,7 @@ export function Newsletter({ showNewsletter, setShowNewsletter }) {
 				email,
 			});
 
-			setMessage(response.data.message);
+			setMessage(response.data.message || translation[lang].sucessoInscricao);
 			setFirstName('');
 			setLastName('');
 			setEmail('');
@@ -36,7 +38,7 @@ export function Newsletter({ showNewsletter, setShowNewsletter }) {
 			if (error.response) {
 				setMessage(error.response.data.message);
 			} else {
-				setMessage('Erro ao se inscrever. Tente novamente mais tarde.bgd');
+				setMessage(translation[lang].erroInscricao);
 			}
 		}
 	};
@@ -53,18 +55,18 @@ export function Newsletter({ showNewsletter, setShowNewsletter }) {
 		<>
 			{showNewsletter && (
 				<div className='newsletter fixed top-0 bottom-0 left-0 right-0 z-50 flex justify-center items-center  dark:bg-[rgba(234,235,222,0.8)] backdrop-blur-2xl flex-col gap-4'>
-					<div>Subscreve a nossa newsletter para acompanhares todas as novidades.</div>
+					<div>{translation[lang].subscrevaMensagem}</div>
 					<div className='flex flex-row gap-4 '>
 						<input
 							type='text'
-							placeholder='Primeiro Nome'
+							placeholder={translation[lang].placeholderPrimeiroNome}
 							className='px-3 py-1 border rounded-full outline-none  bg-transparent input-placeholder'
 							value={firstName}
 							onChange={e => setFirstName(e.target.value)}
 						/>
 						<input
 							type='text'
-							placeholder='Último Nome'
+							placeholder={translation[lang].placeholderUltimoNome}
 							className='px-3 py-1 border rounded-full outline-none bg-transparent input-placeholder'
 							value={lastName}
 							onChange={e => setLastName(e.target.value)}
@@ -72,7 +74,7 @@ export function Newsletter({ showNewsletter, setShowNewsletter }) {
 						<div className='flex gap-4 pl-3 pr-2 py-1 border rounded-full '>
 							<input
 								type='email'
-								placeholder='Email *'
+								placeholder={translation[lang].placeholderEmail}
 								className='flex-grow border-none bg-transparent mr-2 outline-none text-base leading-none input-placeholder'
 								value={email}
 								onChange={e => setEmail(e.target.value)}

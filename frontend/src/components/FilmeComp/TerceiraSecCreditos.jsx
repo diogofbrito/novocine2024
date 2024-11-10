@@ -1,10 +1,14 @@
 import React from 'react';
+import { useLang } from '../LangProvider';
+import { translation } from '../../translation.js';
 
 export function TerceiraSecCreditos({ film }) {
+		const { lang } = useLang();
+
 	return (
 		<div className='flex justify-center '>
-			<div className='w-2/3 '>
-				<div className='text-center pb-2 font-oblique'>créditos</div>
+			<div className='w-2/4 '>
+				<div className='text-center pb-2 font-oblique'>{translation[lang].creditos}</div>
 
 				<div className='flex flex-col gap-2 pt-2'>
 					{film.creditos && film.creditos.length > 0 ? (

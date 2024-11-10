@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import ShareIcon from "@mui/icons-material/Share";
 import Collapse from "@mui/material/Collapse";
 import { useLang } from "../LangProvider";
+import { translation } from "../../translation.js";
 
 export function PrimeiraSecDetalhes({ film }) {
     const [showShareOptions, setShowShareOptions] = useState(false);
@@ -22,88 +23,55 @@ export function PrimeiraSecDetalhes({ film }) {
     const sinopse = lang === "PT" ? film.sinopse : film.sinopseENG;
 
     return (
-        <div className="rounded-[50px] border  p-10 ">
-            <div className="flex">
-                <div className="flex flex-col w-1/2 ">
-                    <div className='text-8xl font-["Cine-Display"] '>
-                        {film.nome}
-                    </div>
-                    <p className="text-lg">
-                        de <strong>{film.realizador}</strong>
-                        <br />
-                        {film.ano} &bull; {film.pais} &bull; {film.minutos}{" "}
-                        minutos
-                    </p>
-                    <div className="flex pt-4 -mx-2 -my-2">
-                        <IconButton
-                            onClick={() =>
-                                setShowShareOptions(!showShareOptions)
-                            }
-                            sx={{ color: "inherit" }}
-                        >
-                            <Tooltip title="Partilhar">
-                                <ShareIcon />
-                            </Tooltip>
-                        </IconButton>
+			<div className='rounded-[50px] border  p-10 '>
+				<div className='flex'>
+					<div className='flex flex-col w-1/2 '>
+						<div className='text-8xl font-["Cine-Display"] '>{film.nome}</div>
+						<p className='text-lg'>
+							{translation[lang].de} <strong>{film.realizador}</strong>
+							<br />
+							{film.ano} &bull; {film.pais} &bull; {film.minutos} {translation[lang].minutos}
+						</p>
+						<div className='flex pt-4 -mx-2 -my-2'>
+							<IconButton onClick={() => setShowShareOptions(!showShareOptions)} sx={{ color: 'inherit' }}>
+								<Tooltip title='Partilhar'>
+									<ShareIcon />
+								</Tooltip>
+							</IconButton>
 
-                        <Collapse in={showShareOptions} timeout="auto">
-                            <div className="flex">
-                                <IconButton
-                                    onClick={() =>
-                                        window.open(
-                                            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                                                window.location.href
-                                            )}`,
-                                            "_blank"
-                                        )
-                                    }
-                                    sx={{ color: "inherit" }}
-                                >
-                                    <Tooltip title="Facebook">
-                                        <Facebook />
-                                    </Tooltip>
-                                </IconButton>
+							<Collapse in={showShareOptions} timeout='auto'>
+								<div className='flex'>
+									<IconButton onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank')} sx={{ color: 'inherit' }}>
+										<Tooltip title='Facebook'>
+											<Facebook />
+										</Tooltip>
+									</IconButton>
 
-                                <IconButton
-                                    onClick={() =>
-                                        window.open(
-                                            `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                                                window.location.href
-                                            )}&text=NOVOCINE: ${film.nome}`,
-                                            "_blank"
-                                        )
-                                    }
-                                    sx={{ color: "inherit" }}
-                                >
-                                    <Tooltip title="X">
-                                        <XIcon />
-                                    </Tooltip>
-                                </IconButton>
+									<IconButton
+										onClick={() => window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=NOVOCINE: ${film.nome}`, '_blank')}
+										sx={{ color: 'inherit' }}
+									>
+										<Tooltip title='X'>
+											<XIcon />
+										</Tooltip>
+									</IconButton>
 
-                                <IconButton
-                                    onClick={handleCopyLink}
-                                    sx={{ color: "inherit" }}
-                                >
-                                    <Tooltip title="Copiar Link">
-                                        <LinkIcon />
-                                    </Tooltip>
-                                </IconButton>
-                            </div>
-                        </Collapse>
-                    </div>
-                </div>
-                <div className="w-1/2 text-xl leading-tight flex items-center font-regular ">
-                    <div>
-                        <div className="text-base font-oblique mb-2">
-                            sinopse
-                        </div>
-                        <p
-                            dangerouslySetInnerHTML={{ __html: sinopse }}
-                            className="whitespace-pre-line"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+									<IconButton onClick={handleCopyLink} sx={{ color: 'inherit' }}>
+										<Tooltip title='Copiar Link'>
+											<LinkIcon />
+										</Tooltip>
+									</IconButton>
+								</div>
+							</Collapse>
+						</div>
+					</div>
+					<div className='w-1/2 text-xl leading-tight flex items-center font-regular '>
+						<div>
+							<div className='text-base font-oblique pb-4'>{translation[lang].sinopse}</div>
+							<p dangerouslySetInnerHTML={{ __html: sinopse }} className='whitespace-pre-line' />
+						</div>
+					</div>
+				</div>
+			</div>
+		);
 }

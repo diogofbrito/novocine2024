@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { translation } from '../translation';
+import { useLang } from '../components/LangProvider';
 
 export function Sobre() {
 	const [isThermsView, setIsThermsView] = useState(true);
-	const { lang, toggleLang } = useLang();
+	const { lang } = useLang();
 
 	const onToggleView = () => {
 		setIsThermsView(!isThermsView);
@@ -14,23 +15,25 @@ export function Sobre() {
 			<div className='flex-grow flex justify-center items-center '>
 				{isThermsView ? (
 					<div className='text-xl w-2/4 leading-tight '>
-						É uma sala de cinema online que disponibiliza gratuitamente um novo filme a cada vinte dias. A plataforma surge para criar um acesso continuo a uma variedade de obras realizadas por
-						cineastas e artistas visuais de língua portuguesa, celebrando novas vozes ao lado de re-descobertas, reunindo-as num arquivo aberto em constante desenvolvimento. <br></br>
-						<br></br>
-						Programada por Madalena Fragoso e Afonso Mota. <br></br>
-						Design Gráfico e Web por Diogo Brito.
+						{translation[lang].sobreText}
+
+						<div className='pt-6'>
+							{translation[lang].sobreCreditos.map((text, index) => (
+								<p key={index}>{text}</p>
+							))}
+						</div>
 					</div>
 				) : (
-					<div className='text-xl w-2/4 leading-tight '>
-						Os autores e distribuidores dos filmes apresentados no novocine.pt detêm os direitos exclusivos de utilização, publicação e reprodução das suas obras. <br></br> <br></br>
-						Nenhum dos filmes apresentados nesta plataforma poderão ser descarregados, directamente ou indirectamente publicados, reproduzidos, copiados, arquivados, manipulados, modificados,
-						vendidos, transmitidos, projectados ou usados de forma alguma ou redistribuídos em qualquer meio sem a permissão explícita dos autores.
+					<div className='text-xl w-2/4 leading-tight flex flex-col gap-6'>
+						{translation[lang].termosText.map((text, index) => (
+							<p key={index}>{text}</p>
+						))}
 					</div>
 				)}
 			</div>
 			<div className='flex items-center justify-center h-[4.5rem] gap-4'>
-				<button onClick={onToggleView} className='link px-3 py-1 border rounded-full font-bold text-md hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out'>
-					{isThermsView ? 'TERMOS' : 'VOLTAR'}
+				<button onClick={onToggleView} className='uppercase link px-3 py-1 border rounded-full font-bold text-md hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out'>
+					{isThermsView ? translation[lang].termos : translation[lang].voltar}
 				</button>
 				<a
 					href='https://www.instagram.com/novocine/'

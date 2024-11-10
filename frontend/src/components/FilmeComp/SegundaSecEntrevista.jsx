@@ -9,10 +9,10 @@ export function SegundaSecEntrevista({ film }) {
     const entrevista = lang === "PT" ? film.entrevista : film.entrevistaENG;
 
     return (
-        <div className="pt-14">
-            <div className="flex justify-center pb-12">
-                <div className="w-2/3 font-regular">
-                    <div className="pb-2 font-oblique">
+        <div className="my-14 ">
+            <div className="flex justify-center ">
+                <div className="w-2/4 font-regular text-xl">
+                    <div className="pb-4 font-oblique text-base">
                         {film.autorEntrevista}
                     </div>
                     {entrevista && entrevista.length > 0 ? (

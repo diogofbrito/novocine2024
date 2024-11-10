@@ -5,9 +5,12 @@ import { SegundaSecEntrevista } from '../components/FilmeComp/SegundaSecEntrevis
 import { TerceiraSecCreditos } from '../components/FilmeComp/TerceiraSecCreditos.jsx';
 import { urlFor } from '../utils/imageUrlBuilder.js';
 import { SkeletonHome } from '../components/Skeleton/SkeletonHome';
+import { useLang } from '../components/LangProvider';
+import { translation } from '../translation';
 
 export function Home() {
 	const [film, setFilm] = useState(null);
+	const { lang } = useLang();
 
 	useEffect(() => {
 		async function getLatestFilm() {
@@ -53,7 +56,7 @@ export function Home() {
 					<div>
 						<h1 className='text-9xl font-cine text-white text-center'>{film.nome}</h1>
 						<p className='text-lg -mt-3 text-center text-white'>
-							um filme de <strong>{film.realizador}</strong>
+							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 						</p>
 					</div>
 					<button

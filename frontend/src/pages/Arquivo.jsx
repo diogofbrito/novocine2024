@@ -8,6 +8,7 @@ import { SkeletonArchiveMasonry } from '../components/Skeleton/SkeletonArchiveMa
 import { ArchiveList } from '../components/ArquivoPagComp/ArchiveList.jsx';
 import { motion, AnimatePresence } from 'framer-motion';
 
+
 const search = ({ searchTerm, selectedYear, selectedCountry }) =>
 	sanityClient.fetch(`
 	*[

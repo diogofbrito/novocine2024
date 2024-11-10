@@ -1,11 +1,13 @@
 import React , { useState } from 'react';
 import { urlFor } from '../../utils/imageUrlBuilder';
 import { Skeleton } from '@mui/material';
-
+import { useLang } from '../LangProvider';
+import { translation } from '../../translation.js';
 
 
 export function FilmItem({ film }) {
 	const [imageLoaded, setImageLoaded] = useState(false);
+	const { lang } = useLang();
 
 	const handleImageLoad = () => {
 		setImageLoaded(true);
@@ -14,7 +16,7 @@ export function FilmItem({ film }) {
 	return (
 		<div className='relative pb-6'>
 			<div className='group relative mb-[1px] overflow-hidden rounded-3xl shadow-custom transition-all duration-300 ease-custom'>
-				{!imageLoaded && <Skeleton variant='rectangular' width='100%' height={500} sx={{ bgcolor: 'grey.800', borderRadius: '20px'}} />}
+				{!imageLoaded && <Skeleton variant='rectangular' width='100%' height={500} sx={{ bgcolor: 'grey.800', borderRadius: '20px' }} />}
 				<img
 					src={film.stills && film.stills[0] ? urlFor(film.stills[0]).url() : 'imgs/placeholder.webp'}
 					alt={film.nome}
@@ -27,7 +29,7 @@ export function FilmItem({ film }) {
 					<div className='p-8 text-center flex flex-col items-center'>
 						<p className='text-6xl font-cine'>{film.nome}</p>
 						<p className='text-md text-center text-white'>
-							de <strong>{film.realizador}</strong>
+							{translation[lang].de} <strong>{film.realizador}</strong>
 						</p>
 						<div className='flex items-center justify-center text-sm'>
 							{film.ano} &bull; {film.pais} &bull; {film.minutos} min
