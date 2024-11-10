@@ -1,6 +1,6 @@
 import React from 'react';
 import { PortableText } from '@portabletext/react';
-import { Imagem } from './Imagem.jsx';
+import { Imagem } from './Imagem';
 import { useLang } from '../LangProvider';
 
 export function SegundaSecEntrevista({ film }) {
@@ -13,8 +13,9 @@ export function SegundaSecEntrevista({ film }) {
 	return (
 		<div className='my-14 '>
 			<div className='flex justify-center '>
-				<div className='w-2/4 font-regular text-xl'>
-					<div className='pb-4 font-oblique text-base'>{film.autorEntrevista}</div>
+				<div className='w-3/5 font-regular text-xl leading-[1.5]'>
+					<div className='pb-4 font-oblique text-center'>{film.autorEntrevista}</div>
+
 					<PortableText value={entrevista} components={{ types: { image: Imagem } }} />
 				</div>
 			</div>

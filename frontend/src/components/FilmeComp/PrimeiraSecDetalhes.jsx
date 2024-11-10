@@ -21,11 +21,11 @@ export function PrimeiraSecDetalhes({ film }) {
 	const sinopse = lang === 'PT' ? film.sinopse : film.sinopseENG;
 
 	return (
-		<div className='rounded-[50px] border  p-10 '>
-			<div className='flex'>
+		<div className='rounded-[50px] border p-10 '>
+			<div className='flex gap-6'>
 				<div className='flex flex-col w-1/2 '>
-					<div className='text-8xl font-["Cine-Display"] '>{film.nome}</div>
-					<p className='text-lg'>
+					<div className='text-7xl font-["Cine-Display"] '>{film.nome}</div>
+					<p className='text-xl'>
 						{translation[lang].de} <strong>{film.realizador}</strong>
 						<br />
 						{film.ano} &bull; {film.pais} &bull; {film.minutos} {translation[lang].minutos}
@@ -63,9 +63,8 @@ export function PrimeiraSecDetalhes({ film }) {
 						</Collapse>
 					</div>
 				</div>
-				<div className='w-1/2 text-xl leading-tight flex items-center font-regular '>
+				<div className='w-1/2 text-xl leading-[1.5] font-regular '>
 					<div>
-						<div className='text-base font-oblique pb-4'>{translation[lang].sinopse}</div>
 						<p dangerouslySetInnerHTML={{ __html: sinopse }} className='whitespace-pre-line' />
 					</div>
 				</div>

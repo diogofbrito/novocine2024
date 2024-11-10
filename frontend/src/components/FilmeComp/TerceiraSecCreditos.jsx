@@ -12,10 +12,10 @@ export function TerceiraSecCreditos({ film }) {
 	if (!film.creditos || film.creditos.length === 0) return null;
 
 	return (
-		<div className='flex justify-center'>
-			<div className=' w-full'>
+		<div className='flex justify-center text-xl '>
+			<div className='w-full'>
 				<div className='text-center pb-2 font-oblique'>{translation[lang].creditos}</div>
-				<div className='flex flex-col gap-2 pt-2 text-xl'>
+				<div className='flex flex-col gap-2 pt-2 '>
 					{film.creditos.map((credito, index) => (
 						<div key={index} className='flex justify-center gap-4'>
 							<div className='w-1/2 text-right font-bold'>{lang === 'PT' ? credito.tipo : credito.tipo_ENG}</div>
