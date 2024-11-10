@@ -2,9 +2,12 @@ import React, { useRef, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./ThemeProvider";
 import { ThemeSwitch } from "./ThemeSwitch";
+import { useLang } from "./LangProvider";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Newsletter } from "./Newsletter";
+import { translation } from "../translation";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export function NavBar() {
@@ -15,6 +18,8 @@ export function NavBar() {
     const isFilmDetailPage =
         currentPath.toLowerCase().startsWith("/arquivo/") &&
         !["/arquivo", "/arquivo/"].includes(currentPath.toLowerCase());
+
+    const { lang, toggleLang } = useLang();
 
     useEffect(() => {
         const navbar = navbarRef.current;
@@ -56,19 +61,19 @@ export function NavBar() {
                         <div className="font-bold text-md flex flex-row gap-4 ">
                             <NavLink
                                 to="/arquivo"
-                                className="px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out"
+                                className="uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out"
                             >
-                                ARQUIVO
+                                {translation[lang].arquivo}
                             </NavLink>
                             <NavLink
                                 to="/sobre"
-                                className="px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out"
+                                className="uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out"
                             >
-                                SOBRE
+                                {translation[lang].sobre}
                             </NavLink>
                             <button
                                 onClick={() => setShowNewsletter(true)}
-                                className="px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out"
+                                className="uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out"
                             >
                                 NEWSLETTER
                             </button>
@@ -79,9 +84,12 @@ export function NavBar() {
                             </NavLink>
                         </div>
                         <div className="font-bold flex justify-end gap-4 ">
-                            <div className="px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out">
-                                EN
-                            </div>
+                            <button
+                                onClick={() => toggleLang()}
+                                className="px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out"
+                            >
+                                {lang === "PT" ? "EN" : "PT"}
+                            </button>
                             <ThemeSwitch />
                         </div>
                     </div>
