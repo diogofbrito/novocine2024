@@ -21,16 +21,16 @@ export function PrimeiraSecDetalhes({ film }) {
 	const sinopse = lang === 'PT' ? film.sinopse : film.sinopseENG;
 
 	return (
-		<div className='rounded-[50px] border p-10 '>
-			<div className='flex gap-6 items-center'>
-				<div className='flex flex-col w-1/2 '>
-					<div className='text-8xl font-["Cine-Display"] '>{film.nome}</div>
+		<div className='rounded-[50px] iphone:rounded-[40px] border p-10 iphone:p-5'>
+			<div className='flex gap-6 items-center iphone:flex-col iphone:items-start '>
+				<div className='flex flex-col w-1/2 iphone:w-full iphone:text-center '>
+					<div className='text-8xl font-cine iphone:text-6xl '>{film.nome}</div>
 					<p className='text-lg'>
 						{translation[lang].de} <strong>{film.realizador}</strong>
 						<br />
 						{film.ano} &bull; {film.pais} &bull; {film.minutos} {translation[lang].minutos}
 					</p>
-					<div className='flex pt-2 -mx-2 -my-2'>
+					<div className='flex pt-2 -mx-2 -my-2 iphone:justify-center'>
 						<IconButton onClick={() => setShowShareOptions(!showShareOptions)} sx={{ color: 'inherit' }}>
 							<Tooltip title='Partilhar'>
 								<ShareIcon />
@@ -63,7 +63,7 @@ export function PrimeiraSecDetalhes({ film }) {
 						</Collapse>
 					</div>
 				</div>
-				<div className='w-1/2 text-lg leading-[1.4] font-regular '>
+				<div className='w-1/2 text-lg leading-[1.4] font-regular iphone:w-full'>
 					<div>
 						<p dangerouslySetInnerHTML={{ __html: sinopse }} className='whitespace-pre-line' />
 					</div>

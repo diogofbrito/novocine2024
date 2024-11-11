@@ -12,9 +12,9 @@ export function SegundaSecEntrevista({ film }) {
 	if (!entrevista || entrevista.length === 0) return null;
 
 	return (
-		<div className='my-14 '>
+		<div className='my-14 iphone:my-6'>
 			<div className='flex justify-center '>
-				<div className='w-3/5 font-regular text-lg leading-[1.4]'>
+				<div className='w-3/5 font-regular text-lg leading-[1.4] iphone:w-full '>
 					{autorEntrevista && <div className='pb-4 font-oblique text-center'>{autorEntrevista}</div>}
 					<PortableText value={entrevista} components={{ types: { image: Imagem } }} />
 				</div>
