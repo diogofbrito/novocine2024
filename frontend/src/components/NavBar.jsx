@@ -72,7 +72,7 @@ export function NavBar() {
 						<NavBarMobile useLang={useLang} translation={translation} />
 
 						<div className='justify-center flex '>
-							<NavLink to='/' className='font-cine text-4xl  iphone:text-5xl'>
+							<NavLink to='/' className='font-cine text-5xl mt-1'>
 								NOVOCINE
 							</NavLink>
 						</div>
