@@ -85,7 +85,7 @@ export function NavBar() {
 						</div>
 					</div>
 				) : (
-					<div className='flex justify-end items-center w-full filmes'>
+					<div className='flex justify-end items-center w-full filmes iphone:justify-center'>
 						<NavLink
 							to='/arquivo'
 							className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out font-bold'

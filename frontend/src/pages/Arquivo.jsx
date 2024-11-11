@@ -82,7 +82,7 @@ export function Arquivo() {
 
 	return (
 		<>
-			<div className='margin-general pt-[2rem] '>
+			<div className='m-[4.5rem] pt-[2rem] iphone:mx-[1.5rem] iphone:mb-[1.5rem] '>
 				<FilterSearch
 					films={allFilms}
 					searchTerm={searchTerm}

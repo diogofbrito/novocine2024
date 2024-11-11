@@ -49,10 +49,10 @@ export function Filme() {
 	const stillsUrls = film.stills?.map(image => urlFor(image).url()) || [];
 
 	return (
-		<div className='margin-general'>
+		<div className='m-[4.5rem] iphone:mx-[1.5rem]'>
 			<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 '>
 				<div className='flex flex-col text-center'>
-					<h1 className='text-9xl font-cine '>{film.nome}</h1>
+					<h1 className='text-9xl font-cine iphone:text-7xl'>{film.nome}</h1>
 					<p>
 						{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 					</p>
