@@ -51,7 +51,7 @@ export function NavBar() {
 
 	return (
 		<ThemeProvider>
-			<div className='fixed z-50 top-0 px-[4.5rem] iphone:px-[2rem] flex w-screen h-[4.5rem] items-center' ref={navbarRef}>
+			<div className='fixed z-50 top-0 px-[4.5rem] iphone:px-[1.5rem] flex w-screen h-[4.5rem] items-center' ref={navbarRef}>
 				{!isFilmDetailPage ? (
 					<div className='grid-cols-3 w-full items-center grid'>
 						<div className='font-bold text-md flex flex-row gap-4 iphone:hidden'>
