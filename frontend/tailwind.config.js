@@ -4,14 +4,9 @@ export default {
 	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
-			
 			screens: {
-				'max-md': { max: '768px' },
-			},
-			
-
-			fontSize: {
-				'0.7rem': '0.7rem',
+				'max-md': { max: '1024px' },
+				'iphone': { max: '768px' },
 			},
 			fontFamily: {
 				cine: ['Cine-Display', 'sans-serif'],
@@ -34,15 +29,6 @@ export default {
 		},
 	},
 	plugins: [
-		function ({ addUtilities }) {
-			addUtilities({
-				'.writing-vertical-rl': {
-					writingMode: 'vertical-rl',
-				},
-				'.text-upright': {
-					textOrientation: 'upright',
-				},
-			});
-		},
+		
 	],
 };

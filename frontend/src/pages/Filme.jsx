@@ -52,7 +52,7 @@ export function Filme() {
 		<div className='margin-general'>
 			<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 '>
 				<div className='flex flex-col text-center'>
-					<h1 className='text-9xl font-cine text-white '>{film.nome}</h1>
+					<h1 className='text-9xl font-cine '>{film.nome}</h1>
 					<p>
 						{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 					</p>
