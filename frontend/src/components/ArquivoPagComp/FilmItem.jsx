@@ -37,8 +37,8 @@ export function FilmItem({ film }) {
 				</div>
 			</div>
 
-			<div className='md:hidden flex flex-row gap-3 items-center justify-between m-1 '>
-				<p className='text-base'>{film.nome}</p>
+			<div className='hidden iphone:block pt-2'>
+				<p className='text-4xl font-cine'>{film.nome}</p>
 			</div>
 		</div>
 	);

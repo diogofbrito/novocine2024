@@ -56,7 +56,7 @@ export function NavBar() {
 			<div className='fixed z-50 top-0 px-[4.5rem] iphone:px-[1.5rem] flex w-screen h-[4.5rem] items-center ' ref={navbarRef}>
 				{!isFilmDetailPage ? (
 					<div className='grid-cols-3 w-full items-center grid '>
-						<div className='font-bold text-md flex flex-row gap-4 iphone:hidden'>
+						<div className='font-bold text-md flex flex-row gap-4 iphone:hidden iphone:text-base'>
 							<NavLink to='/arquivo' className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
 								{translation[lang].arquivo}
 							</NavLink>

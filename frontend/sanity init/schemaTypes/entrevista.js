@@ -16,5 +16,8 @@ export default {
           },
         ]
     },
+    {
+      type: 'iframe',
+    }
   ],
 }
