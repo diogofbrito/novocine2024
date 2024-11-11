@@ -36,6 +36,7 @@ export const translation = {
 		pais: 'country',
 		ano: 'year',
 		duracao: 'duration',
+		filtros: 'Filters',
 	},
 	PT: {
 		arquivo: 'Arquivo',
@@ -74,5 +75,6 @@ export const translation = {
 		pais: 'país',
 		duracao: 'duração',
 		ano: 'ano',
+		filtros: 'Filtros',
 	},
 };

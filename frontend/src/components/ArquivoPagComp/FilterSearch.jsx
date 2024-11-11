@@ -3,6 +3,8 @@ import Select from 'react-select';
 import { Search } from 'lucide-react';
 import { useLang } from '../LangProvider';
 import { translation } from '../../Lang/translation.js';
+import { SlidersHorizontal } from 'lucide-react';
+import { FilterSearchMobile } from '../Mobile/FilterSearchMobile';
 
 export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelectedYear, selectedCountry, setSelectedCountry, films, onToggleView, isListView }) {
 	const [years, setYears] = useState([]);
@@ -89,50 +91,56 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 	};
 
 	return (
-		<div className='z-50 flex  w-full justify-between items-center '>
-			<div className='flex gap-4 '>
-				<div className='flex border text-xl rounded-full px-3 py-1 items-center w-[400px] filter'>
-					<input
-						type='text'
-						placeholder={translation[lang].procurar}
-						value={searchTerm}
-						onChange={handleSearchChange}
-						className='flex-grow border-none bg-transparent mr-2 outline-none text-base leading-none input-placeholder'
+		<>
+			<div className='z-50 flex w-full justify-between items-center iphone:hidden'>
+				<div className='flex gap-4 '>
+					<div className='flex border text-xl rounded-full px-3 py-1 items-center w-[400px] filter'>
+						<input
+							type='text'
+							placeholder={translation[lang].procurar}
+							value={searchTerm}
+							onChange={handleSearchChange}
+							className='flex-grow border-none bg-transparent mr-2 outline-none text-base leading-none input-placeholder'
+						/>
+						<Search size={20} />
+					</div>
+
+					<Select
+						options={years}
+						onChange={handleYearChange}
+						placeholder={translation[lang].selecAnos}
+						isClearable
+						isSearchable={false}
+						value={years.find(year => year.value === selectedYear)}
+						styles={customSelectStyles}
+						classNamePrefix='react-select'
 					/>
-					<Search size={20} />
+
+					<Select
+						options={countries}
+						onChange={handleCountryChange}
+						placeholder={translation[lang].selecPais}
+						isClearable
+						isSearchable={false}
+						value={countries.find(country => country.value === selectedCountry)}
+						styles={customSelectStyles}
+					/>
+
+					<div className='flex items-center '>
+						<p>
+							{films.length} {translation[lang].filmesDispo}
+						</p>
+					</div>
 				</div>
 
-				<Select
-					options={years}
-					onChange={handleYearChange}
-					placeholder={translation[lang].selecAnos}
-					isClearable
-					isSearchable={false}
-					value={years.find(year => year.value === selectedYear)}
-					styles={customSelectStyles}
-					classNamePrefix='react-select'
-				/>
-
-				<Select
-					options={countries}
-					onChange={handleCountryChange}
-					placeholder={translation[lang].selecPais}
-					isClearable
-					isSearchable={false}
-					value={countries.find(country => country.value === selectedCountry)}
-					styles={customSelectStyles}
-				/>
-
-				<div className='flex items-center '>
-					<p>
-						{films.length} {translation[lang].filmesDispo}
-					</p>
-				</div>
+				<button onClick={onToggleView} className='border rounded-full px-3 py-1 items-center transition-all duration-300 ease-in-out'>
+					{isListView ? translation[lang].galeria : translation[lang].lista}
+				</button>
 			</div>
 
-			<button onClick={onToggleView} className='border rounded-full px-3 py-1 items-center transition-all duration-300 ease-in-out'>
-				{isListView ? translation[lang].galeria : translation[lang].lista}
-			</button>
-		</div>
+		
+				<FilterSearchMobile translation={translation} lang={lang} films={films} />
+			
+		</>
 	);
 }
