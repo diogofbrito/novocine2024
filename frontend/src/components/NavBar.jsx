@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Newsletter } from './Newsletter';
 import { translation } from '../Lang/translation';
+import { NavBarMobile } from './Mobile/NavBarMobile';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,10 +51,10 @@ export function NavBar() {
 
 	return (
 		<ThemeProvider>
-			<div className='fixed z-50 top-0 px-[4.5rem] flex w-screen h-[4.5rem] items-center' ref={navbarRef}>
+			<div className='fixed z-50 top-0 px-[4.5rem] iphone:px-[2rem] flex w-screen h-[4.5rem] items-center' ref={navbarRef}>
 				{!isFilmDetailPage ? (
 					<div className='grid-cols-3 w-full items-center grid'>
-						<div className='font-bold text-md flex flex-row gap-4 '>
+						<div className='font-bold text-md flex flex-row gap-4 iphone:hidden'>
 							<NavLink to='/arquivo' className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
 								{translation[lang].arquivo}
 							</NavLink>
@@ -67,11 +68,15 @@ export function NavBar() {
 								NEWSLETTER
 							</button>
 						</div>
+
+						<NavBarMobile useLang={useLang} translation={translation} />
+
 						<div className='justify-center flex '>
 							<NavLink to='/' className='font-cine text-4xl '>
 								NOVOCINE
 							</NavLink>
 						</div>
+
 						<div className='font-bold flex justify-end gap-4 '>
 							<button onClick={() => toggleLang()} className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
 								{lang === 'PT' ? 'EN' : 'PT'}

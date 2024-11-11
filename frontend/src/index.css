@@ -75,12 +75,16 @@ html[data-theme="dark"] {
 
 }
 
+html[data-theme="light"] .menuMobile {
+	background-color: var(--background-color-light);
+}
+
 html[data-theme="dark"] body,
 html[data-theme="dark"] h1,
 html[data-theme="dark"] p,
 html[data-theme="dark"] a,
 html[data-theme="dark"] .border,
-html[data-theme="dark"] .navbar {
+html[data-theme="dark"] .navbar{
     color: var(--text-color-dark);
     border-color: var(--text-color-dark);
 }
@@ -96,6 +100,10 @@ html[data-theme="dark"] ul {
 html[data-theme="dark"] .filter {
 	background-color: var(--background-color-dark);
 	color: var(--text-color-dark);
+}
+
+html[data-theme="dark"] .menuMobile {
+	background-color: var(--text-color-dark);
 }
 
 .input-placeholder::placeholder {

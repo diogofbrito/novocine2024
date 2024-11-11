@@ -48,7 +48,7 @@ export function Home() {
 	return (
 		<>
 			<div
-				className='iphone:mx-[2rem] iphone:mb-[2rem]  m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)]'
+				className='iphone:mx-[2rem] iphone:mb-[2rem] m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)] iphone:h-[calc(100vh-6rem)]'
 				style={{
 					backgroundImage: `url(${film.stills ? urlFor(film.stills).url() : 'imgs/placeholder.webp'})`,
 					backgroundSize: 'cover',
@@ -58,7 +58,7 @@ export function Home() {
 				<div className='w-full inset-0 flex h-full flex-col gap-6 justify-center items-center -z-10 px-20 '>
 					<div>
 						<h1 className='text-9xl font-cine text-center iphone:text-7xl'>{film.nome}</h1>
-						<p className='text-lg -mt-3 text-center iphone:text-base iphone:mt-0 '>
+						<p className='text-lg -mt-3 text-center iphone:text-sm iphone:mt-0 '>
 							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 						</p>
 					</div>
