@@ -25,7 +25,7 @@ export function PrimeiraSecDetalhes({ film }) {
 			<div className='flex gap-6 items-center iphone:flex-col iphone:items-start '>
 				<div className='flex flex-col w-1/2 iphone:w-full iphone:text-center '>
 					<div className='text-8xl font-cine iphone:text-6xl '>{film.nome}</div>
-					<p className='text-lg iphone:text-sm'>
+					<p className='text-lg iphone:text-base'>
 						{translation[lang].de} <strong>{film.realizador}</strong>
 						<br />
 						{film.ano} &bull; {film.pais} &bull; {film.minutos} {translation[lang].minutos}
@@ -63,7 +63,7 @@ export function PrimeiraSecDetalhes({ film }) {
 						</Collapse>
 					</div>
 				</div>
-				<div className='w-1/2 text-lg leading-[1.4] font-regular iphone:w-full iphone:text-sm iphone:leading-[1.3]'>
+				<div className='w-1/2 text-lg leading-[1.4] font-regular iphone:w-full iphone:text-base iphone:leading-[1.3]'>
 					<div>
 						<p dangerouslySetInnerHTML={{ __html: sinopse }} className='whitespace-pre-line' />
 					</div>

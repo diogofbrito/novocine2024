@@ -11,10 +11,10 @@ export function Sobre() {
 	};
 
 	return (
-		<div className='flex flex-col  mt-[4.5rem] h-[calc(100vh-4.5rem)] iphone:mx-[1.5rem] iphone:mb-[1.5rem]  iphone:h-[calc(100vh-9rem)]'>
+		<div className='flex flex-col mt-[4.5rem] h-[calc(100vh-4.5rem)] iphone:mx-[1.5rem] iphone:mb-[1.5rem]  iphone:h-[calc(100vh-9rem)] '>
 			<div className='flex-grow flex justify-center items-center '>
 				{isThermsView ? (
-					<div className='text-xl w-2/4 leading-tight iphone:w-full '>
+					<div className='text-xl w-2/4 leading-tight iphone:w-full iphone:text-base iphone:leading-[1.3] '>
 						{translation[lang].sobreText}
 
 						<div className='pt-6'>
@@ -24,7 +24,7 @@ export function Sobre() {
 						</div>
 					</div>
 				) : (
-					<div className='text-xl w-2/4 leading-tight flex flex-col gap-6 iphone:w-full '>
+					<div className='text-xl w-2/4 leading-tight flex flex-col gap-6 iphone:w-full iphone:text-base iphone:leading-[1.3]'>
 						{translation[lang].termosText.map((text, index) => (
 							<p key={index}>{text}</p>
 						))}

@@ -12,7 +12,7 @@ export function TerceiraSecCreditos({ film }) {
 	if (!film.creditos || film.creditos.length === 0) return null;
 
 	return (
-		<div className='flex justify-center text-lg iphone:pt-2'>
+		<div className='flex justify-center text-lg  iphone:text-base iphone:leading-[1.3] '>
 			<div className='w-full'>
 				<div className='text-center pb-2 font-oblique'>{translation[lang].creditos}</div>
 				<div className='flex flex-col gap-2 pt-2 iphone:gap-4 '>

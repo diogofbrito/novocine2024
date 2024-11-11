@@ -58,9 +58,12 @@ export function Home() {
 				<div className='w-full inset-0 flex h-full flex-col gap-6 justify-center items-center -z-10 px-20 '>
 					<div>
 						<h1 className='text-9xl font-cine text-center iphone:text-7xl'>{film.nome}</h1>
-						<p className='text-lg -mt-3 text-center iphone:text-sm iphone:mt-0 '>
+						<div className='iphone:hidden text-lg -mt-3 text-center iphone:text-base iphone:mt-0 '>
 							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
-						</p>
+						</div>
+						<div className='hidden iphone:block text-lg -mt-3 text-center iphone:text-base iphone:mt-0 '>
+							{translation[lang].filmeDe} <div><strong>{film.realizador}</strong></div>
+						</div>
 					</div>
 					<button
 						onClick={() => window.open(`https://vimeo.com/${film.vimeoId}`, '_blank')}
