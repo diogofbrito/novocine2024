@@ -7,9 +7,9 @@ export function NavBarMobile({ translation, useLang }) {
 
 	return (
 		<div className='iphone:block hidden relative '>
-			<button className='px-3 py-1 border rounded-full' onClick={() => setIsMenuOpen(!isMenuOpen)}>
-				<span className='menuMobile block w-6 h-0.5 mb-0.5'></span>
-				<span className='menuMobile block w-6 h-0.5 mb-0.5'></span>
+			<button className='px-3 py-2 border rounded-full' onClick={() => setIsMenuOpen(!isMenuOpen)}>
+				<span className='menuMobile block w-6 h-0.5 mb-1'></span>
+				<span className='menuMobile block w-6 h-0.5 mb-1'></span>
 				<span className='menuMobile block w-6 h-0.5 '></span>
 			</button>
 

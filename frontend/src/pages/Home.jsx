@@ -48,7 +48,7 @@ export function Home() {
 	return (
 		<>
 			<div
-				className='iphone:mx-[2rem] iphone:mb-[2rem] m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)] iphone:h-[calc(100vh-6rem)]'
+				className='iphone:mx-[1.5rem] iphone:mb-[1.5rem] m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)] iphone:h-[calc(100vh-6rem)]'
 				style={{
 					backgroundImage: `url(${film.stills ? urlFor(film.stills).url() : 'imgs/placeholder.webp'})`,
 					backgroundSize: 'cover',

@@ -72,13 +72,13 @@ export function NavBar() {
 						<NavBarMobile useLang={useLang} translation={translation} />
 
 						<div className='justify-center flex '>
-							<NavLink to='/' className='font-cine text-4xl '>
+							<NavLink to='/' className='font-cine text-4xl  iphone:text-5xl'>
 								NOVOCINE
 							</NavLink>
 						</div>
 
 						<div className='font-bold flex justify-end gap-4 '>
-							<button onClick={() => toggleLang()} className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
+							<button onClick={() => toggleLang()} className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out iphone:hidden'>
 								{lang === 'PT' ? 'EN' : 'PT'}
 							</button>
 							<ThemeSwitch />
