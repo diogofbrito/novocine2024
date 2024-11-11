@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Drawer } from '@mui/material';
+import { Plus, Minus } from 'lucide-react';
 
 export function NavBarMobile({ translation, useLang, setShowNewsletter }) {
-	const [isMenuOpen, setIsMenuOpen] = useState(true);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const { lang, toggleLang } = useLang();
 
 	const toggleDrawer = open => () => {
@@ -13,9 +13,9 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter }) {
 
 	return (
 		<div className='iphone:block hidden relative'>
-			<IconButton onClick={toggleDrawer(true)} sx={{  color: 'white', borderRadius: '50%' }}>
-				<MenuIcon fontSize='large' />
-			</IconButton>
+			<button className='px-3 py-2 border rounded-full buttonMobile' onClick={toggleDrawer(true)}>
+				<Plus size={19} strokeWidth={2.5} />
+			</button>
 
 			<Drawer
 				anchor='left'
@@ -37,33 +37,38 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter }) {
 					},
 				}}
 			>
-				<div className='flex flex-col justify-between h-full py-6 px-2'>
-				
-					<div className='flex flex-col justify-center gap-4 '>
-						<NavLink
-							to='/arquivo'
-							onClick={toggleDrawer(false)}
-							className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'
-						>
-							{translation[lang].arquivo}
-						</NavLink>
-						<NavLink
-							to='/sobre'
-							onClick={toggleDrawer(false)}
-							className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'
-						>
-							{translation[lang].sobre}
-						</NavLink>
-						<button
-							onClick={() => setShowNewsletter(true)}
-							className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'
-						>
-							NEWSLETTER
+				<div className='flex flex-col justify-between h-full py-6 px-2 '>
+					<div className='flex justify-end'>
+						<button className='px-3 py-2 border rounded-full' onClick={toggleDrawer(close)}>
+							<Minus size={19} strokeWidth={2.5} />
 						</button>
 					</div>
 
+					<div className='flex flex-col justify-start gap-4  '>
+						<div>
+							<NavLink to='/' onClick={toggleDrawer(false)} className='uppercase px-3 py-1 border rounded-full font-bold'>
+								home
+							</NavLink>
+						</div>
+						<div>
+							<NavLink to='/arquivo' onClick={toggleDrawer(false)} className='uppercase px-3 py-1 border rounded-full font-bold'>
+								{translation[lang].arquivo}
+							</NavLink>
+						</div>
+						<div>
+							<NavLink to='/sobre' onClick={toggleDrawer(false)} className='uppercase px-3 py-1 border rounded-full font-bold'>
+								{translation[lang].sobre}
+							</NavLink>
+						</div>
+						<div>
+							<button onClick={() => setShowNewsletter(true)} className='uppercase px-3 py-1 border rounded-full font-bold'>
+								NEWSLETTER
+							</button>
+						</div>
+					</div>
+
 					<div className='flex justify-end'>
-						<button onClick={toggleLang} className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
+						<button onClick={toggleLang} className='px-3 py-1 border rounded-full font-bold'>
 							{lang === 'PT' ? 'EN' : 'PT'}
 						</button>
 					</div>

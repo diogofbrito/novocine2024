@@ -61,7 +61,7 @@ html[data-theme="light"] .navbar {
 }
 
 html[data-theme="light"] .newsletter{
-	background-color: rgb(253, 108, 180, 0.5);
+	background-color: rgba(254, 161, 208, 0.5);
 }
 
 
@@ -75,16 +75,13 @@ html[data-theme="dark"] {
 
 }
 
-html[data-theme="light"] .menuMobile {
-	background-color: var(--text-color-light);
-}
 
 html[data-theme="dark"] body,
 html[data-theme="dark"] h1,
 html[data-theme="dark"] p,
 html[data-theme="dark"] a,
 html[data-theme="dark"] .border,
-html[data-theme="dark"] .navbar{
+html[data-theme="dark"] .navbar {
     color: var(--text-color-dark);
     border-color: var(--text-color-dark);
 }

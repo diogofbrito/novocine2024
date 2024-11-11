@@ -23,26 +23,28 @@ export function NavBar() {
 	useEffect(() => {
 		const navbar = navbarRef.current;
 
-		ScrollTrigger.create({
-			trigger: navbar,
-			start: '30px top',
-			end: 'bottom top',
-			onUpdate: self => {
-				if (self.direction === 1) {
-					gsap.to(navbar, {
-						y: -navbar.offsetHeight,
-						duration: 0.4,
-						ease: 'power1.out',
-					});
-				} else if (self.direction === -1) {
-					gsap.to(navbar, {
-						y: 0,
-						duration: 0.4,
-						ease: 'power1.out',
-					});
-				}
-			},
-		});
+		if (window.innerWidth > 768) {
+			ScrollTrigger.create({
+				trigger: navbar,
+				start: '30px top',
+				end: 'bottom top',
+				onUpdate: self => {
+					if (self.direction === 1) {
+						gsap.to(navbar, {
+							y: -navbar.offsetHeight,
+							duration: 0.4,
+							ease: 'power1.out',
+						});
+					} else if (self.direction === -1) {
+						gsap.to(navbar, {
+							y: 0,
+							duration: 0.4,
+							ease: 'power1.out',
+						});
+					}
+				},
+			});
+		}
 
 		return () => {
 			ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -51,9 +53,9 @@ export function NavBar() {
 
 	return (
 		<ThemeProvider>
-			<div className='fixed z-50 top-0 px-[4.5rem] iphone:px-[1.5rem] flex w-screen h-[4.5rem] items-center' ref={navbarRef}>
+			<div className='fixed z-50 top-0 px-[4.5rem] iphone:px-[1.5rem] flex w-screen h-[4.5rem] items-center ' ref={navbarRef}>
 				{!isFilmDetailPage ? (
-					<div className='grid-cols-3 w-full items-center grid'>
+					<div className='grid-cols-3 w-full items-center grid '>
 						<div className='font-bold text-md flex flex-row gap-4 iphone:hidden'>
 							<NavLink to='/arquivo' className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out'>
 								{translation[lang].arquivo}
@@ -78,7 +80,10 @@ export function NavBar() {
 						</div>
 
 						<div className='font-bold flex justify-end gap-4 '>
-							<button onClick={() => toggleLang()} className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out iphone:hidden'>
+							<button
+								onClick={() => toggleLang()}
+								className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out iphone:hidden'
+							>
 								{lang === 'PT' ? 'EN' : 'PT'}
 							</button>
 							<ThemeSwitch />
