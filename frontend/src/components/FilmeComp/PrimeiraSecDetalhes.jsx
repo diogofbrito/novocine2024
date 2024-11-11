@@ -63,7 +63,7 @@ export function PrimeiraSecDetalhes({ film }) {
 						</Collapse>
 					</div>
 				</div>
-				<div className='w-1/2 text-lg leading-[1.4] font-regular iphone:w-full iphone:text-base iphone:leading-[1.3]'>
+				<div className='w-1/2 text-lg leading-[1.4] font-regular iphone:w-full iphone:text-base'>
 					<div>
 						<p dangerouslySetInnerHTML={{ __html: sinopse }} className='whitespace-pre-line' />
 					</div>

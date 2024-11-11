@@ -14,7 +14,7 @@ export function SegundaSecEntrevista({ film }) {
 	return (
 		<div className='my-14 iphone:my-6'>
 			<div className='flex justify-center '>
-				<div className='w-3/5 font-regular text-lg leading-[1.4] iphone:w-full iphone:text-base iphone:leading-[1.3]'>
+				<div className='w-3/5 font-regular text-lg leading-[1.4] iphone:w-full iphone:text-base '>
 					{autorEntrevista && <div className='pb-4 font-oblique text-center'>{autorEntrevista}</div>}
 					<PortableText value={entrevista} components={{ types: { image: Imagem } }} />
 				</div>
