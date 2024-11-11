@@ -34,8 +34,8 @@ export function FilterSearchMobile({ films, lang, translation }) {
 				open={open}
 				onClose={toggleDrawer(false)}
 				onOpen={toggleDrawer(true)}
-				swipeAreaWidth={drawerBleeding}
-				disableSwipeToOpen={false}
+				swipeAreaWidth={0}
+				disableSwipeToOpen={true}
 				ModalProps={{
 					keepMounted: true,
 				}}
