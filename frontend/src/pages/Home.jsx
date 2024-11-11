@@ -48,7 +48,7 @@ export function Home() {
 	return (
 		<>
 			<div
-				className='iphone:mx-[2rem] m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)]'
+				className='iphone:mx-[2rem] iphone:mb-[2rem]  m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)]'
 				style={{
 					backgroundImage: `url(${film.stills ? urlFor(film.stills).url() : 'imgs/placeholder.webp'})`,
 					backgroundSize: 'cover',
@@ -57,8 +57,8 @@ export function Home() {
 			>
 				<div className='w-full inset-0 flex h-full flex-col gap-6 justify-center items-center -z-10 px-20 '>
 					<div>
-						<h1 className='text-9xl font-cine  text-center'>{film.nome}</h1>
-						<p className='text-lg -mt-3 text-center '>
+						<h1 className='text-9xl font-cine text-center iphone:text-7xl'>{film.nome}</h1>
+						<p className='text-lg -mt-3 text-center iphone:text-base iphone:mt-0 '>
 							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 						</p>
 					</div>
@@ -66,7 +66,7 @@ export function Home() {
 						onClick={() => window.open(`https://vimeo.com/${film.vimeoId}`, '_blank')}
 						className='flex items-center justify-center space-x-2 border  rounded-full pl-3 pr-2 py-1  hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out '
 					>
-						<span className='font-bold text-xl'>PLAY</span>
+						<span className='font-bold text-xl iphone:text-lg'>PLAY</span>
 						<span className='w-6 h-6'>
 							<svg width='100%' height='100%' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
 								<path
