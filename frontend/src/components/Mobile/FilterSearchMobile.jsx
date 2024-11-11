@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Box from '@mui/material/Box';
-import { SlidersHorizontal } from 'lucide-react';
+import { Drawer } from '@mui/material';
+import { SlidersHorizontal, Search, Minus } from 'lucide-react';
+import Select from 'react-select';
 
-export function FilterSearchMobile({ films, lang, translation, isListView, onToggleView }) {
-	const [open, setOpen] = useState(false);
+export function FilterSearchMobile({
+	films,
+	lang,
+	translation,
+	isListView,
+	onToggleView,
+	searchTerm,
+	handleSearchChange,
+	selectedYear,
+	setSelectedYear,
+	selectedCountry,
+	setSelectedCountry,
+	years,
+	handleYearChange,
+	customSelectStyles,
+	countries,
+	handleCountryChange,
+}) {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	const toggleDrawer = newOpen => () => {
-		setOpen(newOpen);
+	const toggleDrawer = open => () => {
+		setIsMenuOpen(open);
 	};
 	return (
 		<div className='hidden iphone:block '>
@@ -18,28 +35,67 @@ export function FilterSearchMobile({ films, lang, translation, isListView, onTog
 				</button>
 
 				<div className='flex items-center '>
-					<p>
-						{films.length} {translation[lang].filmesDispo}
-					</p>
+					{films.length} {translation[lang].filmesDispo}
 				</div>
 				<button onClick={onToggleView} className='border rounded-full px-3 py-1 items-center transition-all duration-300 ease-in-out'>
 					{isListView ? translation[lang].galeria : translation[lang].lista}
 				</button>
 			</div>
 
-			{/* SwipeableDrawer na parte inferior */}
-			<SwipeableDrawer
-				anchor='bottom'
-				open={open}
-				onClose={toggleDrawer(false)} // Fecha o Drawer
-				onOpen={toggleDrawer(true)} // Abre o Drawer
+			<Drawer
+				anchor='left'
+				open={isMenuOpen}
+				onClose={toggleDrawer(false)}
+				PaperProps={{
+					sx: {
+						width: '60vw',
+						backgroundColor: 'var(--background-color-light)',
+						color: 'var(--text-color-dark)',
+						'&[data-theme="dark"]': {
+							backgroundColor: 'var(--background-color-dark)',
+							color: 'var(--text-color-light)',
+						},
+						paddingLeft: '1rem',
+						paddingRight: '1rem',
+						borderTopRightRadius: '40px',
+						borderBottomRightRadius: '40px',
+					},
+				}}
 			>
-				{/* Conteúdo dentro do Drawer */}
-				<Box sx={{ padding: 2 }}>
-					<h2>Filter Options</h2>
-					{/* Aqui você pode adicionar mais componentes ou filtros conforme necessário */}
-				</Box>
-			</SwipeableDrawer>
+				<div className='flex flex-col justify-between h-full py-6 px-2 '>
+					<div className='flex justify-end'>
+						<button className='px-3 py-1 border rounded-full' onClick={toggleDrawer(close)}>
+							<Minus size={19} strokeWidth={2.5} />
+						</button>
+					</div>
+
+					<div className='flex flex-col justify-start gap-4  '>
+						<div className='flex border text-xl rounded-full px-3 py-1 items-center w-[400px] filter'>
+							<input
+								type='text'
+								placeholder={translation[lang].procurar}
+								value={searchTerm}
+								onChange={handleSearchChange}
+								className='flex-grow border-none bg-transparent mr-2 outline-none text-base leading-none input-placeholder'
+							/>
+							<Search size={20} />
+						</div>
+						<div>sg</div>
+						<div>dsg</div>
+						<div>
+							<button onClick={() => setShowNewsletter(true)} className='uppercase px-3 py-1 border rounded-full font-bold'>
+								NEWSLETTER
+							</button>
+						</div>
+					</div>
+
+					<div className='flex justify-end gap-2'>
+						<button className='px-3 py-2 border rounded-full ' onClick={toggleDrawer(close)} aria-label='Toggle theme'>
+							PROCURAR{' '}
+						</button>
+					</div>
+				</div>
+			</Drawer>
 		</div>
 	);
 }

@@ -70,19 +70,19 @@ export function NavBar() {
 								NEWSLETTER
 							</button>
 						</div>
-
-						<NavBarMobile useLang={useLang} translation={translation} />
-
+						<div className='hidden iphone:block '></div>
 						<div className='justify-center flex '>
 							<NavLink to='/' className='font-cine text-5xl mt-1'>
 								NOVOCINE
 							</NavLink>
 						</div>
 
-						<div className='font-bold flex justify-end gap-4 '>
+						<NavBarMobile useLang={useLang} translation={translation} showNewsletter={showNewsletter} setShowNewsletter={setShowNewsletter} />
+
+						<div className='font-bold flex justify-end gap-4 iphone:hidden'>
 							<button
 								onClick={() => toggleLang()}
-								className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out iphone:hidden'
+								className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out '
 							>
 								{lang === 'PT' ? 'EN' : 'PT'}
 							</button>

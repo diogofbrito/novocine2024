@@ -139,7 +139,7 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 			</div>
 
 		
-				<FilterSearchMobile translation={translation} lang={lang} films={films} onToggleView={onToggleView} />
+				<FilterSearchMobile translation={translation} lang={lang} films={films} onToggleView={onToggleView}  searchTerm={searchTerm} handleSearchChange={handleSearchChange} selectedYear={selectedYear} handleYearChange={handleYearChange} selectedCountry={selectedCountry} handleCountryChange={handleCountryChange} years={years}  customSelectStyles={customSelectStyles} countries={countries} />
 			
 		</>
 	);

@@ -7,7 +7,7 @@ export function ThemeSwitch() {
 
     return (
         <button
-            className="px-3 py-2 border rounded-full hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out"
+            className="px-3 py-2 border rounded-full hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out "
             onClick={toggleTheme}
             aria-label="Toggle theme"
         >

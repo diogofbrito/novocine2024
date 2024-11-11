@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Drawer } from '@mui/material';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, Moon, Sun } from 'lucide-react';
+import { useTheme } from '../ThemeProvider';
 
-export function NavBarMobile({ translation, useLang, setShowNewsletter }) {
+export function NavBarMobile({ translation, useLang, setShowNewsletter, close }) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const { lang, toggleLang } = useLang();
+	const { theme, toggleTheme } = useTheme();
+
 
 	const toggleDrawer = open => () => {
 		setIsMenuOpen(open);
 	};
 
 	return (
-		<div className='iphone:block hidden relative'>
-			<button className='px-3 py-2 border rounded-full buttonMobile' onClick={toggleDrawer(true)}>
+		<div className='hidden iphone:block relative text-end'>
+			<button className='p-1.5 border  rounded-full buttonMobile' onClick={toggleDrawer(true)}>
 				<Plus size={19} strokeWidth={2.5} />
 			</button>
 
@@ -39,7 +42,7 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter }) {
 			>
 				<div className='flex flex-col justify-between h-full py-6 px-2 '>
 					<div className='flex justify-end'>
-						<button className='px-3 py-2 border rounded-full' onClick={toggleDrawer(close)}>
+						<button className='p-1.5 border rounded-full' onClick={toggleDrawer(close)}>
 							<Minus size={19} strokeWidth={2.5} />
 						</button>
 					</div>
@@ -61,13 +64,22 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter }) {
 							</NavLink>
 						</div>
 						<div>
-							<button onClick={() => setShowNewsletter(true)} className='uppercase px-3 py-1 border rounded-full font-bold'>
+							<button
+								onClick={() => {
+									setShowNewsletter(true);
+									toggleDrawer(false)(); 
+								}}
+								className='uppercase px-3 py-1 border rounded-full font-bold'
+							>
 								NEWSLETTER
 							</button>
 						</div>
 					</div>
 
-					<div className='flex justify-end'>
+					<div className='flex justify-end gap-2'>
+						<button className='px-3 py-2 border rounded-full ' onClick={toggleTheme} aria-label='Toggle theme'>
+							{theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}
+						</button>
 						<button onClick={toggleLang} className='px-3 py-1 border rounded-full font-bold'>
 							{lang === 'PT' ? 'EN' : 'PT'}
 						</button>
