@@ -18,6 +18,9 @@ export default {
     },
     {
       type: 'iframe',
+    },
+    {
+      type: 'dividerHr',
     }
   ],
 }
