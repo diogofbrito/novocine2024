@@ -107,7 +107,7 @@ export function Arquivo() {
 									<Masonry breakpointCols={breakpointColumnsObj} className='flex gap-6'>
 										{allFilms.length > 0 ? (
 											allFilms.map(film => (
-												<Link to={`/arquivo/${film.slug?.current}`} key={film.slug?.current}>
+												<Link to={`/arquivo/${film.slug?.current}`} key={film.slug?.current} >
 													<FilmItem film={film} />
 												</Link>
 											))

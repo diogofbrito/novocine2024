@@ -40,6 +40,9 @@ export function Filme() {
 			.catch(err => {
 				console.error('Erro ao carregar o filme', err);
 			});
+		
+		
+		window.scrollTo(0, 0);
 	}, [slug]);
 
 	if (!film) {
