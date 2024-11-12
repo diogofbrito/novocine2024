@@ -7,6 +7,7 @@ import { urlFor } from '../utils/imageUrlBuilder.js';
 import { SkeletonHome } from '../components/Skeleton/SkeletonHome';
 import { useLang } from '../components/LangProvider';
 import { translation } from '../Lang/translation.js';
+import { VimeoModal } from '../components/FilmeComp/VimeoModal.jsx';
 
 export function Home() {
 	const [film, setFilm] = useState(null);
@@ -65,22 +66,7 @@ export function Home() {
 							{translation[lang].filmeDe} <div><strong>{film.realizador}</strong></div>
 						</div>
 					</div>
-					<button
-						onClick={() => window.open(`https://vimeo.com/${film.vimeoId}`, '_blank')}
-						className='flex items-center justify-center space-x-2 border  rounded-full pl-3 pr-2 py-1  hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out '
-					>
-						<span className='font-bold text-xl iphone:text-lg'>PLAY</span>
-						<span className='w-6 h-6'>
-							<svg width='100%' height='100%' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
-								<path
-									fillRule='evenodd'
-									clipRule='evenodd'
-									d='M11 22C17.0751 22 22 17.0751 22 11C22 4.92487 17.0751 0 11 0C4.92487 0 0 4.92487 0 11C0 17.0751 4.92487 22 11 22ZM15.2566 11.1728C15.39 11.0958 15.39 10.9033 15.2566 10.8264L9.02232 7.22698C8.88899 7.15 8.72232 7.24623 8.72232 7.40019V14.599C8.72232 14.7529 8.88899 14.8491 9.02232 14.7722L15.2566 11.1728Z'
-									fill='currentColor'
-								></path>
-							</svg>
-						</span>
-					</button>
+					<VimeoModal videoUrl={film.vimeoId} film={film} />
 				</div>
 			</div>
 
