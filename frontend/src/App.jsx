@@ -8,7 +8,7 @@ function App() {
     return (
 			<SmoothScrolling>
 				<LangProvider>
-					<NavBar />
+					{/* <NavBar /> */}
 					<Outlet />
 				</LangProvider>
 			</SmoothScrolling>
