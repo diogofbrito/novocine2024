@@ -54,10 +54,11 @@ export function VimeoModal({  film }) {
 						playing={playing}
 						muted={muted}
 						volume={volume}
+						light={true}
 						onProgress={handleProgress}
 						width='100%'
 						height='100%'
-						style={{ pointerEvents: 'none' }} // Disable pointer events on video for custom controls
+						
 					/>
 
 					{/* Custom Controls */}

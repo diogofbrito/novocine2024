@@ -58,8 +58,8 @@ export function Home() {
 			>
 				<div className='w-full inset-0 flex h-full flex-col gap-6 justify-center items-center -z-10 px-20 '>
 					<div>
-						<h1 className='text-9xl font-cine text-center iphone:text-7xl'>{film.nome}</h1>
-						<div className='iphone:hidden text-lg -mt-3 text-center iphone:text-base iphone:mt-0 '>
+						<h1 className='text-[9rem] font-cine text-center iphone:text-7xl'>{film.nome}</h1>
+						<div className='iphone:hidden text-lg -mt-6 text-center iphone:text-base iphone:mt-0 '>
 							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 						</div>
 						<div className='hidden iphone:block text-lg -mt-3 text-center iphone:text-base iphone:mt-0 '>
