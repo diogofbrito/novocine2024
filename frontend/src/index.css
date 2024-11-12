@@ -12,8 +12,8 @@ body {
 }
 
 @font-face {
-	font-family: 'Cine-Display';
-	src: url('./assets/font/Cine-Display.woff2') format('woff2'), url('./assets/font/Cine-Display.woff') format('woff');
+	font-family: 'Novocine-Display';
+	src: url('./assets/font/Novocine-Display.woff2') format('woff2'), url('./assets/font/Novocine-Display.woff') format('woff');
 	font-style: normal;
 }
 

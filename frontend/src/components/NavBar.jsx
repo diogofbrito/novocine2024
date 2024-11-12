@@ -73,7 +73,7 @@ export function NavBar() {
 						<div className='hidden iphone:block '></div>
 						<div className='justify-center flex '>
 							<NavLink to='/' className='font-cine text-5xl mt-1'>
-								NOVOCINE
+								NOVOCiNE
 							</NavLink>
 						</div>
 

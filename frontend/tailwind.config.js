@@ -6,15 +6,15 @@ export default {
 		extend: {
 			screens: {
 				'max-md': { max: '1024px' },
-				'iphone': { max: '768px' },
+				iphone: { max: '768px' },
 			},
 			fontFamily: {
-				cine: ['Cine-Display', 'sans-serif'],
+				cine: ['Novocine-Display', 'sans-serif'],
 				regular: ['PPTelegraf-Regular', 'sans-serif'],
 				bold: ['PPTelegraf-Bold', 'sans-serif'],
 				oblique: ['PPTelegraf-Oblique', 'sans-serif'],
 			},
-			
+
 			transitionTimingFunction: {
 				'ease-custom': 'ease',
 			},
@@ -25,10 +25,7 @@ export default {
 				all: 'all',
 				transform: 'transform',
 			},
-			
 		},
 	},
-	plugins: [
-		
-	],
+	plugins: [],
 };
