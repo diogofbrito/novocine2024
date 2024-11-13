@@ -1,0 +1,94 @@
+.dummy {
+  position: absolute;
+  top: 40vh;
+  width: 66px;
+  text-align: center;
+}
+
+.scaleCon {
+  scale: 0.8;
+}
+
+#title_1 {
+  margin-right: 0px;
+}
+
+#title_2 {
+  margin-left: calc(75px /6);
+  margin-left: 0px;
+}
+
+.dummy4 {
+  right: 0px;
+}
+
+.dummy3 {
+  right: 66px;
+}
+
+.dummy2 {
+  right: 128px;
+}
+
+.dummy1 {
+  right: 195px;
+}
+
+.dummy5 {
+  left: 0px;
+}
+
+.dummy6 {
+  left: 50px;
+}
+
+.dummy7 {
+  left: 100px;
+}
+
+.dummy8 {
+  left: 167px;
+}
+
+@media (max-width: 768px) {
+
+  .dummy1 {
+    top: 6vh;
+    right: 10px;
+  }
+
+  .dummy2 {
+    top: 29vh;
+    right: 10px;
+  }
+
+  .dummy3 {
+    top: 51vh;
+    right: 10px;
+  }
+
+  .dummy4 {
+    top: 74vh;
+    right: 10px;
+  }
+
+  .dummy5 {
+    top: 6vh;
+    left: 10px;
+  }
+
+  .dummy6 {
+    top: 29vh;
+    left: 10px;
+  }
+
+  .dummy7 {
+    top: 51vh;
+    left: 10px;
+  }
+
+  .dummy8 {
+    top: 74vh;
+    left: 10px;
+  }
+}

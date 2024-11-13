@@ -17,7 +17,7 @@ export function NavBar() {
 	const currentPath = location.pathname;
 	const isFilmDetailPage = currentPath.toLowerCase().startsWith('/arquivo/') && !['/arquivo', '/arquivo/'].includes(currentPath.toLowerCase());
 
-	const { lang, toggleLang } = useLang();
+	const { lang, toggleLang, animationDone } = useLang();
 
 	useEffect(() => {
 		const navbar = navbarRef.current;
@@ -50,6 +50,7 @@ export function NavBar() {
 
 	return (
 		<ThemeProvider>
+      {animationDone && <>
 			<div className='fixed z-50 top-0 px-[4.5rem] flex w-screen h-[4.5rem] items-center' ref={navbarRef}>
 				{!isFilmDetailPage ? (
 					<div className='grid-cols-3 w-full items-center grid'>
@@ -92,6 +93,7 @@ export function NavBar() {
 			</div>
 
 			<Newsletter showNewsletter={showNewsletter} setShowNewsletter={setShowNewsletter} />
+      </>}
 		</ThemeProvider>
 	);
 }
