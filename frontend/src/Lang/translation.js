@@ -37,6 +37,10 @@ export const translation = {
 		ano: 'year',
 		duracao: 'duration',
 		filtros: 'Filters',
+		errorPage: ['Page not found.', 'You will be redirected to the home page in 5 seconds...'],
+		sobreNovocine: 'Novocine is an online cinema platform that screens a new film every twenty days, for free.',
+		keywordsArquivo: 'archive, films, Portugal, lingua-portuguesa, films, Argelia, Brazil, Mozambique, United Kingdom, Guinea-Bissau, ',
+		filmeNãoEncontrado: 'Film not found',
 	},
 	PT: {
 		arquivo: 'Arquivo',
@@ -76,5 +80,9 @@ export const translation = {
 		duracao: 'duração',
 		ano: 'ano',
 		filtros: 'Filtros',
+		errorPage: ['Página não encontrada.', 'Vais ser reencaminhado para a página inicial em 5 segundos...'],
+		sobreNovocine: 'Novocine é uma sala de cinema online que disponibiliza gratuitamente um novo filme a cada vinte dias.',
+		keywordsArquivo: 'arquivo, filmes, Portugal, lingua-portuguesa, filmes, Argélia, Brasil, Moçambique, Reino Unido, Guiné Bissau, ',
+		filmeNãoEncontrado: 'Filme não encontrado',
 	},
 };

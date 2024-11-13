@@ -8,6 +8,7 @@ import { SkeletonHome } from '../components/Skeleton/SkeletonHome';
 import { useLang } from '../components/LangProvider';
 import { translation } from '../Lang/translation.js';
 import { VimeoModal } from '../components/FilmeComp/VimeoModal.jsx';
+import { Helmet } from 'react-helmet-async';
 
 export function Home() {
 	const [film, setFilm] = useState(null);
@@ -48,6 +49,12 @@ export function Home() {
 
 	return (
 		<>
+			<Helmet>
+				<title>Novocine</title>
+				<meta name='description' content='Novocine é uma sala de cinema online que disponibiliza gratuitamente um novo filme a cada vinte dias.' />
+				<meta name='robots' content='index, follow' />
+				<meta name='keywords' content='novocine, cinema, portugal,  lisboa, lingua, portuguesa, filmes, filme, indie, filmes indie' />
+			</Helmet>
 			<div
 				className='iphone:mx-[1.5rem] iphone:mb-[1.5rem] m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)] iphone:h-[calc(100vh-6rem)]'
 				style={{
@@ -63,7 +70,10 @@ export function Home() {
 							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 						</div>
 						<div className='hidden iphone:block text-lg -mt-3 text-center iphone:text-base iphone:mt-0 '>
-							{translation[lang].filmeDe} <div><strong>{film.realizador}</strong></div>
+							{translation[lang].filmeDe}{' '}
+							<div>
+								<strong>{film.realizador}</strong>
+							</div>
 						</div>
 					</div>
 					<VimeoModal videoUrl={film.vimeoId} film={film} />

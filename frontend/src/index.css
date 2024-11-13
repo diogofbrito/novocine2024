@@ -48,6 +48,10 @@ html[data-theme="light"] {
 
 }
 
+html[data-theme="light"] .listHover:hover{
+	background-color: var(--text-color-light);
+	color: var(--background-color-light);
+}
 
 html[data-theme="light"] body,
 html[data-theme="light"] h1,
@@ -72,6 +76,12 @@ html[data-theme="light"] ul {
 html[data-theme="dark"] {
     background-color: var(--background-color-dark);
     color: var(--text-color-dark);
+
+}
+
+html[data-theme="dark"] .listHover:hover{
+	background-color: var(--text-color-dark);
+	color: var(--background-color-dark);
 
 }
 

@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
+import { translation } from '../Lang/translation.js';
+import { useLang } from '../components/LangProvider';
+
 
 export function ErrorPage() {
+	const { lang } = useLang();
+
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			window.location.href = '/';
@@ -11,10 +16,11 @@ export function ErrorPage() {
 
 	return (
 		<div>
-			<h2 className='w-full h-screen flex justify-center items-center text-xl'>
-				Página não encontrada.<br></br>
-				Vais ser reencaminhado para a página inicial em 5 segundos...
-			</h2>
+			<div className='w-full h-screen flex justify-center items-center text-xl flex-col'>
+				{translation[lang].errorPage.map((text, index) => (
+					<p key={index}>{text}</p>
+				))}
+			</div>
 		</div>
 	);
 }

@@ -16,7 +16,7 @@ export function SkeletonArchiveMasonry() {
 					variant='rectangular'
 					height={500}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
@@ -25,7 +25,7 @@ export function SkeletonArchiveMasonry() {
 					variant='rectangular'
 					height={500}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
@@ -34,7 +34,7 @@ export function SkeletonArchiveMasonry() {
 					variant='rectangular'
 					height={500}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
@@ -43,7 +43,7 @@ export function SkeletonArchiveMasonry() {
 					variant='rectangular'
 					height={500}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
@@ -52,7 +52,7 @@ export function SkeletonArchiveMasonry() {
 					variant='rectangular'
 					height={500}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
@@ -61,7 +61,7 @@ export function SkeletonArchiveMasonry() {
 					variant='rectangular'
 					height={500}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
@@ -73,7 +73,7 @@ export function SkeletonArchiveMasonry() {
 					variant='rectangular'
 					height={300}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
@@ -82,7 +82,7 @@ export function SkeletonArchiveMasonry() {
 					variant='rectangular'
 					height={300}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
@@ -91,7 +91,7 @@ export function SkeletonArchiveMasonry() {
 					variant='rectangular'
 					height={300}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}

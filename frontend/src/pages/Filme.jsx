@@ -8,6 +8,7 @@ import { SegundaSecEntrevista } from '../components/FilmeComp/SegundaSecEntrevis
 import { TerceiraSecCreditos } from '../components/FilmeComp/TerceiraSecCreditos';
 import { useLang } from '../components/LangProvider';
 import { translation } from '../Lang/translation';
+import { Helmet } from 'react-helmet-async';
 
 export function Filme() {
 	const { slug } = useParams();
@@ -52,22 +53,30 @@ export function Filme() {
 	const stillsUrls = film.stills?.map(image => urlFor(image).url()) || [];
 
 	return (
-		<div className='m-[4.5rem] iphone:mx-[1.5rem]'>
-			<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 '>
-				<div className='flex flex-col text-center'>
-					<div className='text-9xl font-cine iphone:text-7xl'>{film.nome}</div>
-					<div className='text-xl'>
-						{translation[lang].filmeDe} <strong>{film.realizador}</strong>
+		<>
+			<Helmet>
+				<title>Novocine | {film.nome} </title>
+				<meta name='description' content={`${film.nome} ${translation[lang].filmeDe} ${film.realizador}`} />
+				<meta name='robots' content='index, follow' />
+				<meta name='keywords' content={translation[lang].keywordsArquivo} />
+			</Helmet>
+			<div className='m-[4.5rem] iphone:mx-[1.5rem]'>
+				<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 '>
+					<div className='flex flex-col text-center'>
+						<div className='text-9xl font-cine iphone:text-7xl'>{film.nome}</div>
+						<div className='text-xl'>
+							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
+						</div>
 					</div>
+					<div className='flex-grow '>{stillsUrls.length > 0 && <Carousel images={stillsUrls} />}</div>
 				</div>
-				<div className='flex-grow '>{stillsUrls.length > 0 && <Carousel images={stillsUrls} />}</div>
-			</div>
 
-			<div className='pt-[4.5rem]'>
-				<PrimeiraSecDetalhes film={film} />
-				<SegundaSecEntrevista film={film} />
-				<TerceiraSecCreditos film={film} />
+				<div className='pt-[4.5rem]'>
+					<PrimeiraSecDetalhes film={film} />
+					<SegundaSecEntrevista film={film} />
+					<TerceiraSecCreditos film={film} />
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }
