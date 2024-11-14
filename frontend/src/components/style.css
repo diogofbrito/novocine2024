@@ -11,11 +11,13 @@
 
 #title_1 {
   margin-right: 0px;
+  font-size: 180px;
 }
 
 #title_2 {
   margin-left: calc(75px /6);
   margin-left: 0px;
+  font-size: 180px;
 }
 
 .dummy4 {
@@ -53,42 +55,42 @@
 @media (max-width: 768px) {
 
   .dummy1 {
-    top: 6vh;
+    top: calc(50vh - 305px);
     right: 10px;
   }
 
   .dummy2 {
-    top: 29vh;
+    top: calc(50vh - 150px);
     right: 10px;
   }
 
   .dummy3 {
-    top: 51vh;
+    top: calc(50vh + 5px);
     right: 10px;
   }
 
   .dummy4 {
-    top: 74vh;
+    top: calc(50vh + 160px);
     right: 10px;
   }
 
   .dummy5 {
-    top: 6vh;
+    top: calc(50vh - 305px);
     left: 10px;
   }
 
   .dummy6 {
-    top: 29vh;
+    top: calc(50vh - 150px);
     left: 10px;
   }
 
   .dummy7 {
-    top: 51vh;
+    top: calc(50vh + 5px);
     left: 10px;
   }
 
   .dummy8 {
-    top: 74vh;
+    top: calc(50vh + 160px);
     left: 10px;
   }
 }

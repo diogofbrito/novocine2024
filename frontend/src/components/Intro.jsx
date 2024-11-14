@@ -52,39 +52,37 @@ export function Intro() {
 
   const mainCon = useRef(null);
   const imgCon = useRef(null);
-  const leftSlide = useRef(null);
-  const rightSide = useRef(null);
   const leftSlide2 = useRef(null);
   const rightSide2 = useRef(null);
 
 
 
   useEffect(() => {
+    let isMob = false
+    const paused = false
+    console.log(isMob || paused, !isMob || paused)
+
+
+    if (window.innerWidth <= 768) {
+      isMob = false
+    } else {
+      isMob = true
+    }
 
     setTimeout(() => {
-
-      let isMob = false
-
-      if (window.innerWidth <= 768) {
-        isMob = false
-      } else {
-        isMob = true
-      }
-
       const t1 = gsap.timeline({
         defaults: {
           ease: 'circ.inOut',
           onStart: () => {
-            console.log("Started")
             mainCon.current.style.display = 'block';
             setTimeout(() => {
               setAnimationDone(true)
             }, 1000)
           },
           onComplete: () => {
-            console.log("Ended")
+            console.log("Ended 1")
           },
-          paused: !isMob
+          paused: !isMob || paused,
         }
       });
 
@@ -93,47 +91,48 @@ export function Intro() {
           scale: 1,
           duration: 0.5
         })
+
         .to('.dummy1', {
           duration: 0.5,
-          top: '6vh',
-          right: '0',
-        }, '+=0.5')
+          top: 'calc(50vh - 305px)',
+          right: '10px'
+        })
         .to('.dummy2', {
           duration: 0.5,
-          top: '29vh',
-          right: '0',
+          top: 'calc(50vh - 150px)',
+          right: '10px'
         }, "<")
         .to('.dummy3', {
           duration: 0.5,
-          top: '51vh',
-          right: '0',
+          top: 'calc(50vh + 5px)',
+          right: '10px'
         }, "<")
         .to('.dummy4', {
           duration: 0.5,
-          top: '74vh',
-          right: '0',
+          top: 'calc(50vh + 160px)',
+          right: '10px'
         }, "<")
-
         .to('.dummy5', {
           duration: 0.5,
-          top: '6vh',
-          left: '0',
+          top: 'calc(50vh - 305px)',
+          left: '10px'
         }, "<")
         .to('.dummy6', {
           duration: 0.5,
-          top: '29vh',
-          left: '0',
+          top: 'calc(50vh - 150px)',
+          left: '10px'
         }, "<")
         .to('.dummy7', {
           duration: 0.5,
-          top: '51vh',
-          left: '0',
+          top: 'calc(50vh + 5px)',
+          left: '10px'
         }, "<")
         .to('.dummy8', {
           duration: 0.5,
-          top: '74vh',
-          left: '0',
+          top: 'calc(50vh + 160px)',
+          left: '10px'
         }, "<")
+
         .to([leftSlide2.current], {
           duration: 0.7,
           x: '-100%',
@@ -165,7 +164,6 @@ export function Intro() {
         defaults: {
           ease: 'circ.inOut',
           onStart: () => {
-            console.log("Started")
             mainCon.current.style.display = 'block';
             setTimeout(() => {
               setAnimationDone(true)
@@ -174,56 +172,52 @@ export function Intro() {
           onComplete: () => {
             console.log("Ended")
           },
-          paused: isMob
+          paused: isMob || paused,
         }
       });
 
       t2
-        //.to('.scaleCon', {
-        //  scale: 1,
-        //  duration: 0.5
-        //})
         .to('.dummy1', {
           duration: 0.5,
-          top: '6vh',
-          right: '10px',
+          top: 'calc(50vh - 305px)',
+          right: '10px'
         })
         .to('.dummy2', {
           duration: 0.5,
-          top: '29vh',
-          right: '10px',
+          top: 'calc(50vh - 150px)',
+          right: '10px'
         }, "<")
         .to('.dummy3', {
           duration: 0.5,
-          top: '51vh',
-          right: '10px',
+          top: 'calc(50vh + 5px)',
+          right: '10px'
         }, "<")
         .to('.dummy4', {
           duration: 0.5,
-          top: '74vh',
-          right: '10px',
+          top: 'calc(50vh + 160px)',
+          right: '10px'
         }, "<")
-
         .to('.dummy5', {
           duration: 0.5,
-          top: '6vh',
-          left: '10px',
+          top: 'calc(50vh - 305px)',
+          left: '10px'
         }, "<")
         .to('.dummy6', {
           duration: 0.5,
-          top: '29vh',
-          left: '10px',
+          top: 'calc(50vh - 150px)',
+          left: '10px'
         }, "<")
         .to('.dummy7', {
           duration: 0.5,
-          top: '51vh',
-          left: '10px',
+          top: 'calc(50vh + 5px)',
+          left: '10px'
         }, "<")
         .to('.dummy8', {
           duration: 0.5,
-          top: '74vh',
-          left: '10px',
+          top: 'calc(50vh + 160px)',
+          left: '10px'
         }, "<")
+
         .to([leftSlide2.current], {
           duration: 0.7,
           x: '-65vw',
