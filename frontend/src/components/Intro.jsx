@@ -14,7 +14,6 @@ gsap.registerPlugin(useGSAP, Flip, CSSRulePlugin);
 export function Intro() {
 
   const [film, setFilm] = useState(null);
-  const [isScrollLocked, setIsScrollLocked] = useScrollLock();
   const { setAnimationDone } = useLang();
 
 
@@ -59,7 +58,7 @@ export function Intro() {
 
   useEffect(() => {
     let isMob = false
-    const paused = false
+    const paused = false 
     console.log(isMob || paused, !isMob || paused)
 
 
@@ -94,42 +93,42 @@ export function Intro() {
 
         .to('.dummy1', {
           duration: 0.5,
-          top: 'calc(50vh - 305px)',
+          top: 'calc(50vh - 358px)',
           right: '10px'
         })
         .to('.dummy2', {
           duration: 0.5,
-          top: 'calc(50vh - 150px)',
+          top: 'calc(50vh - 175px)',
           right: '10px'
         }, "<")
         .to('.dummy3', {
           duration: 0.5,
-          top: 'calc(50vh + 5px)',
+          top: 'calc(50vh + 10px)',
           right: '10px'
         }, "<")
         .to('.dummy4', {
           duration: 0.5,
-          top: 'calc(50vh + 160px)',
+          top: 'calc(50vh + 194px)',
           right: '10px'
         }, "<")
         .to('.dummy5', {
           duration: 0.5,
-          top: 'calc(50vh - 305px)',
+          top: 'calc(50vh - 358px)',
           left: '10px'
         }, "<")
         .to('.dummy6', {
           duration: 0.5,
-          top: 'calc(50vh - 150px)',
+          top: 'calc(50vh - 175px)',
           left: '10px'
         }, "<")
         .to('.dummy7', {
           duration: 0.5,
-          top: 'calc(50vh + 5px)',
+          top: 'calc(50vh + 10px)',
           left: '10px'
         }, "<")
         .to('.dummy8', {
           duration: 0.5,
-          top: 'calc(50vh + 160px)',
+          top: 'calc(50vh + 194px)',
           left: '10px'
         }, "<")
 
@@ -179,42 +178,42 @@ export function Intro() {
       t2
         .to('.dummy1', {
           duration: 0.5,
-          top: 'calc(50vh - 305px)',
+          top: 'calc(50vh - 358px)',
           right: '10px'
         })
         .to('.dummy2', {
           duration: 0.5,
-          top: 'calc(50vh - 150px)',
+          top: 'calc(50vh - 175px)',
           right: '10px'
         }, "<")
         .to('.dummy3', {
           duration: 0.5,
-          top: 'calc(50vh + 5px)',
+          top: 'calc(50vh + 10px)',
           right: '10px'
         }, "<")
         .to('.dummy4', {
           duration: 0.5,
-          top: 'calc(50vh + 160px)',
+          top: 'calc(50vh + 194px)',
           right: '10px'
         }, "<")
         .to('.dummy5', {
           duration: 0.5,
-          top: 'calc(50vh - 305px)',
+          top: 'calc(50vh - 358px)',
           left: '10px'
         }, "<")
         .to('.dummy6', {
           duration: 0.5,
-          top: 'calc(50vh - 150px)',
+          top: 'calc(50vh - 175px)',
           left: '10px'
         }, "<")
         .to('.dummy7', {
           duration: 0.5,
-          top: 'calc(50vh + 5px)',
+          top: 'calc(50vh + 10px)',
           left: '10px'
         }, "<")
         .to('.dummy8', {
           duration: 0.5,
-          top: 'calc(50vh + 160px)',
+          top: 'calc(50vh + 194px)',
           left: '10px'
         }, "<")
 

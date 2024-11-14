@@ -11,86 +11,86 @@
 
 #title_1 {
   margin-right: 0px;
-  font-size: 180px;
+  font-size: 210px;
 }
 
 #title_2 {
   margin-left: calc(75px /6);
   margin-left: 0px;
-  font-size: 180px;
+  font-size: 210px;
 }
 
 .dummy4 {
-  right: 0px;
+  right: 6px;
 }
 
 .dummy3 {
-  right: 66px;
+  right: 82px;
 }
 
 .dummy2 {
-  right: 128px;
+  right: 157px;
 }
 
 .dummy1 {
-  right: 195px;
+  right: 235px;
 }
 
 .dummy5 {
-  left: 0px;
+  left: 6px;
 }
 
 .dummy6 {
-  left: 50px;
+  left: 68px;
 }
 
 .dummy7 {
-  left: 100px;
+  left: 120px;
 }
 
 .dummy8 {
-  left: 167px;
+  left: 198px;
 }
 
 @media (max-width: 768px) {
 
   .dummy1 {
-    top: calc(50vh - 305px);
+    top: calc(50vh - 358px);
     right: 10px;
   }
 
   .dummy2 {
-    top: calc(50vh - 150px);
+    top: calc(50vh - 175px);
     right: 10px;
   }
 
   .dummy3 {
-    top: calc(50vh + 5px);
+    top: calc(50vh + 10px);
     right: 10px;
   }
 
   .dummy4 {
-    top: calc(50vh + 160px);
+    top: calc(50vh + 194px);
     right: 10px;
   }
 
   .dummy5 {
-    top: calc(50vh - 305px);
+    top: calc(50vh - 358px);
     left: 10px;
   }
 
   .dummy6 {
-    top: calc(50vh - 150px);
+    top: calc(50vh - 175px);
     left: 10px;
   }
 
   .dummy7 {
-    top: calc(50vh + 5px);
+    top: calc(50vh + 10px);
     left: 10px;
   }
 
   .dummy8 {
-    top: calc(50vh + 160px);
+    top: calc(50vh + 194px);
     left: 10px;
   }
 }
