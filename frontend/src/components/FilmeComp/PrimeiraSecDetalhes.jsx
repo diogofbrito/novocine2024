@@ -23,7 +23,7 @@ export function PrimeiraSecDetalhes({ film }) {
 	return (
 		<div className='rounded-[50px] iphone:rounded-[40px] border p-10 iphone:p-5'>
 			<div className='flex gap-6 items-center iphone:flex-col iphone:items-start '>
-				<div className='flex flex-col w-1/2 iphone:w-full iphone:text-center '>
+				<div className='flex flex-col w-1/2 iphone:w-full  '>
 					<div className='text-8xl font-cine iphone:text-6xl '>{film.nome}</div>
 					<p className='text-xl  iphone:leading-[1.5rem]'>
 						{translation[lang].de} <strong>{film.realizador}</strong>
