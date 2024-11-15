@@ -86,7 +86,7 @@ export function Newsletter({ showNewsletter, setShowNewsletter }) {
 									<ArrowRight />
 								</button>
 							</div>
-							<div className='fixed top-4  right-[4.5rem] justify-center flex '>
+							<div className='fixed z-50 top-0 right-0 left-0 px-[4.5rem] iphone:px-[1rem] flex h-[4.5rem] justify-center items-center '>
 								<button
 									onClick={() => setShowNewsletter(false)}
 									className='close uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out font-bold'

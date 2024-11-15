@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Drawer } from '@mui/material';
-import { Plus, Minus, Moon, Sun } from 'lucide-react';
+import { Moon, Sun, AlignJustify } from 'lucide-react';
 import { useTheme } from '../ThemeProvider';
 
 export function NavBarMobile({ translation, useLang, setShowNewsletter, close }) {
@@ -15,24 +15,24 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter, close })
 	};
 
 	return (
-		<div className='hidden iphone:block relative text-end'>
-			<button className='p-1.5 border  rounded-full buttonMobile' onClick={toggleDrawer(true)}>
-				<Plus size={19} strokeWidth={2.5} />
+		<div className='hidden iphone:block relative justify-self-end'>
+			<button
+				className=' uppercase  p-2 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out font-bold '
+				onClick={toggleDrawer(true)}
+			>
+				<AlignJustify size={20} />
 			</button>
 
 			<Drawer
+				key={theme}
 				anchor='left'
 				open={isMenuOpen}
 				onClose={toggleDrawer(false)}
 				PaperProps={{
 					sx: {
 						width: '50vw',
-						backgroundColor: 'var(--background-color-light)',
-						color: 'var(--text-color-dark)',
-						'&[data-theme="dark"]': {
-							backgroundColor: 'var(--background-color-dark)',
-							color: 'var(--text-color-light)',
-						},
+						backgroundColor: theme === 'dark' ? 'var(--background-color-dark)' : 'var(--background-color-light)',
+						color: theme === 'dark' ? 'var(--text-color-light)' : 'var(--text-color-dark)',
 						paddingLeft: '1rem',
 						paddingRight: '1rem',
 						borderTopRightRadius: '40px',
@@ -42,8 +42,11 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter, close })
 			>
 				<div className='flex flex-col justify-between h-full py-6 px-2 '>
 					<div className='flex justify-end'>
-						<button className='p-1.5 border rounded-full' onClick={toggleDrawer(close)}>
-							<Minus size={19} strokeWidth={2.5} />
+						<button
+							className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out font-bold '
+							onClick={toggleDrawer(close)}
+						>
+							{translation[lang].fechar}
 						</button>
 					</div>
 
@@ -67,7 +70,7 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter, close })
 							<button
 								onClick={() => {
 									setShowNewsletter(true);
-									toggleDrawer(false)(); 
+									toggleDrawer(false)();
 								}}
 								className='uppercase px-3 py-1 border rounded-full font-bold'
 							>

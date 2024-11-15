@@ -3,7 +3,6 @@ import Select from 'react-select';
 import { Search } from 'lucide-react';
 import { useLang } from '../LangProvider';
 import { translation } from '../../Lang/translation.js';
-import { SlidersHorizontal } from 'lucide-react';
 import { FilterSearchMobile } from '../Mobile/FilterSearchMobile';
 
 export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelectedYear, selectedCountry, setSelectedCountry, films, onToggleView, isListView }) {
@@ -34,30 +33,35 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 		setSearchTerm(e.target.value);
 	};
 
+	const getBackgroundColorByTheme = () => {
+		const theme = document.documentElement.getAttribute('data-theme');
+		return theme === 'light' ? 'var(--background-color-light)' : 'var(--background-color-dark)';
+	};
+
 	const customSelectStyles = {
-		control: (provided, state) => ({
+		control: provided => ({
 			...provided,
-			border: '1px solid white', // Borda preta ou da cor desejada
-			borderRadius: '99px', // Deixa os cantos arredondados
-			boxShadow: 'none', // Remove a sombra padrão do select
-			'&:hover': {
-				backgroundColor: '', // Cor da borda no hover
-			},
+			border: '1px solid white',
+			borderRadius: '99px',
+			boxShadow: 'none',
 			backgroundColor: 'transparent',
 			width: '200px',
+			'&:hover': {
+				color: 'white',
+			},
 		}),
 		placeholder: provided => ({
 			...provided,
-			color: 'white', // Cor do texto do placeholder
+			color: 'white',
 		}),
 		singleValue: provided => ({
 			...provided,
-			color: 'white', // Cor do texto selecionado
+			color: 'white',
 		}),
 		dropdownIndicator: provided => ({
 			...provided,
-			color: 'white', // Cor do ícone de dropdown
-			paddingLeft: '8px', // Remove espaçamento interno adicional
+			color: 'white', 
+			paddingLeft: '8px', 
 			'&:hover': {
 				color: 'white',
 			},
@@ -69,23 +73,24 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 		}),
 		menu: provided => ({
 			...provided,
-			borderRadius: '1.5rem', // Arredondamento das bordas do menu
-			boxShadow: 'none', // Remove sombra do menu
+			borderRadius: '1.5rem',
+			boxShadow: 'none', 
 			border: '1px solid #ddd',
-			backgroundColor: 'pink', // Borda do menu dropdown
+			backgroundColor: getBackgroundColorByTheme(),
 		}),
 
 		indicatorSeparator: provided => ({
 			...provided,
 			backgroundColor: 'white',
 		}),
-		option: (provided, state) => ({
+		option: provided => ({
 			...provided,
-			padding: '10px 20px', // Espaçamento interno das opções
+			padding: '10px 20px',
 			color: 'white',
+			backgroundColor: 'transparent',
 			'&:hover': {
 				color: '#e0e0e0',
-				backgroundColor: 'transparent', // Cor de fundo no hover
+				backgroundColor: 'transparent', 
 			},
 		}),
 	};
@@ -113,7 +118,6 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 						isSearchable={false}
 						value={years.find(year => year.value === selectedYear)}
 						styles={customSelectStyles}
-						classNamePrefix='react-select'
 					/>
 
 					<Select
@@ -138,9 +142,21 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 				</button>
 			</div>
 
-		
-				<FilterSearchMobile translation={translation} lang={lang} films={films} onToggleView={onToggleView}  searchTerm={searchTerm} handleSearchChange={handleSearchChange} selectedYear={selectedYear} handleYearChange={handleYearChange} selectedCountry={selectedCountry} handleCountryChange={handleCountryChange} years={years}  customSelectStyles={customSelectStyles} countries={countries} />
-			
+			<FilterSearchMobile
+				translation={translation}
+				lang={lang}
+				films={films}
+				onToggleView={onToggleView}
+				searchTerm={searchTerm}
+				handleSearchChange={handleSearchChange}
+				selectedYear={selectedYear}
+				handleYearChange={handleYearChange}
+				selectedCountry={selectedCountry}
+				handleCountryChange={handleCountryChange}
+				years={years}
+				customSelectStyles={customSelectStyles}
+				countries={countries}
+			/>
 		</>
 	);
 }

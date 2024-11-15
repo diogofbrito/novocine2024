@@ -100,7 +100,7 @@ export function Arquivo() {
 				<meta name='robots' content='index, follow' />
 				<meta name='keywords' content={translation[lang].keywordsArquivo} />
 			</Helmet>
-			<div className='mx-[4.5rem] mb-[3rem] mt-[4.5rem] pt-[2rem] iphone:pt-2 iphone:mx-[1.5rem] iphone:mb-[1.5rem] '>
+			<div className='mx-[4.5rem] mb-[3rem] mt-[4.5rem] pt-[2rem] iphone:pt-2 iphone:mx-[1rem] iphone:mb-[1rem] '>
 				<FilterSearch
 					films={allFilms}
 					searchTerm={searchTerm}
@@ -116,13 +116,13 @@ export function Arquivo() {
 				<div className='pt-6'>
 					<AnimatePresence mode='wait'>
 						{isLoading ? (
-							<SkeletonArchiveMasonry />
+							<SkeletonArchiveMasonry  />
 						) : (
 							<motion.div key={isListView ? 'list' : 'gallery'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
 								{isListView ? (
 									<ArchiveList films={allFilms} onFilmClick={cancelSmoothScrolling} />
 								) : (
-									<Masonry breakpointCols={breakpointColumnsObj} className='flex gap-6'>
+									<Masonry breakpointCols={breakpointColumnsObj} className='flex gap-6 '>
 										{allFilms.length > 0 ? (
 											allFilms.map(film => (
 												<Link onClick={cancelSmoothScrolling} to={`/arquivo/${film.slug?.current}`} key={film.slug?.current}>

@@ -7,20 +7,23 @@ export default {
       type: 'block',
     },
     {
-        type: 'image',
-        fields: [
-          {
-            name: 'caption',
-            type: 'string',
-            title: 'Caption',
-          },
-        ]
+      type: 'image',
+      fields: [
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Caption',
+        },
+      ],
     },
     {
       type: 'iframe',
     },
     {
       type: 'dividerHr',
-    }
+    },
+    {
+      type: 'galleryImgs'
+    },
   ],
 }

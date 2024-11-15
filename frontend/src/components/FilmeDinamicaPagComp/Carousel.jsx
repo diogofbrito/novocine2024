@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SkeletonCarousel } from '../Skeleton/SkeletonCarousel';
 
 export function Carousel({ images }) {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const openModal = (image, index) => {
 		setSelectedImage(image);
@@ -27,6 +29,26 @@ export function Carousel({ images }) {
 	};
 
 	useEffect(() => {
+		let loadedImages = 0;
+
+		const imagePromises = images.map(imageSrc => {
+			return new Promise(resolve => {
+				const img = new Image();
+				img.src = imageSrc;
+				img.onload = () => {
+					loadedImages += 1;
+					if (loadedImages === images.length) {
+						setIsLoading(false);
+					}
+					resolve();
+				};
+			});
+		});
+
+		Promise.all(imagePromises).then(() => setIsLoading(false));
+	}, [images]);
+
+	useEffect(() => {
 		const handleKeyDown = event => {
 			if (event.key === 'ArrowRight') {
 				showNextImage();
@@ -40,43 +62,49 @@ export function Carousel({ images }) {
 		window.addEventListener('keydown', handleKeyDown);
 
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [currentIndex]); 
+	}, [currentIndex]);
 	return (
 		<div className='flex flex-row justify-center items-center gap-5 h-full'>
-			{images.map((image, index) => (
-				<motion.div
-					key={index}
-					className='card cursor-pointer h-full bg-cover bg-center rounded-[20px] w-full'
-					style={{
-						backgroundImage: `url(${image})`,
-					}}
-					onClick={() => openModal(image, index)}
-				></motion.div>
-			))}
-
-			<AnimatePresence>
-				{selectedImage && (
-					<motion.div
-						className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50'
-						onClick={closeModal}
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
-					>
+			{isLoading ? (
+				<SkeletonCarousel /> 
+			) : (
+				<>
+					{images.map((image, index) => (
 						<motion.div
-							className='relative p-4 bg-cover bg-center rounded-[20px] w-[80vw] h-[80vh] bg-white'
+							key={index}
+							className='card cursor-pointer h-full bg-cover bg-center rounded-[20px] w-full'
 							style={{
-								backgroundImage: `url(${selectedImage})`,
+								backgroundImage: `url(${image})`,
 							}}
-							onClick={closeModal}
-							initial={{ scale: 0.8 }}
-							animate={{ scale: 1 }}
-							exit={{ scale: 0.8 }}
-							transition={{ duration: 0.3 }}
+							onClick={() => openModal(image, index)}
 						></motion.div>
-					</motion.div>
-				)}
-			</AnimatePresence>
+					))}
+
+					<AnimatePresence>
+						{selectedImage && (
+							<motion.div
+								className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50'
+								onClick={closeModal}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+							>
+								<motion.div
+									className='relative p-4 bg-cover bg-center rounded-[20px] w-[80vw] h-[80vh] bg-white'
+									style={{
+										backgroundImage: `url(${selectedImage})`,
+									}}
+									onClick={closeModal}
+									initial={{ scale: 0.8 }}
+									animate={{ scale: 1 }}
+									exit={{ scale: 0.8 }}
+									transition={{ duration: 0.3 }}
+								></motion.div>
+							</motion.div>
+						)}
+					</AnimatePresence>
+				</>
+			)}
 		</div>
 	);
 }

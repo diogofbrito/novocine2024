@@ -7,6 +7,8 @@ export const useLang = () => useContext(LangContext);
 
 export function LangProvider({ children }) {
     const [lang, setLang] = useState("PT");
+        const [animationDone, setAnimationDone] = useState(false);
+
 
     const toggleLang = () => {
         const newLang = lang === "PT" ? "EN" : "PT";
@@ -26,7 +28,7 @@ export function LangProvider({ children }) {
     }, [lang]);
 
     return (
-        <LangContext.Provider value={{ lang, toggleLang }}>
+        <LangContext.Provider value={{ lang, toggleLang, animationDone, setAnimationDone }}>
             {children}
         </LangContext.Provider>
     );

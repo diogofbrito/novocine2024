@@ -29,10 +29,13 @@ export function Filme() {
 		  sinopseENG,
           entrevista,
   		  entrevistaENG,
+		  extras,
+		  extrasENG,
           autorEntrevista,
           creditos,
           stills
         }
+
       `,
 			)
 			.then(data => {
@@ -60,8 +63,8 @@ export function Filme() {
 				<meta name='robots' content='index, follow' />
 				<meta name='keywords' content={translation[lang].keywordsArquivo} />
 			</Helmet>
-			<div className='m-[4.5rem] iphone:mx-[1.5rem]'>
-				<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 '>
+			<div className='m-[4.5rem] iphone:mx-[1rem] iphone:mb-[2rem]'>
+				<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 iphone:h-[calc(100vh-5.5rem)]'>
 					<div className='flex flex-col text-center'>
 						<div className='text-9xl font-cine iphone:text-7xl'>{film.nome}</div>
 						<div className='text-xl'>

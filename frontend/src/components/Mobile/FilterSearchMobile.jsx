@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Drawer } from '@mui/material';
-import { SlidersHorizontal, Search, Minus } from 'lucide-react';
+import { SlidersHorizontal, Search, Minus, Rows3 } from 'lucide-react';
 import Select from 'react-select';
+
 
 export function FilterSearchMobile({
 	films,
@@ -29,17 +30,15 @@ export function FilterSearchMobile({
 	return (
 		<div className='hidden iphone:block '>
 			<div className='flex justify-between items-center'>
-				<button onClick={toggleDrawer(true)} className='border rounded-full px-3 py-1 flex gap-2 items-center'>
-					{translation[lang].filtros}
-					<SlidersHorizontal size={21} />
-				</button>
+				<div className='flex gap-2 items-center'>
+					<button onClick={onToggleView} className='border rounded-full px-3 py-1 items-center transition-all duration-300 ease-in-out'>
+						{isListView ? translation[lang].galeria : translation[lang].lista}
+					</button>
 
-				<div className='flex items-center '>
-					{films.length} {translation[lang].filmesDispo}
+					<div className='flex items-center '>
+						{films.length} {translation[lang].filmesDispo}
+					</div>
 				</div>
-				<button onClick={onToggleView} className='border rounded-full px-3 py-1 items-center transition-all duration-300 ease-in-out'>
-					{isListView ? translation[lang].galeria : translation[lang].lista}
-				</button>
 			</div>
 
 			<Drawer

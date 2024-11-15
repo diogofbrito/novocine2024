@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLang } from "../LangProvider";
 import { translation } from "../../Lang/translation.js";
+import { Plus } from 'lucide-react';
+
 
 export function ArchiveList({ films, onFilmClick }) {
     const { lang } = useLang();
@@ -18,17 +20,40 @@ export function ArchiveList({ films, onFilmClick }) {
 				</div>
 				{films.length > 0 ? (
 					films.map(film => (
-						<Link onClick={onFilmClick} to={`/arquivo/${film.slug?.current}`} key={film.slug?.current} className='grid grid-cols-4 items-center w-full p-4 border rounded-3xl listHover iphone:flex iphone:flex-col iphone:items-start'>
-							<div className='col-span-2 text-5xl font-cine'>{film.nome}</div>
+						<Link onClick={onFilmClick} to={`/arquivo/${film.slug?.current}`} key={film.slug?.current}>
+							<div className='grid grid-cols-4 items-center w-full p-4 border rounded-3xl listHover iphone:hidden'>
+								<div className='col-span-2 text-5xl font-cine iphone:text-center'>{film.nome}</div>
 
-							<div className='col-span-1 text-base'>
-								<span className='font-bold'>{film.realizador}</span>
+								<div className='col-span-1 text-base'>
+									<span className='font-bold'>
+										<span className='hidden iphone:inline font-regular'>de </span>
+										{film.realizador}
+									</span>
+								</div>
+
+								<div className='col-span-1 grid grid-cols-4 w-full text-base iphone:flex iphone:justify-between'>
+									<div className='col-span-2'>{film.pais}</div>
+									<div className='col-span-1'>{film.minutos} min</div>
+									<div className='col-span-1'>{film.ano}</div>
+								</div>
 							</div>
 
-							<div className='col-span-1 grid grid-cols-4 w-full text-base iphone:flex iphone:justify-between'>
-								<div className='col-span-2'>{film.pais}</div>
-								<div className='col-span-1'>{film.minutos} min</div>
-								<div className='col-span-1'>{film.ano}</div>
+							{/* MOBILE VERSION */}
+							<div className='hidden iphone:flex iphone:flex-col pl-4 pr-3 pt-4 pb-3 border rounded-3xl'>
+								<div>
+									<div className='text-5xl font-cine '>{film.nome}</div>
+									<span className=''>
+										{translation[lang].de} <span className='font-bold'>{film.realizador}</span>
+									</span>
+									<div>
+										{film.pais} &bull; {film.minutos} min &bull; {film.ano}
+									</div>
+								</div>
+								<div className=' flex justify-end '>
+									<div className='rounded-full border p-1'>
+										<Plus />
+									</div>
+								</div>
 							</div>
 						</Link>
 					))

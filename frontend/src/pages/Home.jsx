@@ -9,10 +9,14 @@ import { useLang } from '../components/LangProvider';
 import { translation } from '../Lang/translation.js';
 import { VimeoModal } from '../components/FilmeComp/VimeoModal.jsx';
 import { Helmet } from 'react-helmet-async';
+import { Intro } from '../components/Intro.jsx';
+
 
 export function Home() {
 	const [film, setFilm] = useState(null);
 	const { lang } = useLang();
+
+
 
 	useEffect(() => {
 		async function getLatestFilm() {
@@ -55,8 +59,9 @@ export function Home() {
 				<meta name='robots' content='index, follow' />
 				<meta name='keywords' content='novocine, cinema, portugal,  lisboa, lingua, portuguesa, filmes, filme, indie, filmes indie' />
 			</Helmet>
+			<Intro />
 			<div
-				className='iphone:mx-[1.5rem] iphone:mb-[1.5rem] m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)] iphone:h-[calc(100vh-6rem)]'
+				className='iphone:mx-[1rem] iphone:mb-[1rem] m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)] iphone:h-[calc(100vh-5.5rem)]'
 				style={{
 					backgroundImage: `url(${film.stills ? urlFor(film.stills).url() : 'imgs/placeholder.webp'})`,
 					backgroundSize: 'cover',
@@ -65,7 +70,7 @@ export function Home() {
 			>
 				<div className='w-full inset-0 flex h-full flex-col gap-6 justify-center items-center -z-10 px-20 '>
 					<div>
-						<h1 className='text-[9rem] font-cine text-center iphone:text-7xl'>{film.nome}</h1>
+						<div className='text-[9rem] font-cine text-center iphone:text-7xl'>{film.nome}</div>
 						<div className='iphone:hidden text-lg -mt-6 text-center iphone:text-base iphone:mt-0 '>
 							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 						</div>
@@ -76,11 +81,12 @@ export function Home() {
 							</div>
 						</div>
 					</div>
-					<VimeoModal videoUrl={film.vimeoId} film={film} />
+					<VimeoModal  />
+
 				</div>
 			</div>
 
-			<div className='mx-[4.5rem] iphone:mx-[1.5rem] mb-[4.5rem] iphone:mb-[1.5rem]'>
+			<div className='mx-[4.5rem] iphone:mx-[1rem] mb-[4.5rem] iphone:mb-[1rem]'>
 				<PrimeiraSecDetalhes film={film} />
 
 				<SegundaSecEntrevista film={film} />

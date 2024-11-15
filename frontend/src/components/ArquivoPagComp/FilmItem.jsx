@@ -54,8 +54,8 @@ export function FilmItem({ film }) {
 				</div>
 			</div>
 
-			<div className='hidden iphone:block pt-2'>
-				<p className='text-4xl font-cine'>{film.nome}</p>
+			<div className='hidden iphone:block pt-1 text-center'>
+				<p className='text-5xl font-cine'>{film.nome}</p>
 			</div>
 		</div>
 	);

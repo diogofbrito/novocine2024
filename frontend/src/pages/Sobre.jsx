@@ -19,8 +19,8 @@ export function Sobre() {
 				<meta name='robots' content='index, follow' />
 				<meta name='keywords' content='novocine, cinema, portugal, lisboa, madalena fragoso, afonso mota, diogo brito, filmes em portugal, streaming, cinema online, artes visuais, cineastas' />
 			</Helmet>
-			<div className='flex flex-col mt-[4.5rem] h-[calc(100vh-4.5rem)] iphone:mx-[1.5rem] iphone:mb-[1.5rem]  iphone:h-full iphone:pt-[2rem] '>
-				<div className='flex-grow flex justify-center items-center '>
+			<div className='flex flex-col mt-[4.5rem] h-[calc(100vh-4.5rem)] iphone:mx-[1rem] iphone:mb-[1rem]  iphone:h-full iphone:pt-[2rem] '>
+				<div className='flex-grow flex justify-center items-center iphone:px-[1rem]'>
 					{isThermsView ? (
 						<div className='text-xl w-2/4  iphone:w-full iphone:text-base leading-[1.4] '>
 							{translation[lang].sobreText}
@@ -40,7 +40,7 @@ export function Sobre() {
 					)}
 				</div>
 
-				<div className='flex items-center justify-center h-[4.5rem] gap-4 iphone:fixed  iphone:bottom-0 iphone:w-full iphone:left-0 '>
+				<div className='flex items-center justify-center iphone:justify-between h-[4.5rem] gap-4 iphone:fixed  iphone:bottom-0 iphone:w-full iphone:left-0 iphone:px-[1rem]'>
 					<button
 						onClick={onToggleView}
 						className='uppercase link px-3 py-1 border rounded-full font-bold text-md hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out iphone:text-base'

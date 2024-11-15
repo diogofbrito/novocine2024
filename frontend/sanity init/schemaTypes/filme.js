@@ -138,13 +138,13 @@ export default {
         {
           name: 'dataInicio',
           title: 'Data de Início',
-          type: 'datetime',
+          type: 'date',
           options: {dateFormat: 'YYYY-MM-DD'},
         },
         {
           name: 'dataFim',
           title: 'Data de Fim',
-          type: 'datetime',
+          type: 'date',
           options: {dateFormat: 'YYYY-MM-DD'},
         },
       ],
