@@ -44,7 +44,7 @@ export function VimeoModal() {
 								type: 'video',
 								sources: [
 									{
-										src: 'https://player.vimeo.com/video/76979871',
+										src: 'https://vimeo.com/76979871',
 										provider: 'vimeo',
 									},
 								],
