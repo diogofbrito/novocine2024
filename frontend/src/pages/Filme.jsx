@@ -67,7 +67,7 @@ export function Filme() {
 				<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 iphone:h-[calc(100vh-5.5rem)]'>
 					<div className='flex flex-col text-center'>
 						<div className='text-9xl font-cine iphone:text-7xl'>{film.nome}</div>
-						<div className='text-xl'>
+						<div className='text-xl iphone:flex iphone:flex-col iphone:pt-2 iphone:leading-[1.5rem]'>
 							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 						</div>
 					</div>

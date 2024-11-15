@@ -44,11 +44,11 @@ export function FilmItem({ film }) {
 				<div className='absolute inset-0 hidden md:flex flex-col items-center justify-center bg-opacity-50 backdrop-blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-custom'>
 					<div className='p-8 text-center flex flex-col items-center'>
 						<p className='text-6xl font-cine'>{film.nome}</p>
-						<p className='text-md text-center '>
+						<p className='text-lg text-center '>
 							{translation[lang].de} <strong>{film.realizador}</strong>
 						</p>
 						<div className='flex items-center justify-center text-sm'>
-							{film.ano} &bull; {film.pais} &bull; {film.minutos} min
+							{film.ano}&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;{film.pais}&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;{film.minutos} min
 						</div>
 					</div>
 				</div>

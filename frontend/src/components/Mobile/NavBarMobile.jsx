@@ -30,7 +30,7 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter, close })
 				onClose={toggleDrawer(false)}
 				PaperProps={{
 					sx: {
-						width: '50vw',
+						width: '60vw',
 						backgroundColor: theme === 'dark' ? 'var(--background-color-dark)' : 'var(--background-color-light)',
 						color: theme === 'dark' ? 'var(--text-color-light)' : 'var(--text-color-dark)',
 						paddingLeft: '1rem',
