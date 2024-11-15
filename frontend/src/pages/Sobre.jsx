@@ -43,7 +43,7 @@ export function Sobre() {
 				<div className='flex items-center justify-center iphone:justify-between h-[4.5rem] gap-4 iphone:fixed  iphone:bottom-0 iphone:w-full iphone:left-0 iphone:px-[1rem]'>
 					<button
 						onClick={onToggleView}
-						className='uppercase link px-3 py-1 border rounded-full font-bold text-md hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out iphone:text-base'
+						className='uppercase link px-3 py-1 border rounded-full  text-md hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out iphone:text-base'
 					>
 						{isThermsView ? translation[lang].termos : translation[lang].voltar}
 					</button>
@@ -51,14 +51,14 @@ export function Sobre() {
 					<a
 						href='https://www.instagram.com/novocine/'
 						target='_blank'
-						className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out font-bold iphone:text-base'
+						className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out iphone:text-base'
 					>
 						INSTAGRAM
 					</a>
 
 					<a
 						href='mailto:geral@novocine.pt?subject=Olá!'
-						className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out font-bold iphone:text-base'
+						className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out  iphone:text-base'
 					>
 						EMAIL
 					</a>

@@ -24,14 +24,14 @@ export function ArchiveList({ films, onFilmClick }) {
 							<div className='grid grid-cols-4 items-center w-full p-4 border rounded-3xl listHover iphone:hidden'>
 								<div className='col-span-2 text-5xl font-cine iphone:text-center'>{film.nome}</div>
 
-								<div className='col-span-1 text-base'>
+								<div className='col-span-1 text-xl'>
 									<span className='font-bold'>
 										<span className='hidden iphone:inline font-regular'>de </span>
 										{film.realizador}
 									</span>
 								</div>
 
-								<div className='col-span-1 grid grid-cols-4 w-full text-base iphone:flex iphone:justify-between'>
+								<div className='col-span-1 grid grid-cols-4 w-full text-lg iphone:flex iphone:justify-between'>
 									<div className='col-span-2'>{film.pais}</div>
 									<div className='col-span-1'>{film.minutos} min</div>
 									<div className='col-span-1'>{film.ano}</div>
@@ -40,10 +40,10 @@ export function ArchiveList({ films, onFilmClick }) {
 
 							{/* MOBILE VERSION */}
 							<div className='hidden iphone:flex iphone:flex-col pl-4 pr-3 pt-4 pb-3 border rounded-3xl'>
-								<div>
+								<div className='text-xl leading-[1.688rem]'>
 									<div className='text-5xl font-cine '>{film.nome}</div>
 									<span className=''>
-										{translation[lang].de} <span className='font-bold'>{film.realizador}</span>
+										{translation[lang].de} <span className='font-bold '>{film.realizador}</span>
 									</span>
 									<div>
 										{film.pais} &bull; {film.minutos} min &bull; {film.ano}
@@ -58,7 +58,7 @@ export function ArchiveList({ films, onFilmClick }) {
 						</Link>
 					))
 				) : (
-					<div className='p-2'>{translation[lang].filmeNãoEncontrado}</div>
+					<div className='p-2 text-xl '>{translation[lang].filmeNãoEncontrado}</div>
 				)}
 			</div>
 		);

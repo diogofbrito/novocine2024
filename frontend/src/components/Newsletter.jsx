@@ -56,14 +56,14 @@ export function Newsletter({ showNewsletter, setShowNewsletter }) {
 		<>
 			{showNewsletter && (
 				<>
-					<div className='newsletter fixed top-0 bottom-0 left-0 right-0 z-50 flex justify-center items-center dark:bg-[rgba(234,235,222,0.8)] backdrop-blur-2xl flex-col gap-4 iphone:px-[1.5rem] iphone:text-center'>
-						<div>{translation[lang].subscrevaMensagem}</div>
+					<div className='newsletter fixed top-0 bottom-0 left-0 right-0 z-50 flex justify-center items-center dark:bg-[rgba(234,235,222,0.8)] backdrop-blur-2xl flex-col gap-4 iphone:px-[1.5rem] iphone:text-center '>
+						<div className='text-xl leading-[1.688rem]   iphone:leading-[1.5rem]'>{translation[lang].subscrevaMensagem}</div>
 
-						<div className='flex flex-row gap-4 iphone:flex-col iphone:items-center'>
+						<div className='flex flex-row gap-4 iphone:flex-col iphone:items-center '>
 							<input
 								type='text'
 								placeholder={translation[lang].placeholderPrimeiroNome}
-								className='px-3 py-1 border rounded-full outline-none  bg-transparent input-placeholder'
+								className='px-3 py-1 border rounded-full outline-none  bg-transparent input-placeholder '
 								value={firstName}
 								onChange={e => setFirstName(e.target.value)}
 							/>
@@ -89,7 +89,7 @@ export function Newsletter({ showNewsletter, setShowNewsletter }) {
 							<div className='fixed z-50 top-0 right-0 left-0 px-[4.5rem] iphone:px-[1rem] flex h-[4.5rem] justify-center items-center '>
 								<button
 									onClick={() => setShowNewsletter(false)}
-									className='close uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out font-bold'
+									className='close uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out '
 								>
 									{translation[lang].fechar}
 								</button>
