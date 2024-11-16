@@ -1,19 +1,52 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLang } from './LangProvider';
 
-// Registra o ScrollTrigger no GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-export function Dates() {
+export function Dates({ dataInicio, dataFim }) {
+	const { lang } = useLang();
+
 	const datesRef = useRef(null);
+	const [gradientColor, setGradientColor] = useState('var(--background-color-light)');
+
+	if (!dataInicio?.dataInicio || !dataFim?.dataFim) {
+		return null;
+	}
+
+	const formattedStartDate = formatDate(dataInicio.dataInicio, lang);
+	const formattedEndDate = formatDate(dataFim.dataFim, lang);
+
+	function formatDate(date) {
+		const options = { day: 'numeric', month: 'long' };
+		const locale = lang === 'PT' ? 'pt-PT' : 'en-US';
+		return new Date(date).toLocaleDateString(locale, options);
+	}
+
+	useEffect(() => {
+		// Atualiza a cor do gradiente com base no tema atual
+		const updateGradientColor = () => {
+			const theme = document.documentElement.getAttribute('data-theme');
+			setGradientColor(theme === 'light' ? 'var(--background-color-light)' : 'var(--background-color-dark)');
+		};
+
+		// Inicializa com o tema atual
+		updateGradientColor();
+
+		// Observa mudanças no atributo `data-theme`
+		const observer = new MutationObserver(updateGradientColor);
+		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+		// Cleanup
+		return () => observer.disconnect();
+	}, []);
 
 	useEffect(() => {
 		const mediaQuery = window.matchMedia('(max-width: 768px)');
 
 		if (mediaQuery.matches) {
-			// GSAP para mobile (<= 768px)
 			const animation = gsap.fromTo(
 				datesRef.current,
 				{ y: 50, opacity: 0, display: 'none' },
@@ -25,30 +58,33 @@ export function Dates() {
 					ease: 'power3.out',
 					scrollTrigger: {
 						trigger: datesRef.current,
-						start: 'top+=100vh', // Dispara a animação ao ultrapassar 100vh
+						start: 'top+=50vh',
 					},
 				},
 			);
 
 			return () => {
-				animation.kill(); // Remove a animação ao desmontar
+				animation.kill();
 			};
 		} else {
-			// Certifica-se de que está visível para telas maiores
 			gsap.set(datesRef.current, { clearProps: 'all' });
 		}
 	}, []);
 
 	return (
-		<div
-			ref={datesRef}
-			className='fixed z-50 bottom-0 px-[4.5rem] iphone:px-[1rem] flex w-screen h-[4.5rem] items-center'
-			style={{ display: 'none' }} // Oculto por padrão para mobile
-		>
+		<div ref={datesRef} className='fixed z-50 bottom-0 px-[4.5rem] iphone:px-[1rem] flex w-screen h-[4.5rem] items-center' style={{ display: 'none' }}>
 			<div className='uppercase px-3 py-1 border rounded-full w-full dates text-lg'>
-				<Marquee pauseOnHover speed={50} gradient={true} gradientWidth={100} gradientColor={'var(--background-color-light)'} direction='right'>
-					DE 20 SETEMBRO A 31 DE DEZEMBRO&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;DE 20 SETEMBRO A 31 DE DEZEMBRO&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;DE 20 SETEMBRO A 31 DE
-					DEZEMBRO&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;DE 20 SETEMBRO A 31 DE DEZEMBRO&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;DE 20 SETEMBRO A 31 DE DEZEMBRO&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;
+				<Marquee pauseOnHover speed={50} gradient={true} gradientWidth={100} gradientColor={gradientColor} direction='right'>
+					{lang === 'PT' ? `de ${formattedStartDate} — ${formattedEndDate}` : `FROM ${formattedStartDate} — ${formattedEndDate}`}
+					&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;
+					{lang === 'PT' ? `de ${formattedStartDate} — ${formattedEndDate}` : `FROM ${formattedStartDate} — ${formattedEndDate}`}
+					&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;
+					{lang === 'PT' ? `de ${formattedStartDate} — ${formattedEndDate}` : `FROM ${formattedStartDate} — ${formattedEndDate}`}
+					&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;
+					{lang === 'PT' ? `de ${formattedStartDate} — ${formattedEndDate}` : `FROM ${formattedStartDate} — ${formattedEndDate}`}
+					&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;
+					{lang === 'PT' ? `de ${formattedStartDate} — ${formattedEndDate}` : `FROM ${formattedStartDate} — ${formattedEndDate}`}
+					&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;
 				</Marquee>
 			</div>
 		</div>

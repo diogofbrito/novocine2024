@@ -78,6 +78,7 @@ html[data-theme="light"] .introPage {
 	color: var(--text-color-light);
 }
 
+
 html[data-theme="light"] .dates {
 	background-color: var(--background-color-light);
 	color: var(--text-color-light);
@@ -126,6 +127,11 @@ html[data-theme="dark"] .filter {
 }
 
 html[data-theme="dark"] .introPage {
+	background-color: var(--background-color-dark);
+	color: var(--text-color-dark);
+}
+
+html[data-theme="dark"] .dates {
 	background-color: var(--background-color-dark);
 	color: var(--text-color-dark);
 }
