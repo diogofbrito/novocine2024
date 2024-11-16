@@ -6,12 +6,12 @@ import 'swiper/css/effect-fade';
 
 export function CarouselMobile({ images }) {
 	return (
-		<div className='flex flex-row justify-center items-center gap-5 h-full'>
-			<div className='relative w-full  '>
+		<div className='hidden iphone:block h-full'>
+			<div className='relative h-full '>
 				<Swiper modules={[Autoplay, EffectFade]} autoplay={{ delay: 6000, disableOnInteraction: false }} effect='fade' fadeEffect={{ crossFade: true }} loop={true} className='w-full h-full'>
 					{images.map((image, index) => (
 						<SwiperSlide className='w-full h-[full]'>
-							<img src={image} key={index} className='w-full h-full object-cover rounded-[20px]' />
+							<img src={image} key={index} className='w-full h-full object-cover rounded-[40px]' />
 						</SwiperSlide>
 					))}
 				</Swiper>

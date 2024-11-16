@@ -64,7 +64,7 @@ export function Carousel({ images }) {
 		return () => window.removeEventListener('keydown', handleKeyDown);
 	}, [currentIndex]);
 	return (
-		<div className='flex flex-row justify-center items-center gap-5 h-full'>
+		<div className='flex flex-row justify-center items-center gap-5 h-full iphone:hidden'>
 			{isLoading ? (
 				<SkeletonCarousel /> 
 			) : (
@@ -72,7 +72,7 @@ export function Carousel({ images }) {
 					{images.map((image, index) => (
 						<motion.div
 							key={index}
-							className='card cursor-pointer h-full bg-cover bg-center rounded-[20px] w-full'
+							className='card cursor-pointer h-full bg-cover bg-center rounded-[30px] w-full'
 							style={{
 								backgroundImage: `url(${image})`,
 							}}

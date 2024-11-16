@@ -64,16 +64,18 @@ export function Filme() {
 				<meta name='robots' content='index, follow' />
 				<meta name='keywords' content={translation[lang].keywordsArquivo} />
 			</Helmet>
-			<div className='m-[4.5rem] iphone:mx-[1rem] iphone:mb-[2rem] '>
-				<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 iphone:h-full '>
+			<div className='m-[4.5rem] iphone:mx-[1rem] iphone:mb-[2rem]'>
+				<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 iphone:h-[calc(100vh-5.5rem)]'>
 					<div className='flex flex-col text-center'>
 						<div className='text-9xl font-cine iphone:text-7xl'>{film.nome}</div>
 						<div className='text-xl iphone:flex iphone:flex-col iphone:pt-2 iphone:leading-[1.5rem]'>
 							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 						</div>
 					</div>
-					<div className='flex-grow iphone:hidden'>{stillsUrls.length > 0 && <Carousel images={stillsUrls} />}</div>
-					<div className='hidden iphone:block'>{stillsUrls.length > 0 && <CarouselMobile images={stillsUrls} />}</div>
+					<div className='flex-grow '>
+						{stillsUrls.length > 0 && <Carousel images={stillsUrls} />}
+						{stillsUrls.length > 0 && <CarouselMobile images={stillsUrls} />}
+					</div>
 				</div>
 
 				<div className='pt-[4.5rem] iphone:pt-[1rem]'>
