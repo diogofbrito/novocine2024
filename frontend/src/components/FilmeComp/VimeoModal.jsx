@@ -1,18 +1,30 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import Plyr from 'plyr-react';
 import 'plyr-react/plyr.css';
 
-export function VimeoModal() {
+export function VimeoModal({ videoId }) {
 	const [isOpen, setIsOpen] = useState(false);
 
-	const handleOpen = () => {
-		setIsOpen(true);
+	// Função para extrair o ID do vídeo
+	const extractVimeoId = url => {
+		if (!url || typeof url !== 'string') return null; // Verifica se o URL é válido
+		const match = url.match(/vimeo\.com\/(?:video\/)?(\d+)/); // Procura por um ID de vídeo no URL
+		return match ? match[1] : null; // Retorna o ID ou null se inválido
 	};
 
+	// Extrai o ID do vídeo ou retorna null
+	const videoSrc = extractVimeoId(videoId);
+
+	const handleOpen = () => {
+		if (videoSrc) {
+			setIsOpen(true);
+		} else {
+			console.error('O ID do vídeo não é válido. Verifique a URL fornecida.');
+		}
+	};
 
 	return (
 		<>
-			{/* Botão de Abrir Modal */}
 			<button onClick={handleOpen} className='flex items-center justify-center space-x-2 border rounded-full pl-3 pr-2 py-1 hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out'>
 				<span className='font-bold text-xl iphone:text-lg'>PLAY</span>
 				<span className='w-6 h-6'>
@@ -27,10 +39,8 @@ export function VimeoModal() {
 				</span>
 			</button>
 
-			{/* Modal */}
-			{isOpen && (
+			{isOpen && videoSrc && (
 				<div className='fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center transition-opacity duration-300'>
-					{/* Player */}
 					<div
 						className='absolute inset-0 w-full h-full'
 						style={{
@@ -44,7 +54,7 @@ export function VimeoModal() {
 								type: 'video',
 								sources: [
 									{
-										src: 'https://vimeo.com/76979871',
+										src: videoSrc, // Agora apenas o ID do vídeo
 										provider: 'vimeo',
 									},
 								],

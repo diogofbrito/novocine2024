@@ -208,14 +208,14 @@ export function Intro() {
 
 			t2.to('.dummy1', {
 				duration: 0.5,
-				top: 'calc(50vh - 358px)',
+				top: 'calc(50svh - 358px)',
 				right: '10px',
 			})
 				.to(
 					'.dummy2',
 					{
 						duration: 0.5,
-						top: 'calc(50vh - 175px)',
+						top: 'calc(50svh - 175px)',
 						right: '10px',
 					},
 					'<',
@@ -224,7 +224,7 @@ export function Intro() {
 					'.dummy3',
 					{
 						duration: 0.5,
-						top: 'calc(50vh + 10px)',
+						top: 'calc(50svh + 10px)',
 						right: '10px',
 					},
 					'<',
@@ -233,7 +233,7 @@ export function Intro() {
 					'.dummy4',
 					{
 						duration: 0.5,
-						top: 'calc(50vh + 194px)',
+						top: 'calc(50svh + 194px)',
 						right: '10px',
 					},
 					'<',
@@ -242,7 +242,7 @@ export function Intro() {
 					'.dummy5',
 					{
 						duration: 0.5,
-						top: 'calc(50vh - 358px)',
+						top: 'calc(50svh - 358px)',
 						left: '10px',
 					},
 					'<',
@@ -251,7 +251,7 @@ export function Intro() {
 					'.dummy6',
 					{
 						duration: 0.5,
-						top: 'calc(50vh - 175px)',
+						top: 'calc(50svh - 175px)',
 						left: '10px',
 					},
 					'<',
@@ -260,7 +260,7 @@ export function Intro() {
 					'.dummy7',
 					{
 						duration: 0.5,
-						top: 'calc(50vh + 10px)',
+						top: 'calc(50svh + 10px)',
 						left: '10px',
 					},
 					'<',
@@ -269,7 +269,7 @@ export function Intro() {
 					'.dummy8',
 					{
 						duration: 0.5,
-						top: 'calc(50vh + 194px)',
+						top: 'calc(50svh + 194px)',
 						left: '10px',
 					},
 					'<',
