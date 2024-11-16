@@ -214,42 +214,42 @@ html[data-theme="dark"] .dates {
 
 
   .dummy1 {
-    top: calc(50vh - 358px);
+    top: calc(50svh - 358px);
     right: 10px;
   }
 
   .dummy2 {
-    top: calc(50vh - 175px);
+    top: calc(50svh - 175px);
     right: 10px;
   }
 
   .dummy3 {
-    top: calc(50vh + 10px);
+    top: calc(50svh + 10px);
     right: 10px;
   }
 
   .dummy4 {
-    top: calc(50vh + 194px);
+    top: calc(50svh + 194px);
     right: 10px;
   }
 
   .dummy5 {
-    top: calc(50vh - 358px);
+    top: calc(50svh - 358px);
     left: 10px;
   }
 
   .dummy6 {
-    top: calc(50vh - 175px);
+    top: calc(50svh - 175px);
     left: 10px;
   }
 
   .dummy7 {
-    top: calc(50vh + 10px);
+    top: calc(50svh + 10px);
     left: 10px;
   }
 
   .dummy8 {
-    top: calc(50vh + 194px);
+    top: calc(50svh + 194px);
     left: 10px;
   }
 }

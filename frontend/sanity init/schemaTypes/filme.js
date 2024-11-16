@@ -58,8 +58,21 @@ export default {
     },
     {
       name: 'vimeoId',
-      title: 'ID do Vídeo no Vimeo',
+      title: 'URL do Vídeo do Vimeo',
       type: 'string',
+      description: 'Cole a URL completa do vídeo no Vimeo (ex.: https://vimeo.com/123456789).',
+      validation: (Rule) =>
+        Rule.regex(/(?:vimeo\.com\/(?:.*\/)?)(\d+)/, {
+          name: 'Vimeo URL',
+          invert: false,
+          message: 'Por favor, insira uma URL válida do Vimeo.',
+        }).required(),
+      options: {
+        prepare: (value) => {
+          const match = value.match(/(?:vimeo\.com\/(?:.*\/)?)(\d+)/)
+          return match ? match[1] : value // Salva apenas o ID do vídeo
+        },
+      },
     },
     {
       name: 'stills',

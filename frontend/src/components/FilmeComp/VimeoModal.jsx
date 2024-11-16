@@ -5,21 +5,29 @@ import 'plyr-react/plyr.css';
 export function VimeoModal({ videoId }) {
 	const [isOpen, setIsOpen] = useState(false);
 
-	// Função para extrair o ID do vídeo
 	const extractVimeoId = url => {
-		if (!url || typeof url !== 'string') return null; // Verifica se o URL é válido
-		const match = url.match(/vimeo\.com\/(?:video\/)?(\d+)/); // Procura por um ID de vídeo no URL
-		return match ? match[1] : null; // Retorna o ID ou null se inválido
+		if (!url || typeof url !== 'string') {
+			console.error('A URL fornecida é inválida.');
+			return null;
+		}
+
+		const match = url.match(/(?:vimeo\.com\/(?:.*\/)?)(\d+)/);
+		if (match && match[1]) {
+			return match[1];
+		} else {
+			console.error('O ID do vídeo nao foi encontrado na URL fornecida.');
+			return null;
+		}
 	};
 
-	// Extrai o ID do vídeo ou retorna null
+	// Garante que `videoId` seja sempre o ID do vídeo
 	const videoSrc = extractVimeoId(videoId);
 
 	const handleOpen = () => {
 		if (videoSrc) {
 			setIsOpen(true);
 		} else {
-			console.error('O ID do vídeo não é válido. Verifique a URL fornecida.');
+			console.error('O ID do vídeo não é válido. Verifique os dados fornecidos.');
 		}
 	};
 
@@ -54,7 +62,7 @@ export function VimeoModal({ videoId }) {
 								type: 'video',
 								sources: [
 									{
-										src: videoSrc, // Agora apenas o ID do vídeo
+										src: `https://vimeo.com/${videoSrc}`, // Certifique-se de usar o player embed
 										provider: 'vimeo',
 									},
 								],
