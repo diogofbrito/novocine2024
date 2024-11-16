@@ -78,6 +78,11 @@ html[data-theme="light"] .introPage {
 	color: var(--text-color-light);
 }
 
+html[data-theme="light"] .dates {
+	background-color: var(--background-color-light);
+	color: var(--text-color-light);
+}
+
 @media (max-width: 768px) {
   html[data-theme="light"] .mobileNavBar{
     background-color: var(--background-color-light);
