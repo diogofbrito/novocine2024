@@ -63,7 +63,7 @@ export function Home() {
 			<Intro />
 			<Dates dataInicio={film.dataExibicao} dataFim={film.dataExibicao} />
 			<div
-				className='iphone:mx-[1rem]  m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)] '
+				className='iphone:mx-[1rem] iphone:mb-[1rem] m-[4.5rem] rounded-[50px] iphone:rounded-[40px]  h-[calc(100vh-9rem)] iphone:h-[calc(100vh-5.5rem)]'
 				style={{
 					backgroundImage: `url(${film.stills ? urlFor(film.stills).url() : 'imgs/placeholder.webp'})`,
 					backgroundSize: 'cover',
