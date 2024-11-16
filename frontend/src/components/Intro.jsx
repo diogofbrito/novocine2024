@@ -60,7 +60,6 @@ export function Intro() {
   useEffect(() => {
     let isMob = false
     const paused = false 
-    console.log(isMob || paused, !isMob || paused)
 
 
     if (window.innerWidth <= 768) {
@@ -78,9 +77,6 @@ export function Intro() {
             setTimeout(() => {
               setAnimationDone(true)
             }, 1000)
-          },
-          onComplete: () => {
-            console.log("Ended 1")
           },
           paused: !isMob || paused,
         }
@@ -155,7 +151,7 @@ export function Intro() {
             mainCon.current.style.display = 'none';
             setTimeout(() => {
               setIsScrollLocked(false)
-            })
+            }, 500)
           }
         }, ">");
 
@@ -168,9 +164,6 @@ export function Intro() {
             setTimeout(() => {
               setAnimationDone(true)
             }, 1000)
-          },
-          onComplete: () => {
-            console.log("Ended")
           },
           paused: isMob || paused,
         }
@@ -305,6 +298,8 @@ const useScrollLock = () => {
 
   useEffect(() => {
     const captureScroll = (e) => {
+      window.scrollTo(0, 0);
+
       e.preventDefault();
       e.stopPropagation();
       return false;
