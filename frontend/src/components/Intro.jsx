@@ -10,8 +10,8 @@ import { urlFor } from '../utils/imageUrlBuilder.js';
 gsap.registerPlugin(useGSAP, Flip, CSSRulePlugin);
 export function Intro() {
 	const [film, setFilm] = useState(null);
-	const [isScrollLocked, setIsScrollLocked] = useScrollLock();
 	const { setAnimationDone } = useLang();
+	const [isScrollLocked, setIsScrollLocked] = useScrollLock();
 
 	useEffect(() => {
 		async function getLatestFilm() {
@@ -49,7 +49,6 @@ export function Intro() {
 	useEffect(() => {
 		let isMob = false;
 		const paused = false;
-		console.log(isMob || paused, !isMob || paused);
 
 		if (window.innerWidth <= 768) {
 			isMob = false;
@@ -67,9 +66,6 @@ export function Intro() {
 							setAnimationDone(true);
 						}, 1000);
 					},
-					onComplete: () => {
-						console.log('Ended 1');
-					},
 					paused: !isMob || paused,
 				},
 			});
@@ -78,6 +74,7 @@ export function Intro() {
 				scale: 1,
 				duration: 0.5,
 			})
+
 				.to('.dummy1', {
 					duration: 0.5,
 					top: 'calc(50vh - 358px)',
@@ -184,7 +181,7 @@ export function Intro() {
 							mainCon.current.style.display = 'none';
 							setTimeout(() => {
 								setIsScrollLocked(false);
-							});
+							}, 500);
 						},
 					},
 					'>',
@@ -198,9 +195,6 @@ export function Intro() {
 						setTimeout(() => {
 							setAnimationDone(true);
 						}, 1000);
-					},
-					onComplete: () => {
-						console.log('Ended');
 					},
 					paused: isMob || paused,
 				},
@@ -320,7 +314,6 @@ export function Intro() {
 		}, [1000]);
 	}, []);
 
-
 	return (
 		<div ref={mainCon} className='introPage h-[100vh] w-[100vw] fixed z-[100] top-0 '>
 			<div ref={imgCon} className='absolute h-[100vh] w-[100vw] top-0 scale-x-[0%]'>
@@ -363,6 +356,8 @@ const useScrollLock = () => {
 
 	useEffect(() => {
 		const captureScroll = e => {
+			window.scrollTo(0, 0);
+
 			e.preventDefault();
 			e.stopPropagation();
 			return false;

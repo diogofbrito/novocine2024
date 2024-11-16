@@ -18,7 +18,7 @@ export function NavBar() {
 	const currentPath = location.pathname;
 	const isFilmDetailPage = currentPath.toLowerCase().startsWith('/arquivo/') && !['/arquivo', '/arquivo/'].includes(currentPath.toLowerCase());
 
-	const { lang, toggleLang } = useLang();
+	const { lang, toggleLang, animationDone } = useLang();
 
 	useEffect(() => {
 		const navbar = navbarRef.current;
@@ -54,7 +54,7 @@ export function NavBar() {
 	return (
 		<ThemeProvider>
 			<>
-				<div className='fixed z-50 top-0 px-[4.5rem] iphone:px-[1rem] flex w-screen h-[4.5rem] items-center mobileNavBar ' ref={navbarRef}>
+				<div className={`fixed z-50 top-0 px-[4.5rem] flex w-screen h-[4.5rem] items-center opacity-0 ${animationDone && '!opacity-100'}`} ref={navbarRef}>
 					{!isFilmDetailPage ? (
 						<div className='grid-cols-3 w-full items-center grid '>
 							<div className=' text-md flex flex-row gap-4 iphone:hidden iphone:text-base'>
@@ -93,10 +93,7 @@ export function NavBar() {
 						</div>
 					) : (
 						<div className='flex justify-center items-center w-full filmes iphone:justify-center '>
-							<NavLink
-								to='/arquivo'
-								className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out '
-							>
+							<NavLink to='/arquivo' className='uppercase px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out '>
 								{translation[lang].fechar}
 							</NavLink>
 						</div>
