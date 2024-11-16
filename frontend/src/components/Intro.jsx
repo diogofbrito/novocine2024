@@ -15,6 +15,7 @@ export function Intro() {
 
   const [film, setFilm] = useState(null);
   const { setAnimationDone } = useLang();
+  const [isScrollLocked, setIsScrollLocked] = useScrollLock();
 
 
 
@@ -178,42 +179,42 @@ export function Intro() {
       t2
         .to('.dummy1', {
           duration: 0.5,
-          top: 'calc(50vh - 358px)',
+          top: 'calc(50svh - 358px)',
           right: '10px'
         })
         .to('.dummy2', {
           duration: 0.5,
-          top: 'calc(50vh - 175px)',
+          top: 'calc(50svh - 175px)',
           right: '10px'
         }, "<")
         .to('.dummy3', {
           duration: 0.5,
-          top: 'calc(50vh + 10px)',
+          top: 'calc(50svh + 10px)',
           right: '10px'
         }, "<")
         .to('.dummy4', {
           duration: 0.5,
-          top: 'calc(50vh + 194px)',
+          top: 'calc(50svh + 194px)',
           right: '10px'
         }, "<")
         .to('.dummy5', {
           duration: 0.5,
-          top: 'calc(50vh - 358px)',
+          top: 'calc(50svh - 358px)',
           left: '10px'
         }, "<")
         .to('.dummy6', {
           duration: 0.5,
-          top: 'calc(50vh - 175px)',
+          top: 'calc(50svh - 175px)',
           left: '10px'
         }, "<")
         .to('.dummy7', {
           duration: 0.5,
-          top: 'calc(50vh + 10px)',
+          top: 'calc(50svh + 10px)',
           left: '10px'
         }, "<")
         .to('.dummy8', {
           duration: 0.5,
-          top: 'calc(50vh + 194px)',
+          top: 'calc(50svh + 194px)',
           left: '10px'
         }, "<")
 
