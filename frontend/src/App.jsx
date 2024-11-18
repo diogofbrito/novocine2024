@@ -8,14 +8,15 @@ import { SmoothScrolling } from './components/SmoothScrolling';
 
 
 function App() {
-	/* const location = useLocation();
-	const isSoonPage = location.pathname === '/'; */
+	const location = useLocation();
+	const isSoonPage = location.pathname === '/';
 
 	return (
 		<SmoothScrolling>
 			<LangProvider>
-				<NavBar/>
-				<Outlet />	
+				{!isSoonPage && <NavBar />}
+				<Outlet />
+	
 			</LangProvider>
 		</SmoothScrolling>
 	);
