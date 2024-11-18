@@ -88,7 +88,7 @@ export function Home() {
 				</div>
 			</div>
 
-			<div className='mx-[4.5rem] iphone:mx-[1rem] mb-[8rem] iphone:mb-[1rem] '>
+			<div className='mx-[4.5rem] iphone:mx-[1rem] mb-[8rem] iphone:mb-[4.5rem] '>
 				<PrimeiraSecDetalhes film={film} />
 
 				<SegundaSecEntrevista film={film} />

@@ -22,7 +22,7 @@ export function Sobre() {
 			<div className='flex flex-col mt-[4.5rem] h-[calc(100vh-4.5rem)]  iphone:mb-[1rem]  iphone:h-full iphone:pt-[1rem] '>
 				<div className='flex-grow flex justify-center items-center iphone:px-[1rem]'>
 					{isThermsView ? (
-						<div className='text-xl w-2/4 iphone:w-full leading-[1.5rem] iphone:leading-[1.563rem]'>
+						<div className='text-xl w-2/4 iphone:text-lg iphone:w-full leading-[1.5rem] iphone:leading-[1.563rem]'>
 							{translation[lang].sobreText}
 
 							<div className='pt-6'>
