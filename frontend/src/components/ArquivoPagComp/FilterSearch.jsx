@@ -38,6 +38,11 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 		return theme === 'light' ? 'var(--background-color-light)' : 'var(--background-color-dark)';
 	};
 
+	const getColorByTheme = () => {
+		const theme = document.documentElement.getAttribute('data-theme');
+		return theme === 'light' ? 'var(--text-color-light)' : 'var(--text-color-dark)';
+	};
+
 	const customSelectStyles = {
 		control: provided => ({
 			...provided,
@@ -47,50 +52,53 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 			backgroundColor: 'transparent',
 			width: '200px',
 			'&:hover': {
-				color: 'white',
+				color: getColorByTheme(),
 			},
 		}),
 		placeholder: provided => ({
 			...provided,
-			color: 'white',
+			color: getColorByTheme(),
 		}),
 		singleValue: provided => ({
 			...provided,
-			color: 'white',
+			color: getColorByTheme(),
 		}),
 		dropdownIndicator: provided => ({
 			...provided,
-			color: 'white', 
-			paddingLeft: '8px', 
+			color: getColorByTheme(),
+			paddingLeft: '8px',
 			'&:hover': {
 				color: 'white',
 			},
 		}),
 		clearIndicator: provided => ({
 			...provided,
-			paddingRight: '10px',
-			color: 'white',
+			color: getColorByTheme(),
 		}),
 		menu: provided => ({
 			...provided,
 			borderRadius: '1.5rem',
-			boxShadow: 'none', 
-			border: '1px solid #ddd',
+			boxShadow: 'none',
+			border: '1px solid ',
+			borderColor: getColorByTheme(),
 			backgroundColor: getBackgroundColorByTheme(),
+			maxHeight: '200px', 
+			overflowY: 'scroll',
+			zIndex: 9999,
 		}),
 
 		indicatorSeparator: provided => ({
 			...provided,
-			backgroundColor: 'white',
+			backgroundColor: getColorByTheme(),
 		}),
 		option: provided => ({
 			...provided,
 			padding: '10px 20px',
-			color: 'white',
+			color: getColorByTheme(),
 			backgroundColor: 'transparent',
 			'&:hover': {
 				color: '#e0e0e0',
-				backgroundColor: 'transparent', 
+				backgroundColor: 'transparent',
 			},
 		}),
 	};
@@ -118,6 +126,7 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 						isSearchable={false}
 						value={years.find(year => year.value === selectedYear)}
 						styles={customSelectStyles}
+					
 					/>
 
 					<Select

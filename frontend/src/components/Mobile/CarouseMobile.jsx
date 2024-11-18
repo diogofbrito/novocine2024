@@ -10,8 +10,8 @@ export function CarouselMobile({ images }) {
 			<div className='relative h-full '>
 				<Swiper modules={[Autoplay, EffectFade]} autoplay={{ delay: 6000, disableOnInteraction: false }} effect='fade' fadeEffect={{ crossFade: true }} loop={true} className='w-full h-full'>
 					{images.map((image, index) => (
-						<SwiperSlide className='w-full h-[full]'>
-							<img src={image} key={index} className='w-full h-full object-cover rounded-[40px]' />
+						<SwiperSlide className='w-full h-[full]' key={index}>
+							<img src={image} className='w-full h-full object-cover rounded-[40px]' />
 						</SwiperSlide>
 					))}
 				</Swiper>

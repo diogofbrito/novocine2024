@@ -41,6 +41,7 @@ export const translation = {
 		sobreNovocine: 'Novocine is an online cinema platform that screens a new film every twenty days, for free.',
 		keywordsArquivo: 'archive, films, Portugal, lingua-portuguesa, films, Argelia, Brazil, Mozambique, United Kingdom, Guinea-Bissau, ',
 		filmeNãoEncontrado: 'Film not found',
+		notas: 'notes',
 	},
 	PT: {
 		arquivo: 'Arquivo',
@@ -84,5 +85,6 @@ export const translation = {
 		sobreNovocine: 'Novocine é uma sala de cinema online que disponibiliza gratuitamente um novo filme a cada vinte dias.',
 		keywordsArquivo: 'arquivo, filmes, Portugal, lingua-portuguesa, filmes, Argélia, Brasil, Moçambique, Reino Unido, Guiné Bissau, ',
 		filmeNãoEncontrado: 'Filme não encontrado',
+		notas: 'notas',
 	},
 };

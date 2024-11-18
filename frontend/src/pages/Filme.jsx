@@ -22,6 +22,7 @@ export function Filme() {
 				`
         *[_type == "filme" && slug.current == "${slug}"] {
           nome,
+		  nomeENG,
           realizador,
           pais,
           ano,
@@ -30,9 +31,10 @@ export function Filme() {
 		  sinopseENG,
           entrevista,
   		  entrevistaENG,
+		  autorEntrevista, 
+		  autorEntrevistaENG,
 		  extras,
 		  extrasENG,
-          autorEntrevista,
           creditos,
           stills
         }
@@ -45,8 +47,7 @@ export function Filme() {
 			.catch(err => {
 				console.error('Erro ao carregar o filme', err);
 			});
-		
-		
+
 		window.scrollTo(0, 0);
 	}, [slug]);
 
@@ -55,6 +56,8 @@ export function Filme() {
 	}
 
 	const stillsUrls = film.stills?.map(image => urlFor(image).url()) || [];
+		const nome = lang === 'PT' ? film.nome : film.nomeENG;
+
 
 	return (
 		<>
@@ -64,10 +67,10 @@ export function Filme() {
 				<meta name='robots' content='index, follow' />
 				<meta name='keywords' content={translation[lang].keywordsArquivo} />
 			</Helmet>
-			<div className='m-[4.5rem] iphone:mx-[1rem] iphone:mb-[2rem]'>
+			<div className='mx-[4.5rem] mt-[4.5rem] mb-[1.5rem] iphone:mx-[1rem] iphone:mb-[2rem] '>
 				<div className=' h-[calc(100vh-9rem)] flex flex-col w-full gap-6 iphone:h-[calc(100vh-5.5rem)]'>
-					<div className='flex flex-col text-center'>
-						<div className='text-9xl font-cine iphone:text-7xl'>{film.nome}</div>
+					<div className='flex flex-col text-center '>
+						<div className='text-9xl font-cine iphone:text-7xl'>{nome}</div>
 						<div className='text-xl iphone:flex iphone:flex-col iphone:pt-2 iphone:leading-[1.5rem]'>
 							{translation[lang].filmeDe} <strong>{film.realizador}</strong>
 						</div>

@@ -19,7 +19,7 @@ export function SegundaSecEntrevista({ film }) {
 	return (
 		<div className='my-14 iphone:my-6 iphone:px-5'>
 			<div className='flex justify-center '>
-				<div className='w-3/6 font-regular text-xl leading-[1.688rem] iphone:w-full  iphone:leading-[1.5rem]'>
+				<div className='w-3/6 font-regular text-xl leading-[1.688rem] iphone:w-full iphone:text-lg iphone:leading-[1.5rem]'>
 					{autorEntrevista && <div className='pb-8 font-oblique'>{autorEntrevista}</div>}
 					<PortableText
 						value={entrevista}

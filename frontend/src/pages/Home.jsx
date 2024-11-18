@@ -16,6 +16,7 @@ import { Dates } from '../components/Dates.jsx';
 export function Home() {
 	const [film, setFilm] = useState(null);
 	const { lang } = useLang();
+  const videoUrl = 'https://player.vimeo.com/video/1019543836?autoplay=true';
 
 
 
@@ -28,7 +29,7 @@ export function Home() {
 					pais, 
 					ano, 
 					minutos, 
-					vimeoId, 
+					vimeoVid, 
 					sinopse, 
 					sinopseENG,
 					entrevista,
@@ -83,12 +84,11 @@ export function Home() {
 							</div>
 						</div>
 					</div>
-					<VimeoModal  />
-
+					<VimeoModal videoUrl={videoUrl} />
 				</div>
 			</div>
 
-			<div className='mx-[4.5rem] iphone:mx-[1rem] mb-[4.5rem] iphone:mb-[1rem]'>
+			<div className='mx-[4.5rem] iphone:mx-[1rem] mb-[8rem] iphone:mb-[1rem] '>
 				<PrimeiraSecDetalhes film={film} />
 
 				<SegundaSecEntrevista film={film} />

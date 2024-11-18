@@ -30,6 +30,7 @@ const search = ({ searchTerm, selectedYear, selectedCountry }) =>
 		) | order(_score desc) {
 			_score,
 			nome,
+			nomeENG,
 			realizador,
 			ano,
 			slug,
@@ -42,6 +43,7 @@ const fetchAll = () =>
 	sanityClient.fetch(`
 	*[_type == "filme"] | order(_createdAt desc) {
 		nome,
+		nomeENG, 
 		realizador,
 		ano,
 		slug,
@@ -92,6 +94,7 @@ export function Arquivo() {
 		});
 	}, [lenis]);
 
+
 	return (
 		<>
 			<Helmet>
@@ -100,7 +103,7 @@ export function Arquivo() {
 				<meta name='robots' content='index, follow' />
 				<meta name='keywords' content={translation[lang].keywordsArquivo} />
 			</Helmet>
-			<div className='mx-[4.5rem] mb-[3rem] mt-[4.5rem] pt-[2rem] iphone:pt-2 iphone:mx-[1rem] iphone:mb-[1rem] '>
+			<div className='mx-[4.5rem] mb-[1.5rem] mt-[8rem] iphone:pt-2 iphone:mx-[1rem] iphone:mb-[1rem] '>
 				<FilterSearch
 					films={allFilms}
 					searchTerm={searchTerm}
@@ -116,7 +119,7 @@ export function Arquivo() {
 				<div className='pt-6'>
 					<AnimatePresence mode='wait'>
 						{isLoading ? (
-							<SkeletonArchiveMasonry  />
+							<SkeletonArchiveMasonry />
 						) : (
 							<motion.div key={isListView ? 'list' : 'gallery'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
 								{isListView ? (

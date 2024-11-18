@@ -1,85 +1,65 @@
-import React, { useState } from 'react';
-import Plyr from 'plyr-react';
-import 'plyr-react/plyr.css';
+import React, { useState , useRef, useEffect } from 'react';
+import ReactModal from 'react-modal';
+import Plyr from 'plyr';
+import 'plyr/dist/plyr.css';
 
-export function VimeoModal({ videoId }) {
+
+export function VimeoModal({ videoUrl }) {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isPlaying, setIsPlaying] = useState(false);
+ const playerRef = useRef(null);
 
-	const extractVimeoId = url => {
-		if (!url || typeof url !== 'string') {
-			console.error('A URL fornecida é inválida.');
-			return null;
-		}
-
-		const match = url.match(/(?:vimeo\.com\/(?:.*\/)?)(\d+)/);
-		if (match && match[1]) {
-			return match[1];
-		} else {
-			console.error('O ID do vídeo nao foi encontrado na URL fornecida.');
-			return null;
-		}
+ useEffect(() => {
+		const plyr = new Plyr(playerRef.current, {
+			autoplay: true,
+			muted: false,
+			controls: ['play', 'progress', 'volume', 'fullscreen'],
+		});
+		return () => plyr.destroy();
+ }, []);
+	
+	
+	// Função para abrir o modal
+	const openModal = () => {
+		setIsOpen(true);
+		setIsPlaying(true); // Começa automaticamente o vídeo
 	};
 
-	// Garante que `videoId` seja sempre o ID do vídeo
-	const videoSrc = extractVimeoId(videoId);
-
-	const handleOpen = () => {
-		if (videoSrc) {
-			setIsOpen(true);
-		} else {
-			console.error('O ID do vídeo não é válido. Verifique os dados fornecidos.');
-		}
-	};
-
+	
 	return (
-		<>
-			<button onClick={handleOpen} className='flex items-center justify-center space-x-2 border rounded-full pl-3 pr-2 py-1 hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out'>
-				<span className='font-bold text-xl iphone:text-lg'>PLAY</span>
-				<span className='w-6 h-6'>
-					<svg width='100%' height='100%' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
-						<path
-							fillRule='evenodd'
-							clipRule='evenodd'
-							d='M11 22C17.0751 22 22 17.0751 22 11C22 4.92487 17.0751 0 11 0C4.92487 0 0 4.92487 0 11C0 17.0751 4.92487 22 11 22ZM15.2566 11.1728C15.39 11.0958 15.39 10.9033 15.2566 10.8264L9.02232 7.22698C8.88899 7.15 8.72232 7.24623 8.72232 7.40019V14.599C8.72232 14.7529 8.88899 14.8491 9.02232 14.7722L15.2566 11.1728Z'
-							fill='currentColor'
-						></path>
-					</svg>
-				</span>
-			</button>
+		<div>
+			<button onClick={openModal}>Assistir Filme</button>
 
-			{isOpen && videoSrc && (
-				<div className='fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center transition-opacity duration-300'>
-					<div
-						className='absolute inset-0 w-full h-full'
-						style={{
-							position: 'absolute',
-							width: '100vw',
-							height: '100vh',
-						}}
-					>
-						<Plyr
-							source={{
-								type: 'video',
-								sources: [
-									{
-										src: `https://vimeo.com/${videoSrc}`, // Certifique-se de usar o player embed
-										provider: 'vimeo',
-									},
-								],
-							}}
-							options={{
-								autoplay: true,
-								fullscreen: { enabled: true },
-								controls: ['play', 'pause', 'fullscreen'],
-							}}
-							style={{
-								width: '100%',
-								height: '100%',
-							}}
-						/>
+			<ReactModal
+				isOpen={isOpen}
+				ariaHideApp={false}
+				style={{
+					overlay: {
+						backgroundColor: 'rgba(0, 0, 0, 0.75)',
+					},
+					content: {
+						position: 'fixed',
+						top: '50%',
+						left: '50%',
+						right: 'auto',
+						bottom: 'auto',
+						transform: 'translate(-50%, -50%)',
+						width: '100%',
+						height: '100vh',
+						padding: 0,
+						border: 'none',
+						zIndex: 9999999999,
+						backgroundColor: 'green',
+					},
+				}}
+			>
+				<div id='player' className='plyr__video-wrapper'>
+					<div ref={playerRef} className='plyr__video-embed'>
+						<iframe src={videoUrl} frameBorder='0' allow='autoplay; fullscreen' allowFullScreen title='Video Player' />
 					</div>
 				</div>
-			)}
-		</>
+			</ReactModal>
+		</div>
 	);
 }
+
