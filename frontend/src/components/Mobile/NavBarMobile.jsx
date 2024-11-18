@@ -15,7 +15,7 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter, close })
 	};
 
 	return (
-		<div className='hidden iphone:block relative justify-self-end'>
+		<div className='hidden iphone:block relative justify-self-end '>
 			<button
 				className=' uppercase  p-2 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out '
 				onClick={toggleDrawer(true)}

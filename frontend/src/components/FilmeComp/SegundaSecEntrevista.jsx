@@ -17,7 +17,7 @@ export function SegundaSecEntrevista({ film }) {
 	if (!entrevista || entrevista.length === 0) return null;
 
 	return (
-		<div className='my-14 iphone:my-6 iphone:px-5'>
+		<div className='my-14 iphone:my-8 '>
 			<div className='flex justify-center '>
 				<div className='w-3/6 font-regular text-xl leading-[1.688rem] iphone:w-full iphone:text-lg iphone:leading-[1.5rem]'>
 					{autorEntrevista && <div className='pb-8 font-oblique'>{autorEntrevista}</div>}

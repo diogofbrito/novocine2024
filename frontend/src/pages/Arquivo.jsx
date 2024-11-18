@@ -103,7 +103,7 @@ export function Arquivo() {
 				<meta name='robots' content='index, follow' />
 				<meta name='keywords' content={translation[lang].keywordsArquivo} />
 			</Helmet>
-			<div className='mx-[4.5rem] mb-[1.5rem] mt-[8rem] iphone:pt-2 iphone:mx-[1rem] iphone:mb-[1rem] '>
+			<div className='mx-[4.5rem] mb-[1.5rem] mt-[8rem]  iphone:mx-[1rem] iphone:mb-[0rem]  iphone:mt-[6rem] '>
 				<FilterSearch
 					films={allFilms}
 					searchTerm={searchTerm}
@@ -116,7 +116,7 @@ export function Arquivo() {
 					isListView={isListView}
 				/>
 
-				<div className='pt-6'>
+				<div className='pt-6 iphone:pt-4'>
 					<AnimatePresence mode='wait'>
 						{isLoading ? (
 							<SkeletonArchiveMasonry />

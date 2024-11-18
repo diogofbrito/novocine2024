@@ -19,7 +19,7 @@ export function Sobre() {
 				<meta name='robots' content='index, follow' />
 				<meta name='keywords' content='novocine, cinema, portugal, lisboa, madalena fragoso, afonso mota, diogo brito, filmes em portugal, streaming, cinema online, artes visuais, cineastas' />
 			</Helmet>
-			<div className='flex flex-col mt-[4.5rem] h-[calc(100vh-4.5rem)] iphone:mx-[1rem] iphone:mb-[1rem]  iphone:h-full iphone:pt-[2rem] '>
+			<div className='flex flex-col mt-[4.5rem] h-[calc(100vh-4.5rem)]  iphone:mb-[1rem]  iphone:h-full iphone:pt-[1rem] '>
 				<div className='flex-grow flex justify-center items-center iphone:px-[1rem]'>
 					{isThermsView ? (
 						<div className='text-xl w-2/4 iphone:w-full leading-[1.5rem] iphone:leading-[1.563rem]'>

@@ -105,7 +105,7 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 
 	return (
 		<>
-			<div className='z-50 flex w-full justify-between items-center iphone:hidden'>
+			<div className='z-50 flex w-full justify-between items-center iphone:hidden '>
 				<div className='flex gap-4 '>
 					<div className='flex border text-xl rounded-full px-3 py-1 items-center w-[400px] filter'>
 						<input
