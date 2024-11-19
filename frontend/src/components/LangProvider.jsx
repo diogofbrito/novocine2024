@@ -27,7 +27,7 @@ export function LangProvider({ children }) {
         document.documentElement.setAttribute("data-lang", lang);
     }, [lang]);
 
-    const translateRoute = routeKey => {
+   const translateRoute = routeKey => {
 			const routeTranslations = {
 				home: { pt: '/', en: '/en' },
 				sobre: { pt: '/sobre', en: '/about' },
@@ -35,7 +35,7 @@ export function LangProvider({ children }) {
 				filme: { pt: '/arquivo/:slug', en: '/archive/:slug' },
 			};
 			return routeTranslations[routeKey][lang.toLowerCase()];
-    };
+    }; 
     
     return (
         <LangContext.Provider value={{ lang, toggleLang, animationDone, setAnimationDone, translateRoute }}>

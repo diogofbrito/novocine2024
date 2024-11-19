@@ -17,7 +17,15 @@ export const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
+				path: '/en',
+				element: <Home />,
+			},
+			{
 				path: '/sobre',
+				element: <Sobre />,
+			},
+			{
+				path: '/about',
 				element: <Sobre />,
 			},
 			{
@@ -25,7 +33,15 @@ export const router = createBrowserRouter([
 				element: <Arquivo />,
 			},
 			{
+				path: '/archive',
+				element: <Arquivo />,
+			},
+			{
 				path: '/arquivo/:slug',
+				element: <Filme />,
+			},
+			{
+				path: '/archive/:slug',
 				element: <Filme />,
 			},
 			{
