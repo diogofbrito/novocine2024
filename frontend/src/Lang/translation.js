@@ -1,3 +1,8 @@
+export const langId = {
+	EN: 'EN',
+	PT: 'PT'
+}
+
 export const translation = {
 	EN: {
 		arquivo: 'Archive',
