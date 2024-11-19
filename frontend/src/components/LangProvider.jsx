@@ -27,8 +27,18 @@ export function LangProvider({ children }) {
         document.documentElement.setAttribute("data-lang", lang);
     }, [lang]);
 
+    const translateRoute = routeKey => {
+			const routeTranslations = {
+				home: { pt: '/', en: '/en' },
+				sobre: { pt: '/sobre', en: '/about' },
+				arquivo: { pt: '/arquivo', en: '/archive' },
+				filme: { pt: '/arquivo/:slug', en: '/archive/:slug' },
+			};
+			return routeTranslations[routeKey][lang.toLowerCase()];
+    };
+    
     return (
-        <LangContext.Provider value={{ lang, toggleLang, animationDone, setAnimationDone }}>
+        <LangContext.Provider value={{ lang, toggleLang, animationDone, setAnimationDone, translateRoute }}>
             {children}
         </LangContext.Provider>
     );

@@ -16,10 +16,7 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter, close })
 
 	return (
 		<div className='hidden iphone:block relative justify-self-end '>
-			<button
-				className=' uppercase  p-2 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out '
-				onClick={toggleDrawer(true)}
-			>
+			<button className=' uppercase  p-2 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out ' onClick={toggleDrawer(true)}>
 				<AlignJustify size={20} />
 			</button>
 
@@ -52,17 +49,17 @@ export function NavBarMobile({ translation, useLang, setShowNewsletter, close })
 
 					<div className='flex flex-col justify-start gap-4  '>
 						<div>
-							<NavLink to='/' onClick={toggleDrawer(false)} className='uppercase px-3 py-1 border rounded-full '>
+							<NavLink to={lang === 'PT' ? '/' : '/en'} onClick={toggleDrawer(false)} className='uppercase px-3 py-1 border rounded-full '>
 								home
 							</NavLink>
 						</div>
 						<div>
-							<NavLink to='/arquivo' onClick={toggleDrawer(false)} className='uppercase px-3 py-1 border rounded-full '>
+							<NavLink to={lang === 'PT' ? '/arquivo' : '/archive'} onClick={toggleDrawer(false)} className='uppercase px-3 py-1 border rounded-full '>
 								{translation[lang].arquivo}
 							</NavLink>
 						</div>
 						<div>
-							<NavLink to='/sobre' onClick={toggleDrawer(false)} className='uppercase px-3 py-1 border rounded-full '>
+							<NavLink to={lang === 'PT' ? '/sobre' : '/about'} onClick={toggleDrawer(false)} className='uppercase px-3 py-1 border rounded-full '>
 								{translation[lang].sobre}
 							</NavLink>
 						</div>

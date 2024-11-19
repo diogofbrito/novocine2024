@@ -42,6 +42,8 @@ export const translation = {
 		keywordsArquivo: 'archive, films, Portugal, lingua-portuguesa, films, Argelia, Brazil, Mozambique, United Kingdom, Guinea-Bissau, ',
 		filmeNãoEncontrado: 'Film not found',
 		notas: 'notes',
+		filmeAnterior: 'Previous Film',
+		proximoFilme: 'Next Film',
 	},
 	PT: {
 		arquivo: 'Arquivo',
@@ -86,5 +88,7 @@ export const translation = {
 		keywordsArquivo: 'arquivo, filmes, Portugal, lingua-portuguesa, filmes, Argélia, Brasil, Moçambique, Reino Unido, Guiné Bissau, ',
 		filmeNãoEncontrado: 'Filme não encontrado',
 		notas: 'notas',
+		filmeAnterior: 'Filme Anterior',
+		proximoFilme: 'Próximo Filme',
 	},
 };

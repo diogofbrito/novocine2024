@@ -8,12 +8,14 @@ import { PrimeiraSecDetalhes } from '../components/FilmeComp/PrimeiraSecDetalhes
 import { SegundaSecEntrevista } from '../components/FilmeComp/SegundaSecEntrevista';
 import { TerceiraSecCreditos } from '../components/FilmeComp/TerceiraSecCreditos';
 import { useLang } from '../components/LangProvider';
+import { FilmNavigation } from '../components/FilmeDinamicaPagComp/FilmNavigation';
 import { translation } from '../Lang/translation';
 import { Helmet } from 'react-helmet-async';
 
 export function Filme() {
 	const { slug } = useParams();
 	const [film, setFilm] = useState(null);
+	const [adjacentFilms, setAdjacentFilms] = useState({ prev: null, next: null });
 	const { lang } = useLang();
 
 	useEffect(() => {
@@ -38,7 +40,6 @@ export function Filme() {
           creditos,
           stills
         }
-
       `,
 			)
 			.then(data => {
@@ -48,7 +49,22 @@ export function Filme() {
 				console.error('Erro ao carregar o filme', err);
 			});
 
-		window.scrollTo(0, 0);
+		sanityClient
+			.fetch(
+				`
+        *[_type == "filme"] | order(_createdAt desc) {
+          nome,
+		  nomeENG,
+          slug
+        }
+      `,
+			)
+			.then(allFilms => {
+				const currentIndex = allFilms.findIndex(f => f.slug.current === slug);
+				const prev = allFilms[currentIndex - 1] || null;
+				const next = allFilms[currentIndex + 1] || null;
+				setAdjacentFilms({ prev, next });
+			});
 	}, [slug]);
 
 	if (!film) {
@@ -56,8 +72,7 @@ export function Filme() {
 	}
 
 	const stillsUrls = film.stills?.map(image => urlFor(image).url()) || [];
-		const nome = lang === 'PT' ? film.nome : film.nomeENG;
-
+	const nome = lang === 'PT' ? film.nome : film.nomeENG;
 
 	return (
 		<>
@@ -80,11 +95,10 @@ export function Filme() {
 
 				<div className='pt-[4.5rem] iphone:pt-[0rem]'>
 					{stillsUrls.length > 0 && <CarouselMobile images={stillsUrls} />}
-
 					<PrimeiraSecDetalhes film={film} />
-
 					<SegundaSecEntrevista film={film} />
 					<TerceiraSecCreditos film={film} />
+					<FilmNavigation adjacentFilms={adjacentFilms} />
 				</div>
 			</div>
 		</>

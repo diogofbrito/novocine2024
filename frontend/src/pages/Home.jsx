@@ -16,9 +16,6 @@ import { Dates } from '../components/Dates.jsx';
 export function Home() {
 	const [film, setFilm] = useState(null);
 	const { lang } = useLang();
-  const videoUrl = 'https://player.vimeo.com/video/1019543836?autoplay=true';
-
-
 
 	useEffect(() => {
 		async function getLatestFilm() {
@@ -29,7 +26,7 @@ export function Home() {
 					pais, 
 					ano, 
 					minutos, 
-					vimeoVid, 
+					videoUrl, 
 					sinopse, 
 					sinopseENG,
 					entrevista,
@@ -44,6 +41,7 @@ export function Home() {
 				}
 			`);
 			if (filmData) {
+
 				setFilm(filmData);
 			}
 		}
@@ -52,6 +50,8 @@ export function Home() {
 	}, []);
 
 	if (!film) return <SkeletonHome />;
+
+
 
 	return (
 		<>
@@ -84,7 +84,8 @@ export function Home() {
 							</div>
 						</div>
 					</div>
-					<VimeoModal videoUrl={videoUrl} />
+
+					<VimeoModal videoId={film.videoUrl} />
 				</div>
 			</div>
 

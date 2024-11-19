@@ -58,32 +58,16 @@ export default {
       name: 'minutos',
       title: 'Duração do filme',
       description: 'Em minutos',
-
       type: 'number',
       validation: (Rule) => Rule.min(1).max(500),
     },
     {
-      name: 'vimeoVid',
-      title: 'URL do Vídeo do Vimeo',
+      name: 'videoUrl',
+      title: 'ID do Vídeo do Vimeo',
       type: 'string',
-      description: 'Colocar a URL completa do vídeo no Vimeo (ex.: https://vimeo.com/123456789).',
-      validation: (Rule) =>
-        Rule.regex(/(?:vimeo\.com\/(?:.*\/)?)(\d+)/, {
-          name: 'Vimeo URL',
-          invert: false,
-          message: 'Por favor, insira uma URL válida do Vimeo.',
-        }).required(),
-
-      options: {
-        prepare: (value) => {
-          const match = value.match(/(?:vimeo\.com\/(?:.*\/)?)(\d+)/)
-          if (match) {
-            return `https://player.vimeo.com/video/${match[1]}?autoplay=true`
-          }
-          return value
-        },
-      },
+      validation: (Rule) => Rule.required(),
     },
+
     {
       name: 'stills',
       title: 'Stills dos filmes',

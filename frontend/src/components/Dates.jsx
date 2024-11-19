@@ -26,20 +26,16 @@ export function Dates({ dataInicio, dataFim }) {
 	}
 
 	useEffect(() => {
-		// Atualiza a cor do gradiente com base no tema atual
 		const updateGradientColor = () => {
 			const theme = document.documentElement.getAttribute('data-theme');
 			setGradientColor(theme === 'light' ? 'var(--background-color-light)' : 'var(--background-color-dark)');
 		};
 
-		// Inicializa com o tema atual
 		updateGradientColor();
 
-		// Observa mudanças no atributo `data-theme`
 		const observer = new MutationObserver(updateGradientColor);
 		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-		// Cleanup
 		return () => observer.disconnect();
 	}, []);
 
@@ -74,7 +70,7 @@ export function Dates({ dataInicio, dataFim }) {
 	return (
 		<div ref={datesRef} className='fixed z-50 bottom-0 px-[4.5rem] iphone:px-[1rem] flex w-screen h-[4.5rem] items-center' style={{ display: 'none' }}>
 			<div className='uppercase px-3 py-1 border rounded-full w-full dates text-lg'>
-				<Marquee pauseOnHover speed={50} gradient={true} gradientWidth={100} gradientColor={gradientColor} direction='right'>
+				<Marquee pauseOnHover speed={50} gradient={true} gradientWidth={100} gradientColor={gradientColor} direction='left'>
 					{lang === 'PT' ? `de ${formattedStartDate} — ${formattedEndDate}` : `FROM ${formattedStartDate} — ${formattedEndDate}`}
 					&nbsp;&nbsp;&#x25cf;&nbsp;&nbsp;
 					{lang === 'PT' ? `de ${formattedStartDate} — ${formattedEndDate}` : `FROM ${formattedStartDate} — ${formattedEndDate}`}

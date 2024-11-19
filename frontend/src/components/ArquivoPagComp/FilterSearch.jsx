@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Select from 'react-select';
+import { useDebounce } from 'use-debounce';
 import { Search } from 'lucide-react';
 import { useLang } from '../LangProvider';
 import { translation } from '../../Lang/translation.js';
@@ -9,6 +10,8 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 	const [years, setYears] = useState([]);
 	const [countries, setCountries] = useState([]);
 	const { lang } = useLang();
+
+	const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
 
 	useEffect(() => {
 		const uniqueYears = Array.from(new Set(films.map(film => film.ano)))
@@ -20,6 +23,14 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 		setYears(uniqueYears);
 		setCountries(uniqueCountries);
 	}, [films]);
+
+	const filteredFilms = films.filter(film => {
+		return (
+			(!debouncedSearchTerm || film.nome.toLowerCase().includes(debouncedSearchTerm.toLowerCase())) &&
+			(!selectedYear || film.ano === selectedYear) &&
+			(!selectedCountry || film.pais === selectedCountry)
+		);
+	});
 
 	const handleYearChange = selectedOption => {
 		setSelectedYear(selectedOption ? selectedOption.value : '');
@@ -82,9 +93,9 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 			border: '1px solid ',
 			borderColor: getColorByTheme(),
 			backgroundColor: getBackgroundColorByTheme(),
-			maxHeight: '200px', 
-			overflowY: 'scroll',
-			zIndex: 9999,
+			maxHeight: '300px',
+			overflowY: 'auto',
+			zIndex: 99999,
 		}),
 
 		indicatorSeparator: provided => ({
@@ -103,10 +114,11 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 		}),
 	};
 
+const customMenuPlacement = 'auto';
 	return (
 		<>
-			<div className='z-50 flex w-full justify-between items-center iphone:hidden '>
-				<div className='flex gap-4 '>
+			<div className='z-50 flex w-full justify-between items-center iphone:hidden'>
+				<div className='flex gap-4'>
 					<div className='flex border text-xl rounded-full px-3 py-1 items-center w-[400px] filter'>
 						<input
 							type='text'
@@ -126,7 +138,9 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 						isSearchable={false}
 						value={years.find(year => year.value === selectedYear)}
 						styles={customSelectStyles}
-					
+						menuPortalTarget={document.body}
+						menuPlacement={customMenuPlacement}
+						menuPosition='absolute'
 					/>
 
 					<Select
@@ -139,9 +153,9 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 						styles={customSelectStyles}
 					/>
 
-					<div className='flex items-center '>
+					<div className='flex items-center'>
 						<p>
-							{films.length} {translation[lang].filmesDispo}
+							{filteredFilms.length} {translation[lang].filmesDispo}
 						</p>
 					</div>
 				</div>
@@ -154,7 +168,7 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 			<FilterSearchMobile
 				translation={translation}
 				lang={lang}
-				films={films}
+				films={filteredFilms}
 				onToggleView={onToggleView}
 				searchTerm={searchTerm}
 				handleSearchChange={handleSearchChange}

@@ -1,7 +1,7 @@
 const routeTranslations = {
 	home: {
 		pt: '/',
-		en: '/home',
+		en: '/en',
 	},
 	sobre: {
 		pt: '/sobre',

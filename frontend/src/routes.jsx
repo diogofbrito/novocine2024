@@ -8,14 +8,14 @@ import { Soon } from './pages/Soon.jsx';
 import { ErrorPage } from './pages/ErrorPage.jsx';
 
 export const router = createBrowserRouter([
-	
 	{
 		path: '/',
 		element: <App />,
 		children: [
 			{
 				index: true,
-				element: <Soon />,
+				path: '/',
+				element: <Soon/>,
 			},
 			{
 				path: '/home',
