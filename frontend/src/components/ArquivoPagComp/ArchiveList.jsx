@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useLang } from '../LangProvider';
 import { translation } from '../../Lang/translation.js';
 import { Plus } from 'lucide-react';
+import { routeTranslations } from '../../Lang/translationRoutes.js';
+
 
 export function ArchiveList({ films, onFilmClick }) {
 	const { lang } = useLang();
@@ -20,7 +22,7 @@ export function ArchiveList({ films, onFilmClick }) {
 			</div>
 			{films.length > 0 ? (
 				films.map(film => (
-					<Link onClick={onFilmClick} to={`/arquivo/${film.slug?.current}`} key={film.slug?.current}>
+					<Link onClick={onFilmClick} to={`/${routeTranslations.arquivo[lang]}/${film.slug?.current}`} key={film.slug?.current}>
 						<div className='grid grid-cols-4 items-center w-full p-4 border rounded-3xl listHover iphone:hidden gap-4'>
 							<div className='col-span-2 text-5xl font-cine iphone:text-center'> {lang === 'PT' ? film.nome : film.nomeENG}</div>
 
