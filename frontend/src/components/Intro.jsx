@@ -318,7 +318,7 @@ export function Intro() {
 		<div ref={mainCon} className='introPage h-[100vh] w-[100vw] fixed z-[100] top-0 '>
 			<div ref={imgCon} className='absolute h-[100vh] w-[100vw] top-0 scale-x-[0%]'>
 				<div
-					className='mx-[4.5rem] my-[4.5rem] rounded-[50px] h-[calc(100vh-9rem)] iphone:mx-[1rem] iphone:mb-[1rem] iphone:h-[calc(100vh-5.5rem)] iphone:rounded-[40px]'
+					className='mx-[4.5rem] m-[4.5rem] rounded-[50px] h-[calc(100vh-9rem)] iphone:mx-[1rem] iphone:mb-[1rem] iphone:h-[calc(100vh-5.5rem)] iphone:rounded-[40px]'
 					style={{
 						backgroundImage: `url(${film?.stills ? urlFor(film?.stills).url() : 'imgs/placeholder.webp'})`,
 						backgroundSize: 'cover',
