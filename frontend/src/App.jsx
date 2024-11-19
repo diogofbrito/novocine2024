@@ -4,19 +4,13 @@ import { NavBar } from './components/NavBar';
 import { LangProvider } from './components/LangProvider';
 import { SmoothScrolling } from './components/SmoothScrolling';
 
-
-
-
 function App() {
-	const location = useLocation();
-	const isSoonPage = location.pathname === '/'; 
-
+	
 	return (
 		<SmoothScrolling>
 			<LangProvider>
-
-				{isSoonPage && <NavBar/> }
-				<Outlet />	
+				<NavBar />
+				<Outlet />
 			</LangProvider>
 		</SmoothScrolling>
 	);

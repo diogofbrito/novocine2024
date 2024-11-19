@@ -82,7 +82,7 @@ export function VimeoModal({ videoId}) {
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
 								transition={{ duration: 0.5, ease: 'easeInOut' }}
-								allow='fullscreen; picture-in-picture'
+								allow='autoplay;fullscreen; picture-in-picture'
 								allowFullScreen
 							></motion.iframe>
 						</div>
