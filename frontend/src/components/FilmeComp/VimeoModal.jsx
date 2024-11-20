@@ -1,12 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { useLenis } from '@studio-freight/react-lenis';
 import { motion, AnimatePresence } from 'framer-motion';
+import { translation } from '../../Lang/translation';
+import { useLang } from '../LangProvider';
 
-
-
-export function VimeoModal({ videoId}) {
+export function VimeoModal({ videoId }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const lenis = useLenis();
+	const { lang } = useLang();
 
 	const handleOpenModal = () => {
 		setIsOpen(true);
@@ -62,7 +63,7 @@ export function VimeoModal({ videoId}) {
 									onClick={handleClose}
 									className='px-3 py-1 border rounded-full hover:bg-[rgba(255,255,255,0.5)] dark:hover:bg-[rgba(234,235,222,0.5)] transition duration-300 ease-in-out uppercase '
 								>
-									Fechar
+									{translation[lang].fechar}
 								</button>
 							</div>
 

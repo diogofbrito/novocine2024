@@ -68,7 +68,7 @@ export function Dates({ dataInicio, dataFim }) {
 	}, []);
 
 	return (
-		<div ref={datesRef} className='fixed z-50 bottom-0 px-[4.5rem] iphone:px-[1rem] flex w-screen h-[4.5rem] items-center' style={{ display: 'none' }}>
+		<div ref={datesRef} className='fixed z-40 bottom-0 px-[4.5rem] iphone:px-[1rem] flex w-screen h-[4.5rem] items-center' style={{ display: 'none' }}>
 			<div className='uppercase px-3 py-1 border rounded-full w-full dates text-lg'>
 				<Marquee pauseOnHover speed={50} gradient={true} gradientWidth={100} gradientColor={gradientColor} direction='left'>
 					{lang === 'PT' ? `de ${formattedStartDate} — ${formattedEndDate}` : `FROM ${formattedStartDate} — ${formattedEndDate}`}
