@@ -4,9 +4,8 @@ import { useTheme } from '../ThemeProvider';
 
 
 export function SkeletonArchiveMasonry() {
-    const { theme } = useTheme();
+	const { theme } = useTheme();
 
-	
 
 	return (
 		<div key={theme}>
@@ -15,12 +14,13 @@ export function SkeletonArchiveMasonry() {
 					<Skeleton
 						key={index}
 						variant='rectangular'
-						height={500}
+						height={300}
 						sx={{
-							bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
+							bgcolor: 'transparent',
 							borderRadius: '20px',
 							flexGrow: 1,
 						}}
+						className={`theme-skeleton`}
 					/>
 				))}
 			</div>
@@ -32,10 +32,11 @@ export function SkeletonArchiveMasonry() {
 						variant='rectangular'
 						height={300}
 						sx={{
-							bgcolor: theme === 'dark' ? '#000000' : 'rgb(254, 161, 208)',
+							bgcolor: 'transparent',
 							borderRadius: '20px',
 							flexGrow: 1,
 						}}
+						className={`theme-skeleton`}
 					/>
 				))}
 			</div>

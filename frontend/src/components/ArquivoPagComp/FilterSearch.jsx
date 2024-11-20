@@ -116,8 +116,6 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 	};
 
 	
-
-	const customMenuPlacement = 'auto';
 	return (
 		<>
 			<div className='z-50 flex w-full justify-between items-center iphone:hidden'>
@@ -141,9 +139,7 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 						isSearchable={false}
 						value={years.find(year => year.value === selectedYear)}
 						styles={customSelectStyles}
-						menuPortalTarget={document.body}
-						menuPlacement={customMenuPlacement}
-						menuPosition='absolute'
+					
 					/>
 
 					<Select
@@ -182,6 +178,7 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 				years={years}
 				customSelectStyles={customSelectStyles}
 				countries={countries}
+				isListView={isListView}
 			/>
 		</>
 	);

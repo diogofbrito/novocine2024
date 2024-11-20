@@ -16,46 +16,51 @@ export function SkeletonCarousel() {
 					variant='rectangular'
 					height={400}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: 'transparent',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
+					className={`theme-skeleton`}
 				/>
 				<Skeleton
 					variant='rectangular'
 					height={400}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: 'transparent',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
+					className={`theme-skeleton`}
 				/>
 				<Skeleton
 					variant='rectangular'
 					height={400}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: 'transparent',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
+					className={`theme-skeleton`}
 				/>
 				<Skeleton
 					variant='rectangular'
 					height={400}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: 'transparent',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
+					className={`theme-skeleton`}
 				/>
 				<Skeleton
 					variant='rectangular'
 					height={400}
 					sx={{
-						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						bgcolor: 'transparent',
 						borderRadius: '20px',
 						flexGrow: 1,
 					}}
+					className={`theme-skeleton`}
 				/>
 			</div>
 		</>
