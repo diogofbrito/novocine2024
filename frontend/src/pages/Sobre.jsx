@@ -32,7 +32,7 @@ export function Sobre() {
 							</div>
 						</div>
 					) : (
-						<div className='text-xl w-2/4 leading-[1.688rem] iphone:leading-[1.5rem] flex flex-col gap-6 iphone:w-full '>
+						<div className='text-xl w-2/4 iphone:text-lg leading-[1.688rem] iphone:leading-[1.5rem] flex flex-col gap-6 iphone:w-full '>
 							{translation[lang].termosText.map((text, index) => (
 								<p key={index}>{text}</p>
 							))}
@@ -41,10 +41,7 @@ export function Sobre() {
 				</div>
 
 				<div className='flex items-center justify-center iphone:justify-between h-[4.5rem] gap-4 iphone:fixed  iphone:bottom-0 iphone:w-full iphone:left-0 iphone:px-[1rem]'>
-					<button
-						onClick={onToggleView}
-						className='uppercase link px-3 py-1 border rounded-full  text-md hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out iphone:text-base'
-					>
+					<button onClick={onToggleView} className='uppercase link px-3 py-1 border rounded-full  text-md hover:bg-white hover:bg-opacity-50 transition duration-300 ease-in-out iphone:text-base'>
 						{isThermsView ? translation[lang].termos : translation[lang].voltar}
 					</button>
 

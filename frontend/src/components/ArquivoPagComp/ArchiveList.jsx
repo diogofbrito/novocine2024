@@ -41,7 +41,7 @@ export function ArchiveList({ films, onFilmClick }) {
 						</div>
 
 						<div className='hidden iphone:flex iphone:flex-col pl-4 pr-3 pt-4 pb-3 border rounded-3xl'>
-							<div className='text-xl leading-[1.688rem]'>
+							<div className='text-lg  leading-[1.688rem]'>
 								<div className='text-5xl font-cine '>{film.nome}</div>
 								<span className=''>
 									{translation[lang].de} <span className='font-bold '>{film.realizador}</span>
