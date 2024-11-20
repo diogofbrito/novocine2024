@@ -54,6 +54,8 @@ export function NavBar() {
 		};
 	}, []);
 
+	
+
 	return (
 		<ThemeProvider>
 			<>
@@ -90,6 +92,7 @@ export function NavBar() {
 									NOVOCiNE
 								</NavLink>
 							</div>
+							
 
 							<NavBarMobile useLang={useLang} translation={translation} showNewsletter={showNewsletter} setShowNewsletter={setShowNewsletter} />
 
