@@ -1,13 +1,13 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
 import { LangProvider } from './components/LangProvider';
 import { SmoothScrolling } from './components/SmoothScrolling';
 
 function App() {
-	
+
 	return (
-		<SmoothScrolling>
+		<SmoothScrolling >
 			<LangProvider>
 				<NavBar />
 				<Outlet />

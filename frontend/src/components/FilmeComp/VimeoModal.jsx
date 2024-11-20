@@ -6,6 +6,7 @@ import { useLang } from '../LangProvider';
 
 export function VimeoModal({ videoId }) {
 	const [isOpen, setIsOpen] = useState(false);
+	
 	const lenis = useLenis();
 	const { lang } = useLang();
 

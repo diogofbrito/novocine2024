@@ -9,6 +9,7 @@ import { FilterSearchMobile } from '../Mobile/FilterSearchMobile';
 export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelectedYear, selectedCountry, setSelectedCountry, films, onToggleView, isListView }) {
 	const [years, setYears] = useState([]);
 	const [countries, setCountries] = useState([]);
+
 	const { lang } = useLang();
 
 	const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
@@ -114,7 +115,9 @@ export function FilterSearch({ searchTerm, setSearchTerm, selectedYear, setSelec
 		}),
 	};
 
-const customMenuPlacement = 'auto';
+	
+
+	const customMenuPlacement = 'auto';
 	return (
 		<>
 			<div className='z-50 flex w-full justify-between items-center iphone:hidden'>

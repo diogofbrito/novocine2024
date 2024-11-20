@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useLang } from '../LangProvider';
 import { translation } from '../../Lang/translation';
-import { useLenis } from '@studio-freight/react-lenis';
+import { routeTranslations } from '../../Lang/translationRoutes.js';
+
 
 export function FilmNavigation({ adjacentFilms }) {
 	const { lang } = useLang();
@@ -11,16 +12,15 @@ export function FilmNavigation({ adjacentFilms }) {
 	const navigate = useNavigate();
 
 	const scrollToTop = () => {
-		window.scrollTo(0, 0); // Rola a página para o topo
+		window.scrollTo(0, 0);
 	};
 
 	const handleNavigation = slug => {
-		navigate(`/arquivo/${slug}`);
-		scrollToTop(); // Força o scroll para o topo
+		navigate(`/${routeTranslations.arquivo[lang]}/${slug}`);
+		scrollToTop();
 	};
 
 	useEffect(() => {
-		// Garante que o scroll vai para o topo quando a página mudar
 		scrollToTop();
 	}, []);
 
@@ -35,7 +35,6 @@ export function FilmNavigation({ adjacentFilms }) {
 						>
 							{translation[lang].filmeAnterior}
 						</button>
-						{/* 	<div className='text-6xl font-cine truncate'>{lang === 'PT' ? previousFilm.nome : previousFilm.nomeENG}</div> */}
 					</>
 				)}
 			</div>
@@ -48,7 +47,6 @@ export function FilmNavigation({ adjacentFilms }) {
 						>
 							{translation[lang].proximoFilme}
 						</button>
-						{/* 	<div className='text-6xl font-cine truncate text-right'>{lang === 'PT' ? nextFilm.nome : nextFilm.nomeENG}</div> */}
 					</>
 				)}
 			</div>

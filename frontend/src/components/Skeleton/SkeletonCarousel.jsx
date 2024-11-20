@@ -11,7 +11,7 @@ export function SkeletonCarousel() {
 
 	return (
 		<>
-			<div className='grid grid-cols-4 w-full gap-6 iphone:hidden'>
+			<div className='grid grid-cols-5 w-full gap-6 iphone:hidden'>
 				<Skeleton
 					variant='rectangular'
 					height={400}
@@ -48,9 +48,16 @@ export function SkeletonCarousel() {
 						flexGrow: 1,
 					}}
 				/>
-				
+				<Skeleton
+					variant='rectangular'
+					height={400}
+					sx={{
+						bgcolor: theme === 'dark' ? 'grey.800' : 'rgb(254, 161, 208)',
+						borderRadius: '20px',
+						flexGrow: 1,
+					}}
+				/>
 			</div>
-
 		</>
 	);
 }
