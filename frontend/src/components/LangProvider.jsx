@@ -17,7 +17,7 @@ export function LangProvider({ children }) {
 
     useLayoutEffect(() => {
         const basePath = pathname.split("/")[1];
-        let newLang;
+        let newLang = lang;
         Object.entries(langRouteMap).forEach(([lang, routeObject]) => {
             if (Object.values(routeObject).includes(basePath)) {
                 newLang = lang;
