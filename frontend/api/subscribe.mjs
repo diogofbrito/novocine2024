@@ -1,5 +1,5 @@
 export async function POST(req) {
-	const { firstName, lastName, email } = req.body;
+	const { firstName, lastName, email } = await req.json();
 	const data = {
 		email_address: email,
 		status: 'subscribed',
