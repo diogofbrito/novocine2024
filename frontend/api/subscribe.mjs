@@ -5,7 +5,7 @@ export async function POST(req) {
 		status: 'subscribed',
 		merge_fields: { FNAME: firstName, LNAME: lastName },
 	};
-	console.log ({data})
+	console.log({ data });
 
 	const result = await fetch(`https://${process.env.MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_LIST_ID}/members`, {
 		method: 'POST',
@@ -14,6 +14,7 @@ export async function POST(req) {
 			Authorization: `apikey ${process.env.MAILCHIMP_API_KEY}`,
 		},
 	});
+	console.log({result});
 
 	if (result.status === 200) {
 		return Response.json(
