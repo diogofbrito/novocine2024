@@ -64,6 +64,10 @@ html[data-theme="light"] .navbar {
 	
 }
 
+html[data-theme="light"] .sorry{
+  color: #1a1a1d;
+}
+
 html[data-theme="light"] .newsletter{
 	background-color: rgba(254, 161, 208, 0.5);
 }
@@ -111,6 +115,10 @@ html[data-theme="dark"] .border,
 html[data-theme="dark"] .navbar {
     color: var(--text-color-dark);
     border-color: var(--text-color-dark);
+}
+
+html[data-theme="dark"] .sorry{
+  color: #1a1a1d;
 }
 
 html[data-theme="dark"] .newsletter{

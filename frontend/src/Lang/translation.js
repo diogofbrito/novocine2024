@@ -49,6 +49,8 @@ export const translation = {
 		notas: 'notes',
 		filmeAnterior: 'Previous Film',
 		proximoFilme: 'Next Film',
+		sorry: 'Hello! We will return with the next film soon. Until then, you can visit our',
+		obrigado: 'Thank you.'
 	},
 	PT: {
 		arquivo: 'Arquivo',
@@ -95,5 +97,7 @@ export const translation = {
 		notas: 'notas',
 		filmeAnterior: 'Filme Anterior',
 		proximoFilme: 'Próximo Filme',
+		sorry: 'Olá! Voltaremos com o próximo filme em breve. Até lá, podes visitar o nosso',
+		obrigado: 'Obrigade.',
 	},
 };
